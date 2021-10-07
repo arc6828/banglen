@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import { fb } from '../../db_config';
 
 const onLogin = data => {
   return {
@@ -15,7 +16,7 @@ export const authentication = (login, callback) => dispatch => {
     };
     dispatch(onLogin(data));
     if (typeof callback === 'function') {
-      callback({success: true});
+      callback({ success: true });
     }
   }, 500);
 };

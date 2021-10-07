@@ -8,6 +8,8 @@ import Swiper from "react-native-swiper";
 import { BaseColor, BaseStyle, Images, useTheme } from "@config";
 import * as Utils from "@utils";
 import { useTranslation } from "react-i18next";
+import { fb } from '../../../db_config';
+
 
 export default function Walkthrough({ navigation }) {
   const [loading, setLoading] = useState(false);
@@ -28,7 +30,7 @@ export default function Walkthrough({ navigation }) {
    */
   const authentication = () => {
     setLoading(true);
-    dispatch(AuthActions.authentication(true, (response) => {}));
+    dispatch(AuthActions.authentication(true, (response) => { console.log("=>",response)}));
   };
 
   return (
@@ -77,6 +79,18 @@ export default function Walkthrough({ navigation }) {
             }}
           >
             {t("login_facebook")}
+          </Button>
+          <Button
+            full
+            style={{
+              backgroundColor: BaseColor.navyRed,
+              marginTop: 20,
+            }}
+            onPress={() => {
+              authentication();
+            }}
+          >
+            {t("Login with Google")}
           </Button>
           <Button
             full

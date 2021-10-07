@@ -11,6 +11,7 @@ export const BaseColor = {
   fieldColor: '#F5F5F5',
   yellowColor: '#FDC60A',
   navyBlue: '#3C5A99',
+  navyRed:'#DB4437',
   kashmir: '#5D6D7E',
   orangeColor: '#E5634D',
   blueColor: '#5DADE2',

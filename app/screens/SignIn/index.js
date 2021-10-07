@@ -1,40 +1,40 @@
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {AuthActions} from '@actions';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { AuthActions } from '@actions';
 import {
   View,
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import {BaseStyle, useTheme} from '@config';
-import {Header, SafeAreaView, Icon, Text, Button, TextInput} from '@components';
+import { BaseStyle, useTheme } from '@config';
+import { Header, SafeAreaView, Icon, Text, Button, TextInput } from '@components';
 import styles from './styles';
-import {useTranslation} from 'react-i18next';
-
-export default function SignIn({navigation}) {
-  const {colors} = useTheme();
-  const {t} = useTranslation();
+import { useTranslation } from 'react-i18next';
+import { fb } from '../../../db_config';
+export default function SignIn({ navigation }) {
+  const { colors } = useTheme();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const offsetKeyboard = Platform.select({
     ios: 0,
     android: 20,
   });
 
-  const [id, setId] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState({id: true, password: true});
+  const [success, setSuccess] = useState({ id: true, password: true });
 
   /**
    * call when action login
    *
    */
   const onLogin = () => {
-    if (id == '' || password == '') {
+    if (email == '' || password == '') {
       setSuccess({
         ...success,
-        id: false,
+        email: false,
         password: false,
       });
     } else {
@@ -42,14 +42,19 @@ export default function SignIn({navigation}) {
       dispatch(
         AuthActions.authentication(true, response => {
           setLoading(false);
+          fb.auth()
+            .signInWithEmailAndPassword(email, password)
+            .then(() => { console.log("Login Successfully"); })
+            .catch(error => { console.log("Login Error", error); })
           navigation.goBack();
+
         }),
       );
     }
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <Header
         title={t('sign_in')}
         renderLeft={() => {
@@ -72,22 +77,22 @@ export default function SignIn({navigation}) {
         <KeyboardAvoidingView
           behavior={Platform.OS === 'android' ? 'height' : 'padding'}
           keyboardVerticalOffset={offsetKeyboard}
-          style={{flex: 1}}>
+          style={{ flex: 1 }}>
           <View style={styles.contain}>
             <TextInput
-              onChangeText={text => setId(text)}
+              onChangeText={text => setEmail(text)}
               onFocus={() => {
                 setSuccess({
                   ...success,
-                  id: true,
+                  email: true,
                 });
               }}
-              placeholder={t('input_id')}
-              success={success.id}
-              value={id}
+              placeholder={t('input_email')}
+              success={success.email}
+              value={email}
             />
             <TextInput
-              style={{marginTop: 10}}
+              style={{ marginTop: 10 }}
               onChangeText={text => setPassword(text)}
               onFocus={() => {
                 setSuccess({
@@ -101,7 +106,7 @@ export default function SignIn({navigation}) {
               value={password}
             />
             <Button
-              style={{marginTop: 20}}
+              style={{ marginTop: 20 }}
               full
               loading={loading}
               onPress={() => {
@@ -111,7 +116,7 @@ export default function SignIn({navigation}) {
             </Button>
             <TouchableOpacity
               onPress={() => navigation.navigate('ResetPassword')}>
-              <Text body1 grayColor style={{marginTop: 25}}>
+              <Text body1 grayColor style={{ marginTop: 25 }}>
                 {t('forgot_your_password')}
               </Text>
             </TouchableOpacity>
