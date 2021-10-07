@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
+import { fb } from '../../db_config';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useSelector } from "react-redux";
 import { BaseColor, useTheme, useFont } from "@config";

@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {View, ScrollView, TouchableOpacity} from 'react-native';
-import {useDispatch} from 'react-redux';
-import {AuthActions} from '@actions';
-import {BaseStyle, useTheme} from '@config';
+import React, { useState } from 'react';
+import { View, ScrollView, TouchableOpacity } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { AuthActions } from '@actions';
+import { BaseStyle, useTheme } from '@config';
 import {
   Header,
   SafeAreaView,
@@ -13,12 +13,12 @@ import {
   ProfilePerformance,
 } from '@components';
 import styles from './styles';
-import {UserData} from '@data';
-import {useTranslation} from 'react-i18next';
-
-export default function Profile({navigation}) {
-  const {colors} = useTheme();
-  const {t} = useTranslation();
+import { UserData } from '@data';
+import { useTranslation } from 'react-i18next';
+import { fb } from '../../../db_config';
+export default function Profile({ navigation }) {
+  const { colors } = useTheme();
+  const { t } = useTranslation();
 
   const [loading, setLoading] = useState(false);
   const [userData] = useState(UserData[0]);
@@ -31,11 +31,20 @@ export default function Profile({navigation}) {
    */
   const onLogOut = () => {
     setLoading(true);
-    dispatch(AuthActions.authentication(false, response => {}));
+    dispatch(AuthActions.authentication(false, response => {
+      fb.auth().signOut().then(function () {
+        console.log("Logout successfully");
+        // Sign-out successful.
+      }).catch(function (error) {
+        // An error happened.
+        console.log(error);
+      });
+
+    }));
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <Header
         title={t('profile')}
         renderRight={() => {
@@ -60,12 +69,12 @@ export default function Profile({navigation}) {
             />
             <ProfilePerformance
               data={userData.performance}
-              style={{marginTop: 20, marginBottom: 20}}
+              style={{ marginTop: 20, marginBottom: 20 }}
             />
             <TouchableOpacity
               style={[
                 styles.profileItem,
-                {borderBottomColor: colors.border, borderBottomWidth: 1},
+                { borderBottomColor: colors.border, borderBottomWidth: 1 },
               ]}
               onPress={() => {
                 navigation.navigate('ProfileEdit');
@@ -75,14 +84,14 @@ export default function Profile({navigation}) {
                 name="angle-right"
                 size={18}
                 color={colors.primary}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 enableRTL={true}
               />
             </TouchableOpacity>
             <TouchableOpacity
               style={[
                 styles.profileItem,
-                {borderBottomColor: colors.border, borderBottomWidth: 1},
+                { borderBottomColor: colors.border, borderBottomWidth: 1 },
               ]}
               onPress={() => {
                 navigation.navigate('ChangePassword');
@@ -92,14 +101,14 @@ export default function Profile({navigation}) {
                 name="angle-right"
                 size={18}
                 color={colors.primary}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 enableRTL={true}
               />
             </TouchableOpacity>
             <TouchableOpacity
               style={[
                 styles.profileItem,
-                {borderBottomColor: colors.border, borderBottomWidth: 1},
+                { borderBottomColor: colors.border, borderBottomWidth: 1 },
               ]}
               onPress={() => {
                 navigation.navigate('Currency');
@@ -117,7 +126,7 @@ export default function Profile({navigation}) {
                   name="angle-right"
                   size={18}
                   color={colors.primary}
-                  style={{marginLeft: 5}}
+                  style={{ marginLeft: 5 }}
                   enableRTL={true}
                 />
               </View>
@@ -125,7 +134,7 @@ export default function Profile({navigation}) {
             <TouchableOpacity
               style={[
                 styles.profileItem,
-                {borderBottomColor: colors.border, borderBottomWidth: 1},
+                { borderBottomColor: colors.border, borderBottomWidth: 1 },
               ]}
               onPress={() => navigation.navigate('MyPaymentMethod')}>
               <Text body1>{t('my_cards')}</Text>
@@ -133,7 +142,7 @@ export default function Profile({navigation}) {
                 name="angle-right"
                 size={18}
                 color={colors.primary}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 enableRTL={true}
               />
             </TouchableOpacity>
@@ -147,13 +156,13 @@ export default function Profile({navigation}) {
                 name="angle-right"
                 size={18}
                 color={colors.primary}
-                style={{marginLeft: 5}}
+                style={{ marginLeft: 5 }}
                 enableRTL={true}
               />
             </TouchableOpacity>
           </View>
         </ScrollView>
-        <View style={{paddingHorizontal: 20, paddingVertical: 15}}>
+        <View style={{ paddingHorizontal: 20, paddingVertical: 15 }}>
           <Button full loading={loading} onPress={() => onLogOut()}>
             {t('sign_out')}
           </Button>
