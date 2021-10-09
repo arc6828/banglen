@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, ScrollView, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { AuthActions } from '@actions';
@@ -16,7 +16,14 @@ import styles from './styles';
 import { UserData } from '@data';
 import { useTranslation } from 'react-i18next';
 import { fb } from '../../../db_config';
+import { AuthContext } from '../../../hooks/AuthContext';
+
+
 export default function Profile({ navigation }) {
+
+  const [user, setUser] = useContext(AuthContext);
+  console.log("🚀 ~ file: index.js ~ line 23 ~ Profile ~ user", user)
+
   const { colors } = useTheme();
   const { t } = useTranslation();
 
