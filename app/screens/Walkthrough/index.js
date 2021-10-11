@@ -23,11 +23,7 @@ export default function Walkthrough({ navigation }) {
   const { colors } = useTheme();
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  /**
-   * @description Simple authentication without call any APIs
-   * @author Passion UI <passionui.com>
-   * @date 2019-08-03
-   */
+ 
   const authentication = () => {
     setLoading(true);
     dispatch(AuthActions.authentication(true, (response) => { console.log("=>",response)}));
@@ -106,11 +102,11 @@ export default function Walkthrough({ navigation }) {
                 {t("not_have_account")}
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => authentication()}>
+            {/* <TouchableOpacity onPress={() => authentication()}>
               <Text body1 primaryColor>
                 {t("join_now")}
               </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </View>
       </ScrollView>

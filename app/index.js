@@ -9,11 +9,13 @@ console.disableYellowBox = true;
 export default function App() {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <AuthContextProvider>
+      <AuthContextProvider>
+        <PersistGate loading={null} persistor={persistor}>
+
           <Navigator />
-        </AuthContextProvider>
-      </PersistGate>
+
+        </PersistGate>
+      </AuthContextProvider>
     </Provider>
   );
 }

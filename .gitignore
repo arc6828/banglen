@@ -7,4 +7,3 @@ node_modules/
 *.key
 *.mobileprovision
 *.orig.*
-db_config.js

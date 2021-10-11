@@ -187,6 +187,7 @@ export default function Main() {
         <MainStack.Screen name="ThemeSetting" component={ThemeSetting} />
         <MainStack.Screen name="NotFound" component={NotFound} />
       </MainStack.Navigator>
+
     );
   } else {
     return (
@@ -214,6 +215,7 @@ function BottomTabNavigator() {
   const font = useFont();
   const auth = useSelector((state) => state.auth);
   const login = auth.login.success;
+
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
@@ -284,5 +286,6 @@ function BottomTabNavigator() {
         }}
       />
     </BottomTab.Navigator>
+
   );
 }

@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { AuthContext } from '../../../hooks/AuthContext';
 export default function ProfileEdit({ navigation }) {
   const [user, setUser] = useContext(AuthContext); 
+  console.log("🚀 ~ file: index.js ~ line 19 ~ ProfileEdit ~ user", user)
 
   const { colors } = useTheme();
   const { t } = useTranslation();

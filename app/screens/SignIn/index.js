@@ -16,6 +16,7 @@ export default function SignIn({ navigation }) {
   const { colors } = useTheme();
   const { t } = useTranslation();
   const dispatch = useDispatch();
+
   const offsetKeyboard = Platform.select({
     ios: 0,
     android: 20,
@@ -30,7 +31,17 @@ export default function SignIn({ navigation }) {
    * call when action login
    *
    */
+
   const onLogin = () => {
+    fb.auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => { console.log("Login Successfully"); })
+      .catch(error => {
+        console.log("Login error", error);
+      })
+
+  }
+  const onSignIn = () => {
     if (email == '' || password == '') {
       setSuccess({
         ...success,
@@ -39,15 +50,11 @@ export default function SignIn({ navigation }) {
       });
     } else {
       setLoading(true);
+      onLogin();
       dispatch(
         AuthActions.authentication(true, response => {
           setLoading(false);
-          fb.auth()
-            .signInWithEmailAndPassword(email, password)
-            .then(() => { console.log("Login Successfully"); })
-            .catch(error => { console.log("Login Error", error); })
-          navigation.goBack();
-
+          navigation.navigate('Profile')
         }),
       );
     }
@@ -110,7 +117,7 @@ export default function SignIn({ navigation }) {
               full
               loading={loading}
               onPress={() => {
-                onLogin();
+                onSignIn();
               }}>
               {t('sign_in')}
             </Button>

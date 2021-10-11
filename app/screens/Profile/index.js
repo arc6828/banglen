@@ -18,7 +18,6 @@ import { useTranslation } from 'react-i18next';
 import { fb } from '../../../db_config';
 import { AuthContext } from '../../../hooks/AuthContext';
 
-
 export default function Profile({ navigation }) {
 
   const [user, setUser] = useContext(AuthContext);
@@ -74,10 +73,10 @@ export default function Profile({ navigation }) {
               textThird={userData.id}
               onPress={() => navigation.navigate('ProfileExanple')}
             />
-            <ProfilePerformance
+            {/* <ProfilePerformance
               data={userData.performance}
               style={{ marginTop: 20, marginBottom: 20 }}
-            />
+            /> */}
             <TouchableOpacity
               style={[
                 styles.profileItem,
@@ -95,7 +94,7 @@ export default function Profile({ navigation }) {
                 enableRTL={true}
               />
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={[
                 styles.profileItem,
                 { borderBottomColor: colors.border, borderBottomWidth: 1 },
@@ -166,7 +165,7 @@ export default function Profile({ navigation }) {
                 style={{ marginLeft: 5 }}
                 enableRTL={true}
               />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </ScrollView>
         <View style={{ paddingHorizontal: 20, paddingVertical: 15 }}>
