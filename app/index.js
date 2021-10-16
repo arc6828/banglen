@@ -11,7 +11,6 @@ export default function App() {
     <Provider store={store}>
       <AuthContextProvider>
         <PersistGate loading={null} persistor={persistor}>
-
           <Navigator />
 
         </PersistGate>

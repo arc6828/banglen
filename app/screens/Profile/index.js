@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { View, ScrollView, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { AuthActions } from '@actions';
@@ -21,7 +21,6 @@ import { AuthContext } from '../../../hooks/AuthContext';
 export default function Profile({ navigation }) {
 
   const [user, setUser] = useContext(AuthContext);
-  console.log("🚀 ~ file: index.js ~ line 23 ~ Profile ~ user", user)
 
   const { colors } = useTheme();
   const { t } = useTranslation();
@@ -30,11 +29,12 @@ export default function Profile({ navigation }) {
   const [userData] = useState(UserData[0]);
   const dispatch = useDispatch();
 
-  /**
-   * @description Simple logout with Redux
-   * @author Passion UI <passionui.com>
-   * @date 2019-08-03
-   */
+  useEffect(() => {
+    if (!user) {
+      navigation.navigate('Walkthrough');
+    }
+  }, [])
+
   const onLogOut = () => {
     setLoading(true);
     dispatch(AuthActions.authentication(false, response => {
@@ -67,7 +67,7 @@ export default function Profile({ navigation }) {
           <View style={styles.contain}>
             <ProfileDetail
               image={userData.image}
-              textFirst={userData.name}
+              textFirst={user ? user.email : ''}
               point={userData.point}
               textSecond={userData.address}
               textThird={userData.id}
@@ -94,7 +94,7 @@ export default function Profile({ navigation }) {
                 enableRTL={true}
               />
             </TouchableOpacity>
-            {/* <TouchableOpacity
+             <TouchableOpacity
               style={[
                 styles.profileItem,
                 { borderBottomColor: colors.border, borderBottomWidth: 1 },
@@ -165,7 +165,7 @@ export default function Profile({ navigation }) {
                 style={{ marginLeft: 5 }}
                 enableRTL={true}
               />
-            </TouchableOpacity> */}
+            </TouchableOpacity>
           </View>
         </ScrollView>
         <View style={{ paddingHorizontal: 20, paddingVertical: 15 }}>

@@ -99,6 +99,7 @@ export default function Main() {
     });
     return subscriber;
   });
+
   if (user !== null) {
     return (
       <MainStack.Navigator
@@ -202,7 +203,6 @@ export default function Main() {
         <MainStack.Screen name="Walkthrough" component={Walkthrough} />
         <MainStack.Screen name="SignUp" component={SignUp} />
         <MainStack.Screen name="SignIn" component={SignIn} />
-
       </MainStack.Navigator>
     )
   }
