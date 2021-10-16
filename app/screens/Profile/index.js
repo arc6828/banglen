@@ -10,8 +10,8 @@ import {
   Text,
   Button,
   ProfileDetail,
-  ProfilePerformance,
 } from '@components';
+
 import styles from './styles';
 import { UserData } from '@data';
 import { useTranslation } from 'react-i18next';
@@ -20,7 +20,8 @@ import { AuthContext } from '../../../hooks/AuthContext';
 
 export default function Profile({ navigation }) {
 
-  const [user, setUser] = useContext(AuthContext);
+  const [user, setUser] = useState([]);
+  console.log("🚀 ~ file: index.js ~ line 24 ~ Profile ~ user", user)
 
   const { colors } = useTheme();
   const { t } = useTranslation();
@@ -28,6 +29,19 @@ export default function Profile({ navigation }) {
   const [loading, setLoading] = useState(false);
   const [userData] = useState(UserData[0]);
   const dispatch = useDispatch();
+
+
+  const readUsersFirebase = async () => {
+    fb.firestore().collection("users")
+      .get().then((querySnapshot) => {
+        const users = querySnapshot.docs.map(doc => doc.data());
+        setUser(users);
+      });
+  }
+
+  useEffect(() => {
+    readUsersFirebase();
+  }, [])
 
   useEffect(() => {
     if (!user) {
@@ -94,7 +108,7 @@ export default function Profile({ navigation }) {
                 enableRTL={true}
               />
             </TouchableOpacity>
-             <TouchableOpacity
+            <TouchableOpacity
               style={[
                 styles.profileItem,
                 { borderBottomColor: colors.border, borderBottomWidth: 1 },

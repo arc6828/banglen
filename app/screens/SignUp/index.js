@@ -5,6 +5,8 @@ import { Header, SafeAreaView, Icon, Button, TextInput } from '@components';
 import styles from './styles';
 import { useTranslation } from 'react-i18next';
 import { fb } from '../../../db_config';
+
+
 export default function SignUp({ navigation }) {
   const { colors } = useTheme();
   const { t } = useTranslation();
@@ -14,11 +16,15 @@ export default function SignUp({ navigation }) {
   });
 
   const [name, setName] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [address, setAddress] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState({
     name: true,
+    lastname: true,
+    address: true,
     email: true,
     address: true,
   });
@@ -41,10 +47,19 @@ export default function SignUp({ navigation }) {
         setLoading(false);
         fb.auth()
           .createUserWithEmailAndPassword(email, password)
-          .then(() => { console.log("Register Successfully"); })
-          .catch(error => { console.log("Register Error"); })
-
-        navigation.navigate('SignIn');
+          .then(() => {
+            fb.firestore().collection('users').doc(fb.auth().currentUser.uid)
+              .set({
+                name: name,
+                lastname: lastname,
+                address: address,
+                email: email,
+                createdAt: new Date(),
+                userImg: null,
+              })
+          })
+          .catch(error => { console.log("Register Error", error); })
+        navigation.navigate('Profile');
       }, 500);
     }
   };
@@ -77,14 +92,28 @@ export default function SignUp({ navigation }) {
           <View style={styles.contain}>
             <TextInput
               onChangeText={text => setName(text)}
-              placeholder={t('input_name')}
+              placeholder={t('ชื่อ')}
               success={success.name}
               value={name}
             />
             <TextInput
               style={{ marginTop: 10 }}
+              onChangeText={text => setLastname(text)}
+              placeholder={t('นามสกุล')}
+              success={success.lastname}
+              value={lastname}
+            />
+            <TextInput
+              style={{ marginTop: 10 }}
+              onChangeText={text => setAddress(text)}
+              placeholder={t('ที่อยู่')}
+              success={success.address}
+              value={address}
+            />
+            <TextInput
+              style={{ marginTop: 10 }}
               onChangeText={text => setEmail(text)}
-              placeholder={t('input_email')}
+              placeholder={t('อีเมล')}
               keyboardType="email-address"
               success={success.email}
               value={email}
@@ -92,7 +121,7 @@ export default function SignUp({ navigation }) {
             <TextInput
               style={{ marginTop: 10 }}
               onChangeText={text => setPassword(text)}
-              placeholder={t('input_password')}
+              placeholder={t('รหัสผ่าน')}
               secureTextEntry={true}
               success={success.password}
               value={password}
@@ -102,7 +131,7 @@ export default function SignUp({ navigation }) {
               style={{ marginTop: 20 }}
               loading={loading}
               onPress={() => onSignUp()}>
-              {t('sign_up')}
+              {t('สมัครสมาชิก')}
             </Button>
           </View>
         </KeyboardAvoidingView>

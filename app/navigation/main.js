@@ -210,11 +210,13 @@ export default function Main() {
 }
 
 function BottomTabNavigator() {
+  const [user] = useContext(AuthContext);
+
   const { t } = useTranslation();
   const { colors } = useTheme();
   const font = useFont();
-  const auth = useSelector((state) => state.auth);
-  const login = auth.login.success;
+  // const auth = useSelector((state) => state.auth);
+  // const login = auth.login.success;
 
   return (
     <BottomTab.Navigator
@@ -277,7 +279,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Profile"
-        component={login ? Profile : Walkthrough}
+        component={user ? Profile : Walkthrough}
         options={{
           title: t("account"),
           tabBarIcon: ({ color }) => {
