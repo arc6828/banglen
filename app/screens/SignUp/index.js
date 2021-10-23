@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { View, KeyboardAvoidingView, Platform } from 'react-native';
 import { BaseStyle, useTheme } from '@config';
 import { Header, SafeAreaView, Icon, Button, TextInput } from '@components';
 import styles from './styles';
 import { useTranslation } from 'react-i18next';
 import { fb } from '../../../db_config';
-
+import { AuthContext } from '../../../hooks/AuthContext';
 
 export default function SignUp({ navigation }) {
   const { colors } = useTheme();
@@ -14,6 +14,7 @@ export default function SignUp({ navigation }) {
     ios: 0,
     android: 20,
   });
+  const [user, setUser] = useContext(AuthContext);
 
   const [name, setName] = useState('');
   const [lastname, setLastname] = useState('');
@@ -33,6 +34,24 @@ export default function SignUp({ navigation }) {
    * call when action signup
    *
    */
+  const createNewAccount = async () => {
+    fb.auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        fb.firestore().collection('users').doc(fb.auth().currentUser.uid)
+          .set({
+            uid: '_' + Math.random().toString(36).substr(2, 9),
+            name: name,
+            lastname: lastname,
+            address: address,
+            email: email,
+            createdAt: new Date(),
+            userImg: null,
+          })
+      })
+      .catch(error => { console.log("Register Error", error); })
+  }
+  
   const onSignUp = () => {
     if (name == '' || email == '' || password == '') {
       setSuccess({
@@ -45,20 +64,7 @@ export default function SignUp({ navigation }) {
       setLoading(true);
       setTimeout(() => {
         setLoading(false);
-        fb.auth()
-          .createUserWithEmailAndPassword(email, password)
-          .then(() => {
-            fb.firestore().collection('users').doc(fb.auth().currentUser.uid)
-              .set({
-                name: name,
-                lastname: lastname,
-                address: address,
-                email: email,
-                createdAt: new Date(),
-                userImg: null,
-              })
-          })
-          .catch(error => { console.log("Register Error", error); })
+        createNewAccount();
         navigation.navigate('Profile');
       }, 500);
     }

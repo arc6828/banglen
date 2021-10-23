@@ -147,7 +147,7 @@ export default function Main() {
         <MainStack.Screen name="PricingTable" component={PricingTable} />
         <MainStack.Screen name="PricingTableIcon" component={PricingTableIcon} />
         <MainStack.Screen name="BookingDetail" component={BookingDetail} />
-        <MainStack.Screen name="PostDetail" component={PostDetail} />
+        {/* <MainStack.Screen name="PostDetail" component={PostDetail} /> */}
         <MainStack.Screen name="TourDetail" component={TourDetail} />
         <MainStack.Screen name="CarDetail" component={CarDetail} />
         <MainStack.Screen name="AboutUs" component={AboutUs} />
@@ -203,6 +203,9 @@ export default function Main() {
         <MainStack.Screen name="Walkthrough" component={Walkthrough} />
         <MainStack.Screen name="SignUp" component={SignUp} />
         <MainStack.Screen name="SignIn" component={SignIn} />
+
+        <MainStack.Screen name="PostDetail" component={PostDetail} />
+
       </MainStack.Navigator>
     )
   }

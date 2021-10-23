@@ -19,9 +19,10 @@ import { fb } from '../../../db_config';
 import { AuthContext } from '../../../hooks/AuthContext';
 
 export default function Profile({ navigation }) {
-
-  const [user, setUser] = useState([]);
-  console.log("🚀 ~ file: index.js ~ line 24 ~ Profile ~ user", user)
+  const [user, setUser] = useContext(AuthContext)
+  console.log("🚀 ~ file: index.js ~ line 23 ~ Profile ~ user", user)
+  const [userProfile, setUserProfile] = useState([]);
+  console.log("🚀 ~ file: index.js ~ line 24 ~ Profile ~ userProfile", userProfile)
 
   const { colors } = useTheme();
   const { t } = useTranslation();
@@ -35,16 +36,16 @@ export default function Profile({ navigation }) {
     fb.firestore().collection("users")
       .get().then((querySnapshot) => {
         const users = querySnapshot.docs.map(doc => doc.data());
-        setUser(users);
+        setUserProfile(users);
       });
   }
 
   useEffect(() => {
     readUsersFirebase();
-  }, [])
+  }, [user])
 
   useEffect(() => {
-    if (!user) {
+    if (!userProfile) {
       navigation.navigate('Walkthrough');
     }
   }, [])
@@ -81,7 +82,7 @@ export default function Profile({ navigation }) {
           <View style={styles.contain}>
             <ProfileDetail
               image={userData.image}
-              textFirst={user ? user.email : ''}
+              textFirst={user ? user.name : ''}
               point={userData.point}
               textSecond={userData.address}
               textThird={userData.id}

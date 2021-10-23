@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 export default function PostListItem(props) {
   const {style, title, description, date, onPress, image} = props;
+  console.log("🚀 ~ file: index.js ~ line 10 ~ PostListItem ~ image", image)
   const {colors} = useTheme();
   const cardColor = colors.card;
   return (

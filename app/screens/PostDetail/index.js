@@ -88,7 +88,7 @@ export default function PostDetail({navigation}) {
               {t('post_title')}
             </Text>
             <ProfileAuthor
-              image={Images.profile2}
+              image={Images.profile}
               name="Steve Garrett"
               description="5 hours ago | 100k views"
               textRight="Jun 2018"
