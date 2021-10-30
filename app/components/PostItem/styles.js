@@ -3,7 +3,7 @@ import {BaseColor} from '@config';
 import * as Utils from '@utils';
 
 export default StyleSheet.create({
-  imagePost: {width: '100%', height: Utils.scaleWithPixel(220)},
+  imagePost: {width: '100%', height: Utils.scaleWithPixel(320)},
   content: {
     marginHorizontal: 20,
     paddingVertical: 10,

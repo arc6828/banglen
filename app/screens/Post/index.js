@@ -5,7 +5,7 @@ import { Header, SafeAreaView, PostItem, ProfileAuthor } from '@components';
 import styles from './styles';
 import { PostData } from '@data';
 import { useTranslation } from 'react-i18next';
-import RssJson from '../../../backend/json/jnm9642ns.json';
+import RssJson from '../../../backend/json/86m388h17.json';
 
 export default function Post({ navigation }) {
   const { colors } = useTheme();
@@ -36,7 +36,7 @@ export default function Post({ navigation }) {
             <PostItem
               image={item.image}
               title={item.title}
-              description={item.content}
+              description={item.content.substring(0, 250) + " ..."}
               onPress={() => navigation.navigate('PostDetail')}
             >
               <ProfileAuthor

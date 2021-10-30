@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, TouchableOpacity} from 'react-native';
-import {Image, Text} from '@components';
+import { View, TouchableOpacity } from 'react-native';
+import { Image, Text } from '@components';
 import styles from './styles';
 import PropTypes from 'prop-types';
 
@@ -22,7 +22,7 @@ export default function ProfileAuthor(props) {
       onPress={onPress}
       activeOpacity={0.9}>
       <View style={[styles.contentLeft, styleLeft]}>
-        <Image source={image} style={[styles.thumb, styleThumb]} />
+        <Image source={{ uri: image }} style={[styles.thumb, styleThumb]} />
         <View>
           <Text headline semibold numberOfLines={1}>
             {name}
@@ -62,5 +62,5 @@ ProfileAuthor.defaultProps = {
   styleThumb: {},
   styleRight: {},
   style: {},
-  onPress: () => {},
+  onPress: () => { },
 };

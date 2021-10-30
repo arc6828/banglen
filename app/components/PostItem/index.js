@@ -1,27 +1,28 @@
 import React from 'react';
-import {View, TouchableOpacity} from 'react-native';
-import {Image, Text, Icon} from '@components';
+import { View, TouchableOpacity } from 'react-native';
+import { Image, Text, Icon } from '@components';
 import styles from './styles';
 import PropTypes from 'prop-types';
-import {BaseColor, useTheme} from '@config';
+import { BaseColor, useTheme } from '@config';
 export default function PostItem(props) {
-  const {colors} = useTheme();
-  const {style, children, title, description, onPress, image} = props;
+  const { colors } = useTheme();
+  const { style, children, title, description, onPress, image } = props;
+  console.log("🚀 ~ file: index.js ~ line 10 ~ PostItem ~ image", image)
   return (
     <View style={style}>
       {children}
       <TouchableOpacity onPress={onPress} activeOpacity={0.9}>
-        <Image style={styles.imagePost} source={image} />
+        <Image style={styles.imagePost} source={{ uri: image }} />
         <Icon
           name="bookmark"
           solid
           size={24}
           color={BaseColor.whiteColor}
-          style={{position: 'absolute', top: 10, right: 10}}
+          style={{ position: 'absolute', top: 10, right: 10 }}
         />
       </TouchableOpacity>
-      <View style={[styles.content, {borderBottomColor: colors.border}]}>
-        <Text headline semibold style={{marginBottom: 6}}>
+      <View style={[styles.content, { borderBottomColor: colors.border }]}>
+        <Text headline semibold style={{ marginBottom: 6 }}>
           {title}
         </Text>
         <Text body2>{description}</Text>
@@ -47,5 +48,5 @@ PostItem.defaultProps = {
   title: '',
   description: '',
   style: {},
-  onPress: () => {},
+  onPress: () => { },
 };

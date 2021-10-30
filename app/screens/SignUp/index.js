@@ -40,7 +40,7 @@ export default function SignUp({ navigation }) {
       .then(() => {
         fb.firestore().collection('users').doc(fb.auth().currentUser.uid)
           .set({
-            uid: '_' + Math.random().toString(36).substr(2, 9),
+            uid: fb.auth().currentUser.uid,
             name: name,
             lastname: lastname,
             address: address,

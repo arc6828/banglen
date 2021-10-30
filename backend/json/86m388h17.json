@@ -6,6 +6,7 @@
       "author": "Chavalit Koweerawong",
       "published": 1625142437000,
       "created": 1625142437000,
+      "image": "https://cdn-images-1.medium.com/max/1024/1*iAwqOfC7HOJPbyDAk-1Ajg.png",
       "category": "course",
       "content": "บทความรวบรวมสไลด์ที่เกี่ยวกับการเขียนโปรแกรม PHP บน Framework Laravel 8 (2021) โดยอธิบายตั้งแต่การติดตั้งโปรแกรมไปจนถึงพัฒนาเป็น Application ง่ายๆ ได้ รวมทั้งเกร็ดความรู้เล็กๆ น้อยๆ เพื่อให้ทุกคนสามารถเรียนรู้และพัฒนา Laravel ได้แต่เดี๋ยวปลายปี Laravel 9 จะออกแล้วเตรียมตัวรอ featureสิ่งที่ต้องเรียนรู้มาก่อนIntroduction to GitHub [slide]GitHub Workshop [บทความ]โปรแกรมที่ต้องติดตั้งมาก่อนXampp (Google : xampp) [PHP &gt;= 7.3.x]Composer (Google : composer)Nodejs (Google : nodejs)Visual Studio Code (Google : visual studio code)Download และติดตั้งโปรแกรม Xampp / Composerเนื้่อหาที่สอน 2021[2021–07–25] Introduction to GitHub [slide]GitHub Workshop [บทความ][2021–06–25] Let’s Start with PHP — [slide][2021–06–25] Start with Laravel 8 — [slide][2021–07–02] Laravel 8 Route + View — [slide][2021–07–09] Laravel 8 x Bootstrap : Template Engine — [slide][2021–07–16] Laravel 8 Controller —[slide][2021–07–09] Laravel 8 การใช้ View ขั้นสูง — [slide][2021–07–23] Laravel 8 Migration — [slide][2021–07–23] Laravel 8 Model —[slide][2021–07–30] Laravel 8 CRUD and database : (Covid19s) —[slide][2021–08–06] Practice CRUD[2021–08–13] Midterm[2021–08–20] Laravel 6 Crud Generator — Laravel Farewell : Upload + Barcode —[2021–08–27] Laravel 6 Authentication &amp; Middleware —[2021–09–03] Laravel 6 Database Relationship (Table Join) —[2021–09–10] Laravel 6 Case Study : Shop Online —[2021–09–17] Project[2021–09–24] Laravel Deployment on Real Server (Heroku) —ReferenceLaravel 6 (LTS) CourseLaravel 8 Course was originally published in Computer Science VRU on Medium, where people are continuing the conversation by highlighting and responding to this story.",
       "enclosures": [],
@@ -18,6 +19,7 @@
       "author": "Chavalit Koweerawong",
       "published": 1624330582000,
       "created": 1624330582000,
+      "image": "https://cdn-images-1.medium.com/max/701/0*22idIICE_RTbMX1g.png",
       "category": [
          "heroku",
          "php"
@@ -33,6 +35,7 @@
       "author": "Chavalit Koweerawong",
       "published": 1624265535000,
       "created": 1624265535000,
+      "image": "https://cdn-images-1.medium.com/max/746/0*-Xh7yeEFY3btNsaQ.jpg",
       "category": [],
       "content": "เนื้อหาวิชา Cloud Computingหัวข้อที่สอนIntroduction to Cloud / Website and Cloud (2021–06–22)— slideCloud PAAS : Deploy web applicationUbuntu Server (2021–06–29)— slideCloud IAAS : Deploy NGINX and SSLScale Server with cloud infrastucture (2021–07–06) — slideLine Chatbot and Javascript server (2021–07–13)— slideCollect Chat data with Cloud Firestore (2021–07–20) — slideAPI and Application : Covid (2021–07–27) — slideGoogle OCRMidtermFrontend Server with ReactJS v.s. NextJS v.s. BootstrapScraping WebAuthentication with JWTAuthentication single sign onCronjobเวลาอิสระเวลาอิสระเวลาอิสระเวลาอิสระสอบปลายภาคCloud Computing was originally published in Computer Science VRU on Medium, where people are continuing the conversation by highlighting and responding to this story.",
       "enclosures": [],
@@ -45,6 +48,7 @@
       "author": "Chavalit Koweerawong",
       "published": 1623509369000,
       "created": 1623509369000,
+      "image": "https://cdn-images-1.medium.com/max/1024/1*t-KtsSktvBGjojJl44vEHQ.png",
       "category": [
          "postgresql",
          "heroku",
@@ -61,6 +65,7 @@
       "author": "Chavalit Koweerawong",
       "published": 1621755761000,
       "created": 1621755761000,
+      "image": "https://cdn-images-1.medium.com/max/1024/1*q-78HIQTiWGB5fhTfOZSdA.png",
       "category": [
          "nginx",
          "ubuntu-server",
@@ -79,6 +84,7 @@
       "author": "Chavalit Koweerawong",
       "published": 1612332272000,
       "created": 1612332272000,
+      "image": "https://cdn-images-1.medium.com/max/1023/1*c1DjFjt7rYMa2ikF7xikxw.png",
       "category": [
          "cats",
          "สมัครเรียน",
@@ -97,6 +103,7 @@
       "author": "Chavalit Koweerawong",
       "published": 1610535495000,
       "created": 1610535495000,
+      "image": "https://cdn-images-1.medium.com/max/1024/1*QbPCMt8T-1GrquNHSHIFfg.jpeg",
       "category": "ubuntu-server",
       "content": "Ubuntu Server and LAMP + PHPMyAdminรวบรวมเกี่ยวกับ Config ของ Ubuntu Server and LAMP + PHPMyAdminReferenceHow To Install Linux, Apache, MySQL, PHP (LAMP) stack on Ubuntu 20.04 | DigitalOceanHow To Install and Secure phpMyAdmin on Ubuntu 20.04 | DigitalOceanHow to Downgrade Composer to Version 1How to Install Laravel PHP Web Framework on Ubuntu 20.04How to Allow Remote MySQL ConnectionsUbuntu Server was originally published in ckartisan on Medium, where people are continuing the conversation by highlighting and responding to this story.",
       "enclosures": [],
@@ -109,6 +116,7 @@
       "author": "Chavalit Koweerawong",
       "published": 1610097049000,
       "created": 1610097049000,
+      "image": "https://cdn-images-1.medium.com/max/823/1*OXRqP7vdRp5R6zeB5B9V8A.png",
       "category": [
          "asynchronous",
          "javascript",
@@ -127,6 +135,7 @@
       "author": "Chavalit Koweerawong",
       "published": 1609246854000,
       "created": 1609246854000,
+      "image": "https://cdn-images-1.medium.com/max/1024/1*KsSE7tjH2fa7qWX1mrnaMA.jpeg",
       "category": "python",
       "content": "Python 101 for beginnerสำหรับคนเริ่มใช้ Python ควรเริ่มต้นจากอะไรบ้าง ในบทความนี้จะเล่าในส่วนที่ใช้งานกันบ่อยๆ เนื้องานอาจจะไม่ได้ละเอียดเน้นการใช้งานเป็นหลักStep 1 : Create Project &amp; EnvironmentCreate project and virtual environement : tutorial-envpython -m venv tutorial-envChoose directory tutorial-envcd tutorial-envOn Windows, run:Scripts\\activateOn Unix or MacOS, run:source Scripts\\activateStep 2 : Requirement.txtเมื่อต้องการบันทึก dependency ลงไฟล์ requirements.txtpip freeze &gt; requirements.txtเมื่อต้องการ install dependency จาก requirement.txtpip install -r requirements.txtdependency ที่พื้นฐานที่จำเป็นต้องใช้งานpip install numpypip install pandaspip install notebook#runjupyter notebookPython 101 was originally published in ckartisan on Medium, where people are continuing the conversation by highlighting and responding to this story.",
       "enclosures": [],
@@ -139,6 +148,7 @@
       "author": "Chavalit Koweerawong",
       "published": 1605431196000,
       "created": 1605431196000,
+      "image": "https://cdn-images-1.medium.com/max/960/1*c61Hpvd4vaBb7Knm-HO7SQ.jpeg",
       "category": "course",
       "content": "Guideline — slide[2020–11–16] ตรรกศาสตร์และการพิสูจน์ — slide[2020–11–23] เซต ลำดับและการหาผลรวม — slide[2020–11–30] การเวียนบังเกิด — slide[2020–12–07] ฟังก์ชัน — slide[2020–12–14] การนับ — slide[2020–12–21] ความน่าจะเป็น — slide[2020–12–28] ทฤษฏีกราฟ — slide[2021–01–04] Midtermหัวข้อที่ไม่ได้สอนการพิสูจน์และอุปนัยเชิงคณิตศาสตร์ — slideความสัมพันธ์ — slideDiscrete Mathematics was originally published in Computer Science VRU on Medium, where people are continuing the conversation by highlighting and responding to this story.",
       "enclosures": [],
