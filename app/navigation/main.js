@@ -81,13 +81,12 @@ import Booking from "@screens/Booking";
 import Messenger from "@screens/Messenger";
 import Post from "@screens/Post";
 import Profile from "@screens/Profile";
+import UploadFiles from '../screens/UploadFiles'
 import { AuthContext, AuthContextProvider } from '../../hooks/AuthContext';
 const MainStack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
-
 export default function Main() {
   const [user, setUser] = useContext(AuthContext);
-  console.log("🚀 ~ file: main.js ~ line 90 ~ Main ~ user", user)
 
   useEffect(() => {
     const subscriber = fb.auth().onAuthStateChanged((current_user) => {
@@ -99,6 +98,7 @@ export default function Main() {
     });
     return subscriber;
   });
+
 
   if (user !== null) {
     return (
@@ -135,6 +135,8 @@ export default function Main() {
         <MainStack.Screen name="ResetPassword" component={ResetPassword} />
         <MainStack.Screen name="ChangePassword" component={ChangePassword} />
         <MainStack.Screen name="ProfileEdit" component={ProfileEdit} />
+        <MainStack.Screen name="UploadFile" component={UploadFiles} />
+
         <MainStack.Screen name="ProfileExample" component={ProfileExample} />
         <MainStack.Screen name="ChangeLanguage" component={ChangeLanguage} />
         <MainStack.Screen name="HotelInformation" component={HotelInformation} />
@@ -147,7 +149,7 @@ export default function Main() {
         <MainStack.Screen name="PricingTable" component={PricingTable} />
         <MainStack.Screen name="PricingTableIcon" component={PricingTableIcon} />
         <MainStack.Screen name="BookingDetail" component={BookingDetail} />
-        {/* <MainStack.Screen name="PostDetail" component={PostDetail} /> */}
+        <MainStack.Screen name="PostDetail" component={PostDetail} />
         <MainStack.Screen name="TourDetail" component={TourDetail} />
         <MainStack.Screen name="CarDetail" component={CarDetail} />
         <MainStack.Screen name="AboutUs" component={AboutUs} />

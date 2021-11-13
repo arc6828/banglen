@@ -19,10 +19,10 @@ import { fb } from '../../../db_config';
 import { AuthContext } from '../../../hooks/AuthContext';
 
 export default function Profile({ navigation }) {
-  const [user, setUser] = useContext(AuthContext)
-  console.log("🚀 ~ file: index.js ~ line 23 ~ Profile ~ user", user)
+  const [user] = useContext(AuthContext)
   const [userProfile, setUserProfile] = useState([]);
-  console.log("🚀 ~ file: index.js ~ line 24 ~ Profile ~ userProfile", userProfile)
+
+
 
   const { colors } = useTheme();
   const { t } = useTranslation();
@@ -36,7 +36,7 @@ export default function Profile({ navigation }) {
     fb.firestore().collection("users")
       .get().then((querySnapshot) => {
         const users = querySnapshot.docs.map(doc => doc.data());
-        setUserProfile(users);
+        setUserProfile(...users);
       });
   }
 
@@ -81,17 +81,14 @@ export default function Profile({ navigation }) {
         <ScrollView>
           <View style={styles.contain}>
             <ProfileDetail
+              key={userProfile.uid}
               image={userData.image}
-              textFirst={user ? user.name : ''}
+              textFirst={userProfile.name}
               point={userData.point}
-              textSecond={userData.address}
-              textThird={userData.id}
+              textSecond={userProfile.address}
+              textThird={userProfile.email}
               onPress={() => navigation.navigate('ProfileExanple')}
             />
-            {/* <ProfilePerformance
-              data={userData.performance}
-              style={{ marginTop: 20, marginBottom: 20 }}
-            /> */}
             <TouchableOpacity
               style={[
                 styles.profileItem,
@@ -182,6 +179,7 @@ export default function Profile({ navigation }) {
               />
             </TouchableOpacity>
           </View>
+
         </ScrollView>
         <View style={{ paddingHorizontal: 20, paddingVertical: 15 }}>
           <Button full loading={loading} onPress={() => onLogOut()}>
