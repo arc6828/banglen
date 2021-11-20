@@ -128,7 +128,7 @@ export default function Main() {
         <MainStack.Screen name="Review" component={Review} />
         <MainStack.Screen name="Feedback" component={Feedback} />
         <MainStack.Screen name="Messages" component={Messages} />
-        <MainStack.Screen name="Notification" component={Notification} />
+        {/* <MainStack.Screen name="Notification" component={Notification} /> */}
         <MainStack.Screen name="Walkthrough" component={Walkthrough} />
         <MainStack.Screen name="SignUp" component={SignUp} />
         <MainStack.Screen name="SignIn" component={SignIn} />
@@ -256,19 +256,19 @@ function BottomTabNavigator() {
         name="Booking"
         component={Booking}
         options={{
-          title: t("booking"),
+          title: t("Land"),
           tabBarIcon: ({ color }) => {
-            return <Icon color={color} name="bookmark" size={20} solid />;
+            return <Icon color={color} name="globe-asia" size={20} solid />;
           },
         }}
       />
       <BottomTab.Screen
-        name="Messenger"
-        component={Messenger}
+        name="Notification"
+        component={Notification}
         options={{
-          title: t("message"),
+          title: t("Notification"),
           tabBarIcon: ({ color }) => {
-            return <Icon solid color={color} name="envelope" size={20} />;
+            return <Icon solid color={color} name="bell" size={20} />;
           },
         }}
       />
