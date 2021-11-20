@@ -64,9 +64,9 @@ export default function Loading({ navigation }) {
     <View style={[styles.container, { backgroundColor: colors.primary }]}>
       <Image source={Images.logo} style={styles.logo} resizeMode="contain" />
       <View style={styles.content}>
-        <Text title1 whiteColor semibold>
-          Felix Travel
-        </Text>
+        {/* <Text title1 whiteColor semibold>
+          บางเลน
+        </Text> */}
         <ActivityIndicator
           size="large"
           color={BaseColor.whiteColor}
