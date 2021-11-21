@@ -77,8 +77,9 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 10,
   },
-  // map: {
-  //   width: 500,
-  //   height: 500,
-  // },
+  textA: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginTop: -12
+  }
 });

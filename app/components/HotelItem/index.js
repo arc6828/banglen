@@ -5,8 +5,7 @@ import { BaseColor, useTheme } from '@config';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import styles from './styles';
-import MapView from 'react-native-maps';
-
+import MapView, { Marker } from 'react-native-maps';
 export default function HotelItem(props) {
   const { t } = useTranslation();
   const { colors } = useTheme();
@@ -205,11 +204,19 @@ export default function HotelItem(props) {
     return (
       <View style={[styles.girdContent, style]}>
         {/* <TouchableOpacity onPress={onPress} activeOpacity={0.9}> */}
-        <MapView style={styles.girdImage} />
+        <MapView
+          style={styles.girdImage}
+          region={region}
+        >
+          <Marker
+            coordinate={{
+              latitude: 1.9344,
+              longitude: 103.358727,
+            }}
+          />
+        </MapView>
         {/* </TouchableOpacity> */}
-        {/* <TouchableOpacity onPress={onPress} activeOpacity={0.9}>
-          <Image source={image} style={styles.girdImage} />
-        </TouchableOpacity> */}
+
         <View style={styles.girdContentLocation}>
           <Icon name="map-marker-alt" color={colors.primary} size={10} />
           <Text
@@ -221,7 +228,14 @@ export default function HotelItem(props) {
             numberOfLines={1}>
             {location}
           </Text>
-          
+        </View>
+        <View style={styles.textA}>
+          <Text
+            caption2
+            grayColor
+            numberOfLines={1}>
+            100 ไร่ 100 ตร.วา
+          </Text>
         </View>
         <Text
           body2
@@ -231,6 +245,7 @@ export default function HotelItem(props) {
           }}>
           {name}
         </Text>
+
         <View style={styles.girdContentRate}>
           <StarRating
             disabled={true}
