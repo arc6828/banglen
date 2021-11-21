@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Animated,
@@ -15,15 +15,15 @@ import {
   SafeAreaView,
   EventCard,
 } from '@components';
-import {BaseStyle, Images, useTheme} from '@config';
+import { BaseStyle, Images, useTheme } from '@config';
 import * as Utils from '@utils';
 import styles from './styles';
-import {PromotionData, TourData, HotelData} from '@data';
-import {useTranslation} from 'react-i18next';
+import { PromotionData, TourData, HotelData } from '@data';
+import { useTranslation } from 'react-i18next';
 
-export default function Home({navigation}) {
-  const {t} = useTranslation();
-  const {colors} = useTheme();
+export default function Home({ navigation }) {
+  const { t } = useTranslation();
+  const { colors } = useTheme();
   const [icons] = useState([
     {
       icon: 'calendar-alt',
@@ -100,7 +100,7 @@ export default function Home({navigation}) {
         data={icons}
         numColumns={4}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({item}) => {
+        renderItem={({ item }) => {
           return (
             <TouchableOpacity
               style={styles.itemService}
@@ -109,7 +109,7 @@ export default function Home({navigation}) {
                 navigation.navigate(item.route);
               }}>
               <View
-                style={[styles.iconContent, {backgroundColor: colors.card}]}>
+                style={[styles.iconContent, { backgroundColor: colors.card }]}>
                 <Icon name={item.icon} size={18} color={colors.primary} solid />
               </View>
               <Text footnote grayColor numberOfLines={1}>
@@ -126,7 +126,7 @@ export default function Home({navigation}) {
   const marginTopBanner = heightImageBanner - heightHeader;
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <Animated.Image
         source={Images.trip3}
         style={[
@@ -143,19 +143,19 @@ export default function Home({navigation}) {
           },
         ]}
       />
-      <SafeAreaView style={{flex: 1}} edges={['right', 'left']}>
+      <SafeAreaView style={{ flex: 1 }} edges={['right', 'left']}>
         <FlatList
           onScroll={Animated.event([
             {
               nativeEvent: {
-                contentOffset: {y: deltaY},
+                contentOffset: { y: deltaY },
               },
             },
           ])}
           onContentSizeChange={() => setHeightHeader(Utils.heightHeader())}
           scrollEventThrottle={8}
           ListHeaderComponent={
-            <View style={{paddingHorizontal: 20}}>
+            <View style={{ paddingHorizontal: 20 }}>
               <View
                 style={[
                   styles.searchForm,
@@ -172,7 +172,7 @@ export default function Home({navigation}) {
                   <View
                     style={[
                       BaseStyle.textInput,
-                      {backgroundColor: colors.card},
+                      { backgroundColor: colors.card },
                     ]}>
                     <Text body1 grayColor>
                       {t('what_are_you_looking_for')}
@@ -185,100 +185,6 @@ export default function Home({navigation}) {
           }
           ListFooterComponent={
             <View>
-              <View>
-                <Text title3 semibold style={styles.titleView}>
-                  {t('promos_today')}
-                </Text>
-                <FlatList
-                  contentContainerStyle={{paddingLeft: 5, paddingRight: 20}}
-                  horizontal={true}
-                  showsHorizontalScrollIndicator={false}
-                  data={promotion}
-                  keyExtractor={(item, index) => item.id}
-                  renderItem={({item, index}) => (
-                    <Card
-                      style={[styles.promotionItem, {marginLeft: 15}]}
-                      image={item.image}
-                      onPress={() => navigation.navigate('HotelDetail')}>
-                      <Text subhead whiteColor>
-                        {item.title1}
-                      </Text>
-                      <Text title2 whiteColor semibold>
-                        {item.title2}
-                      </Text>
-                      <View style={styles.contentCartPromotion}>
-                        <Button
-                          style={styles.btnPromotion}
-                          onPress={() => {
-                            navigation.navigate('PreviewBooking');
-                          }}>
-                          <Text body2 semibold whiteColor>
-                            {t('book_now')}
-                          </Text>
-                        </Button>
-                      </View>
-                    </Card>
-                  )}
-                />
-              </View>
-              {/* Hiking */}
-              <View style={styles.titleView}>
-                <Text title3 semibold>
-                  {t('tours')}
-                </Text>
-                <Text body2 grayColor>
-                  {t('let_find_tour')}
-                </Text>
-              </View>
-              <FlatList
-                contentContainerStyle={{paddingLeft: 5, paddingRight: 20}}
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-                data={tours}
-                keyExtractor={(item, index) => item.id}
-                renderItem={({item, index}) => (
-                  <Card
-                    style={[styles.tourItem, {marginLeft: 15}]}
-                    image={item.image}
-                    onPress={() => navigation.navigate('TourDetail')}>
-                    <Text headline whiteColor semibold>
-                      {item.name}
-                    </Text>
-                  </Card>
-                )}
-              />
-              {/* Event*/}
-              <View style={styles.titleView}>
-                <Text title3 semibold>
-                  {t('comming_event')}
-                </Text>
-                <Text body2 grayColor>
-                  {t('let_find_event')}
-                </Text>
-              </View>
-              <View>
-                <FlatList
-                  contentContainerStyle={{
-                    paddingRight: 20,
-                    paddingLeft: 5,
-                  }}
-                  horizontal={true}
-                  data={relate}
-                  showsHorizontalScrollIndicator={false}
-                  keyExtractor={(item, index) => item.id}
-                  renderItem={({item, index}) => (
-                    <EventCard
-                      image={item.image}
-                      title={item.title}
-                      time={item.time}
-                      location={item.location}
-                      onPress={() => navigation.navigate('EventDetail')}
-                      style={{marginLeft: 15}}
-                    />
-                  )}
-                />
-              </View>
-              {/* Promotion */}
               <View style={styles.titleView}>
                 <Text title3 semibold>
                   {t('promotion')}
@@ -287,14 +193,15 @@ export default function Home({navigation}) {
                   {t('let_find_promotion')}
                 </Text>
                 <Image source={Images.banner1} style={styles.promotionBanner} />
-                <View style={[styles.line, {backgroundColor: colors.border}]} />
+                <View style={[styles.line, { backgroundColor: colors.border }]} />
               </View>
               <FlatList
-                columnWrapperStyle={{paddingLeft: 5, paddingRight: 20}}
-                numColumns={2}
+                style={{ paddingLeft: 5, paddingRight: 20 }}
+                // columnWrapperStyle={{paddingLeft: 5, paddingRight: 20}}
+                // numColumns={2}
                 data={hotels}
                 keyExtractor={(item, index) => item.id}
-                renderItem={({item, index}) => (
+                renderItem={({ item, index }) => (
                   <HotelItem
                     grid
                     image={item.image}
@@ -306,7 +213,7 @@ export default function Home({navigation}) {
                     rateStatus={item.rateStatus}
                     numReviews={item.numReviews}
                     services={item.services}
-                    style={{marginLeft: 15, marginBottom: 15}}
+                    style={{ marginLeft: 15, marginBottom: 15 }}
                     onPress={() => navigation.navigate('HotelDetail')}
                   />
                 )}

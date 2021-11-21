@@ -1,13 +1,15 @@
-import React from 'react';
-import {View, TouchableOpacity, FlatList} from 'react-native';
-import {Image, Text, Icon, StarRating, Tag} from '@components';
-import {BaseColor, useTheme} from '@config';
+import React, { useState } from 'react';
+import { View, TouchableOpacity, FlatList } from 'react-native';
+import { Image, Text, Icon, StarRating, Tag } from '@components';
+import { BaseColor, useTheme } from '@config';
 import PropTypes from 'prop-types';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import styles from './styles';
+import MapView, { Marker } from 'react-native-maps';
+
 export default function HotelItem(props) {
-  const {t} = useTranslation();
-  const {colors} = useTheme();
+  const { t } = useTranslation();
+  const { colors } = useTheme();
   const {
     list,
     block,
@@ -26,7 +28,12 @@ export default function HotelItem(props) {
     rateCount,
     numReviews,
   } = props;
-
+  const [region] = useState({
+    latitude: 1.9344,
+    longitude: 103.358727,
+    latitudeDelta: 0.05,
+    longitudeDelta: 0.004,
+  });
   /**
    * Display hotel item as block
    */
@@ -36,8 +43,8 @@ export default function HotelItem(props) {
         <TouchableOpacity onPress={onPress} activeOpacity={0.9}>
           <Image source={image} style={styles.blockImage} />
         </TouchableOpacity>
-        <View style={{paddingHorizontal: 20}}>
-          <Text title2 semibold style={{marginTop: 5}} numberOfLines={1}>
+        <View style={{ paddingHorizontal: 20 }}>
+          <Text title2 semibold style={{ marginTop: 5 }} numberOfLines={1}>
             {name}
           </Text>
           <View style={styles.blockContentAddress}>
@@ -53,7 +60,7 @@ export default function HotelItem(props) {
             </Text>
           </View>
           <View style={styles.blockContentDetail}>
-            <View style={{flex: 1}}>
+            <View style={{ flex: 1 }}>
               <Text title3 primaryColor semibold>
                 {price}
               </Text>
@@ -78,7 +85,7 @@ export default function HotelItem(props) {
                 style={{
                   marginLeft: 10,
                 }}>
-                <Text caption1 grayColor semibold style={{paddingBottom: 5}}>
+                <Text caption1 grayColor semibold style={{ paddingBottom: 5 }}>
                   {rateStatus}
                 </Text>
                 <StarRating
@@ -86,7 +93,7 @@ export default function HotelItem(props) {
                   starSize={10}
                   maxStars={5}
                   rating={rate}
-                  selectedStar={rating => {}}
+                  selectedStar={rating => { }}
                   fullStarColor={BaseColor.yellowColor}
                 />
               </View>
@@ -99,13 +106,13 @@ export default function HotelItem(props) {
             showsHorizontalScrollIndicator={false}
             data={services}
             keyExtractor={(item, index) => item.id}
-            renderItem={({item, index}) => (
+            renderItem={({ item, index }) => (
               <View style={styles.serviceItemBlock} key={'block' + index}>
                 <Icon name={item.icon} size={16} color={colors.accent} />
                 <Text
                   overline
                   grayColor
-                  style={{marginTop: 4}}
+                  style={{ marginTop: 4 }}
                   numberOfLines={1}>
                   {item.name}
                 </Text>
@@ -156,7 +163,7 @@ export default function HotelItem(props) {
               starSize={10}
               maxStars={5}
               rating={rate}
-              selectedStar={rating => {}}
+              selectedStar={rating => { }}
               fullStarColor={BaseColor.yellowColor}
             />
             <Text
@@ -177,13 +184,13 @@ export default function HotelItem(props) {
             title3
             primaryColor
             semibold
-            style={{marginTop: 5, marginBottom: 5}}>
+            style={{ marginTop: 5, marginBottom: 5 }}>
             {price}
           </Text>
           <Text caption1 semibold>
             {t('avg_night')}
           </Text>
-          <Text footnote accentColor style={{marginTop: 3}}>
+          <Text footnote accentColor style={{ marginTop: 3 }}>
             {available}
           </Text>
         </View>
@@ -197,9 +204,22 @@ export default function HotelItem(props) {
   const renderGrid = () => {
     return (
       <View style={[styles.girdContent, style]}>
-        <TouchableOpacity onPress={onPress} activeOpacity={0.9}>
+        {/* <TouchableOpacity onPress={onPress} activeOpacity={0.9}> */}
+        <MapView
+          style={styles.girdImage}
+          region={region}
+        >
+          <Marker
+            coordinate={{
+              latitude: 1.9344,
+              longitude: 103.358727,
+            }}
+          />
+        </MapView>
+        {/* </TouchableOpacity> */}
+        {/* <TouchableOpacity onPress={onPress} activeOpacity={0.9}>
           <Image source={image} style={styles.girdImage} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <View style={styles.girdContentLocation}>
           <Icon name="map-marker-alt" color={colors.primary} size={10} />
           <Text
@@ -210,6 +230,17 @@ export default function HotelItem(props) {
             }}
             numberOfLines={1}>
             {location}
+          </Text>
+          <Text
+            caption2
+            grayColor
+            style={{
+              marginHorizontal: 240,
+              marginRight:15
+            
+            }}
+            numberOfLines={1}>
+            100 ไร่ 100 ตร.วา
           </Text>
         </View>
         <Text
@@ -226,7 +257,7 @@ export default function HotelItem(props) {
             starSize={10}
             maxStars={5}
             rating={rate}
-            selectedStar={rating => {}}
+            selectedStar={rating => { }}
             fullStarColor={BaseColor.yellowColor}
           />
           <Text caption2 grayColor>
@@ -285,6 +316,6 @@ HotelItem.defaultProps = {
   rateStatus: '',
   numReviews: 0,
   services: [],
-  onPress: () => {},
-  onPressTag: () => {},
+  onPress: () => { },
+  onPressTag: () => { },
 };

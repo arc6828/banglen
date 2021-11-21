@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import * as Utils from '@utils';
-import {BaseColor} from '@config';
+import { BaseColor } from '@config';
 
 export default StyleSheet.create({
   //block css
@@ -62,6 +62,7 @@ export default StyleSheet.create({
     borderRadius: 8,
     height: Utils.scaleWithPixel(120),
     width: '100%',
+    height: 180,
   },
   girdContent: {
     flex: 1,
@@ -76,4 +77,8 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 10,
   },
+  // map: {
+  //   width: 500,
+  //   height: 500,
+  // },
 });
