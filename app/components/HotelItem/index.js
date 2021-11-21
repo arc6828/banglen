@@ -221,6 +221,7 @@ export default function HotelItem(props) {
             numberOfLines={1}>
             {location}
           </Text>
+          
         </View>
         <Text
           body2
