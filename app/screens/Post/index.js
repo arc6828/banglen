@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { RefreshControl, FlatList, View } from 'react-native';
 import { BaseStyle, useTheme } from '@config';
 import { Header, SafeAreaView, PostItem, ProfileAuthor } from '@components';
-import styles from './styles';
-import { PostData } from '@data';
 import { useTranslation } from 'react-i18next';
 import RssJson from '../../../backend/json/86m388h17.json';
 
@@ -12,9 +10,7 @@ export default function Post({ navigation }) {
   const { t } = useTranslation();
 
   const [refreshing] = useState(false);
-  const [posts] = useState(PostData);
   const [rssJson, setRssJson] = useState(RssJson);
-  console.log("🚀 ~ file: index.js ~ line 17 ~ Post ~ rssJson", rssJson)
   return (
     <View style={{ flex: 1 }}>
       <Header title={t('post')} />
@@ -31,13 +27,14 @@ export default function Post({ navigation }) {
             />
           }
           data={rssJson}
-          keyExtractor={(item, index) => item.id}
+          keyExtractor={(item, index) => index}
           renderItem={({ item, index }) => (
             <PostItem
+              key={index}
               image={item.image}
               title={item.title}
               description={item.content.substring(0, 250) + " ..."}
-              onPress={() => navigation.navigate('PostDetail')}
+              onPress={() => navigation.navigate('PostDetail', { url: item.link })}
             >
               <ProfileAuthor
                 image={item.image_author}
@@ -49,6 +46,6 @@ export default function Post({ navigation }) {
           )}
         />
       </SafeAreaView>
-    </View>
+    </View >
   );
 }

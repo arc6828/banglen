@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
+
 import { Image, Text, Icon } from '@components';
 import styles from './styles';
 import PropTypes from 'prop-types';
@@ -7,7 +8,6 @@ import { BaseColor, useTheme } from '@config';
 export default function PostItem(props) {
   const { colors } = useTheme();
   const { style, children, title, description, onPress, image } = props;
-  console.log("🚀 ~ file: index.js ~ line 10 ~ PostItem ~ image", image)
   return (
     <View style={style}>
       {children}

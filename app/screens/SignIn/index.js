@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { AuthActions } from '@actions';
 import {
@@ -25,8 +25,7 @@ export default function SignIn({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState({ id: true, password: true });
-
+  const [success, setSuccess] = useState({ email: true, password: true });
   /**
    * call when action login
    *
@@ -35,7 +34,9 @@ export default function SignIn({ navigation }) {
   const onLogin = () => {
     fb.auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => { console.log("Login Successfully"); })
+      .then(() => {
+        console.log("Login Successfully");
+      })
       .catch(error => {
         console.log("Login error", error);
       })

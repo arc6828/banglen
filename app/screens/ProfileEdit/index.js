@@ -26,6 +26,12 @@ export default function ProfileEdit({ navigation }) {
     ios: 0,
     android: 20,
   });
+  const initialTutorialState = {
+    uid: "",
+    title: "",
+    description: "",
+    published: false,
+  };
   const [uid, setId] = useState("");
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
@@ -35,10 +41,10 @@ export default function ProfileEdit({ navigation }) {
   const [loading, setLoading] = useState(false);
 
   const readUsersFirebase = async () => {
-    fb.firestore().collection("users")
+    fb.firestore().collection("users").where("uid", "==", user.uid)
       .get().then((querySnapshot) => {
         const users = querySnapshot.docs.map(doc => doc.data());
-        setUserProfile(...users);
+        setUserProfile(users[0]);
       });
   }
 
@@ -57,13 +63,13 @@ export default function ProfileEdit({ navigation }) {
   const onUpdate = (new_userProfile) => {
     let t = [userProfile];
     let index = t.findIndex((item => item.uid == new_userProfile.uid));
-
+    
     const updateItem = {
       uid: t[index].uid,
-      name: name,
-      lastname: lastname,
-      email: email,
-      address: address,
+      name: new_userProfile.name,
+      lastname: new_userProfile.lastname,
+      email: new_userProfile.email,
+      address: new_userProfile.address,
       updateAt: new Date(),
       userImg: null
     }

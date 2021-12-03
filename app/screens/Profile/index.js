@@ -21,6 +21,7 @@ import { AuthContext } from '../../../hooks/AuthContext';
 export default function Profile({ navigation }) {
   const [user] = useContext(AuthContext)
   const [userProfile, setUserProfile] = useState([]);
+  console.log("=>", userProfile)
 
 
 
@@ -33,12 +34,13 @@ export default function Profile({ navigation }) {
 
 
   const readUsersFirebase = async () => {
-    fb.firestore().collection("users")
+    fb.firestore().collection("users").where("uid", "==", user.uid)
       .get().then((querySnapshot) => {
         const users = querySnapshot.docs.map(doc => doc.data());
-        setUserProfile(...users);
+        setUserProfile(users[0]);
       });
   }
+
 
   useEffect(() => {
     readUsersFirebase();

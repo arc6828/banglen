@@ -136,7 +136,6 @@ export default function Main() {
         <MainStack.Screen name="ChangePassword" component={ChangePassword} />
         <MainStack.Screen name="ProfileEdit" component={ProfileEdit} />
         <MainStack.Screen name="UploadFile" component={UploadFiles} />
-
         <MainStack.Screen name="ProfileExample" component={ProfileExample} />
         <MainStack.Screen name="ChangeLanguage" component={ChangeLanguage} />
         <MainStack.Screen name="HotelInformation" component={HotelInformation} />

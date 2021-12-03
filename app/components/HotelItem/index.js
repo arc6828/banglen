@@ -203,7 +203,7 @@ export default function HotelItem(props) {
   const renderGrid = () => {
     return (
       <View style={[styles.girdContent, style]}>
-        {/* <TouchableOpacity onPress={onPress} activeOpacity={0.9}> */}
+        <TouchableOpacity onPress={onPress} activeOpacity={0.9}>
         <MapView
           style={styles.girdImage}
           region={region}
@@ -215,7 +215,7 @@ export default function HotelItem(props) {
             }}
           />
         </MapView>
-        {/* </TouchableOpacity> */}
+        </TouchableOpacity>
 
         <View style={styles.girdContentLocation}>
           <Icon name="map-marker-alt" color={colors.primary} size={10} />

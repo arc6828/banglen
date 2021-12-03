@@ -66,24 +66,7 @@ export default function Home({ navigation }) {
       route: 'More',
     },
   ]);
-  const [relate] = useState([
-    {
-      id: '0',
-      image: Images.event4,
-      title: 'BBC Music Introducing',
-      time: 'Thu, Oct 31, 9:00am',
-      location: 'Tobacco Dock, London',
-    },
-    {
-      id: '1',
-      image: Images.event5,
-      title: 'Bearded Theory Spring Gathering',
-      time: 'Thu, Oct 31, 9:00am',
-      location: 'Tobacco Dock, London',
-    },
-  ]);
-  const [promotion] = useState(PromotionData);
-  const [tours] = useState(TourData);
+
   const [hotels] = useState(HotelData);
   const [heightHeader, setHeightHeader] = useState(Utils.heightHeader());
   const deltaY = new Animated.Value(0);
@@ -197,8 +180,7 @@ export default function Home({ navigation }) {
               </View>
               <FlatList
                 style={{ paddingLeft: 5, paddingRight: 20 }}
-                // columnWrapperStyle={{paddingLeft: 5, paddingRight: 20}}
-                // numColumns={2}
+
                 data={hotels}
                 keyExtractor={(item, index) => item.id}
                 renderItem={({ item, index }) => (
