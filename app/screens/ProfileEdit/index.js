@@ -122,7 +122,7 @@ export default function ProfileEdit({ navigation }) {
             </View>
             <View style={styles.contentTitle}>
               <Text headline semibold>
-                {t('account')}
+                {t('Account ID')}
               </Text>
             </View>
             <TextInput
@@ -132,7 +132,7 @@ export default function ProfileEdit({ navigation }) {
             />
             <View style={styles.contentTitle}>
               <Text headline semibold>
-                {t('name')}
+                {t('ชื่อ - นามสกุล')}
               </Text>
             </View>
             <TextInput
@@ -142,17 +142,7 @@ export default function ProfileEdit({ navigation }) {
             />
             <View style={styles.contentTitle}>
               <Text headline semibold>
-                {t('Lastname')}
-              </Text>
-            </View>
-            <TextInput
-              onChangeText={text => setLastname(text)}
-              placeholder={t('input_lastname')}
-              value={lastname}
-            />
-            <View style={styles.contentTitle}>
-              <Text headline semibold>
-                {t('email')}
+                {t('อีเมล')}
               </Text>
             </View>
             <TextInput
@@ -162,7 +152,7 @@ export default function ProfileEdit({ navigation }) {
             />
             <View style={styles.contentTitle}>
               <Text headline semibold>
-                {t('address')}
+                {t('ที่อยู่')}
               </Text>
             </View>
             <TextInput
@@ -191,7 +181,7 @@ export default function ProfileEdit({ navigation }) {
                   }));
                 }, 500);
               }}>
-              {t('confirm')}
+              {t('ยืนยันข้อมูล')}
             </Button>
           </View>
 

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AuthActions } from '@actions';
 import {
@@ -7,12 +7,18 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { BaseStyle, useTheme } from '@config';
-import { Header, SafeAreaView, Icon, Text, Button, TextInput } from '@components';
+import { BaseStyle, useTheme, BaseColor } from '@config';
+import Swiper from "react-native-swiper";
+import { Header, SafeAreaView, Icon, Text, Button, TextInput, Image } from '@components';
 import styles from './styles';
 import { useTranslation } from 'react-i18next';
 import { fb } from '../../../db_config';
+import { UserData } from '@data';
+
 export default function SignIn({ navigation }) {
+
+  const [image] = useState(UserData[0].image);
+
   const { colors } = useTheme();
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -64,7 +70,7 @@ export default function SignIn({ navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <Header
-        title={t('sign_in')}
+        title={t('เข้าสู่ระบบ')}
         renderLeft={() => {
           return (
             <Icon
@@ -79,13 +85,32 @@ export default function SignIn({ navigation }) {
           navigation.goBack();
         }}
       />
+
       <SafeAreaView
         style={BaseStyle.safeAreaView}
         edges={['right', 'left', 'bottom']}>
+
         <KeyboardAvoidingView
           behavior={Platform.OS === 'android' ? 'height' : 'padding'}
           keyboardVerticalOffset={offsetKeyboard}
           style={{ flex: 1 }}>
+          <View style={styles.wrapper}>
+            <Swiper
+              dotStyle={{
+                backgroundColor: BaseColor.dividerColor,
+              }}
+              activeDotColor={colors.primary}
+              paginationStyle={styles.contentPage}
+              removeClippedSubviews={false}
+            >
+              <View style={styles.slide}>
+                <Image source={image} style={styles.img} />
+                <Text body1 style={styles.textSlide}>
+                  {t("เข้าสู่ระบบ")}
+                </Text>
+              </View>
+            </Swiper>
+          </View>
           <View style={styles.contain}>
             <TextInput
               onChangeText={text => setEmail(text)}
@@ -120,17 +145,17 @@ export default function SignIn({ navigation }) {
               onPress={() => {
                 onSignIn();
               }}>
-              {t('sign_in')}
+              {t('เข้าสู่ระบบ')}
             </Button>
             <TouchableOpacity
               onPress={() => navigation.navigate('ResetPassword')}>
               <Text body1 grayColor style={{ marginTop: 25 }}>
-                {t('forgot_your_password')}
+                {t('ลืมรหัสผ่าน ?')}
               </Text>
             </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>
       </SafeAreaView>
-    </View>
+    </View >
   );
 }

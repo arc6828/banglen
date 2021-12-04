@@ -8,7 +8,6 @@ import Swiper from "react-native-swiper";
 import { BaseColor, BaseStyle, Images, useTheme } from "@config";
 import * as Utils from "@utils";
 import { useTranslation } from "react-i18next";
-import { fb } from '../../../db_config';
 
 
 export default function Walkthrough({ navigation }) {
@@ -23,10 +22,10 @@ export default function Walkthrough({ navigation }) {
   const { colors } = useTheme();
   const dispatch = useDispatch();
   const { t } = useTranslation();
- 
+
   const authentication = () => {
     setLoading(true);
-    dispatch(AuthActions.authentication(true, (response) => { console.log("=>",response)}));
+    dispatch(AuthActions.authentication(true, (response) => { console.log("=>", response) }));
   };
 
   return (
@@ -42,7 +41,6 @@ export default function Walkthrough({ navigation }) {
         }
       >
         <View style={styles.wrapper}>
-          {/* Images Swiper */}
           <Swiper
             dotStyle={{
               backgroundColor: BaseColor.dividerColor,
@@ -55,9 +53,7 @@ export default function Walkthrough({ navigation }) {
               return (
                 <View style={styles.slide} key={item.key}>
                   <Image source={item.image} style={styles.img} />
-                  <Text body1 style={styles.textSlide}>
-                    {t("pick_your_destication")}
-                  </Text>
+                 
                 </View>
               );
             })}
@@ -66,15 +62,11 @@ export default function Walkthrough({ navigation }) {
         <View style={{ width: "100%" }}>
           <Button
             full
-            style={{
-              backgroundColor: BaseColor.navyBlue,
-              marginTop: 20,
-            }}
-            onPress={() => {
-              authentication();
-            }}
+            style={{ marginTop: 20 }}
+            loading={loading}
+            onPress={() => navigation.navigate("SignIn")}
           >
-            {t("login_facebook")}
+            {t("sign_in")}
           </Button>
           <Button
             full
@@ -88,25 +80,14 @@ export default function Walkthrough({ navigation }) {
           >
             {t("Login with Google")}
           </Button>
-          <Button
-            full
-            style={{ marginTop: 20 }}
-            loading={loading}
-            onPress={() => navigation.navigate("SignIn")}
-          >
-            {t("sign_in")}
-          </Button>
+
           <View style={styles.contentActionBottom}>
             <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
               <Text body1 grayColor>
-                {t("not_have_account")}
+                {t("ไม่มีบัญชี, สมัครที่นี่ !!!")}
               </Text>
             </TouchableOpacity>
-            {/* <TouchableOpacity onPress={() => authentication()}>
-              <Text body1 primaryColor>
-                {t("join_now")}
-              </Text>
-            </TouchableOpacity> */}
+
           </View>
         </View>
       </ScrollView>

@@ -5,7 +5,6 @@ import { Header, SafeAreaView, Icon, Button, TextInput } from '@components';
 import styles from './styles';
 import { useTranslation } from 'react-i18next';
 import { fb } from '../../../db_config';
-import { AuthContext } from '../../../hooks/AuthContext';
 
 export default function SignUp({ navigation }) {
   const { colors } = useTheme();
@@ -14,17 +13,14 @@ export default function SignUp({ navigation }) {
     ios: 0,
     android: 20,
   });
-  const [user, setUser] = useContext(AuthContext);
 
   const [name, setName] = useState('');
-  const [lastname, setLastname] = useState('');
   const [address, setAddress] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState({
     name: true,
-    lastname: true,
     address: true,
     email: true,
     address: true,
@@ -42,7 +38,6 @@ export default function SignUp({ navigation }) {
           .set({
             uid: fb.auth().currentUser.uid,
             name: name,
-            lastname: lastname,
             address: address,
             email: email,
             createdAt: new Date(),
@@ -73,7 +68,7 @@ export default function SignUp({ navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <Header
-        title={t('sign_up')}
+        title={t('สมัครสมาชิก')}
         renderLeft={() => {
           return (
             <Icon
@@ -98,17 +93,11 @@ export default function SignUp({ navigation }) {
           <View style={styles.contain}>
             <TextInput
               onChangeText={text => setName(text)}
-              placeholder={t('ชื่อ')}
+              placeholder={t('ชื่อ - นามสกุล')}
               success={success.name}
               value={name}
             />
-            <TextInput
-              style={{ marginTop: 10 }}
-              onChangeText={text => setLastname(text)}
-              placeholder={t('นามสกุล')}
-              success={success.lastname}
-              value={lastname}
-            />
+            
             <TextInput
               style={{ marginTop: 10 }}
               onChangeText={text => setAddress(text)}
@@ -137,7 +126,7 @@ export default function SignUp({ navigation }) {
               style={{ marginTop: 20 }}
               loading={loading}
               onPress={() => onSignUp()}>
-              {t('สมัครสมาชิก')}
+              {t('ยินยันการสมัครสมาชิก')}
             </Button>
           </View>
         </KeyboardAvoidingView>

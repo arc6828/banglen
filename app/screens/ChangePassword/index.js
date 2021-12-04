@@ -1,26 +1,37 @@
-import React, {useState} from 'react';
-import {View, KeyboardAvoidingView, Platform, ScrollView} from 'react-native';
-import {BaseStyle, useTheme} from '@config';
-import {useTranslation} from 'react-i18next';
-import {Header, SafeAreaView, Icon, Text, Button, TextInput} from '@components';
+import React, { useState } from 'react';
+import { View, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { BaseStyle, BaseColor, useTheme } from '@config';
+import { useTranslation } from 'react-i18next';
+import { Header, SafeAreaView, Icon, Text, Button, TextInput, Image } from '@components';
 import styles from './styles';
+import { UserData } from '@data';
+import Swiper from "react-native-swiper";
+import { fb } from '../../../db_config';
 
-export default function ChangePassword({navigation}) {
-  const {t} = useTranslation();
+export default function ChangePassword({ navigation }) {
+  const { t } = useTranslation();
   const offsetKeyboard = Platform.select({
     ios: 0,
     android: 20,
   });
+  const [image] = useState(UserData[0].image);
 
   const [loading, setLoading] = useState(false);
-  const [password, setPassword] = useState('');
-  const [repassword, setRepassword] = useState('');
-  const {colors} = useTheme();
+  const [email, setEmail] = useState('');
+  const { colors } = useTheme();
 
+  const onResetPasswordPress = async () => {
+    await fb.auth().sendPasswordResetEmail(email)
+      .then(() => {
+        console.log('Password reset email sent successfully')
+      }, (error) => {
+        console.log(error.message);
+      });
+  }
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <Header
-        title={t('change_password')}
+        title={t('เปลี่ยนรหัสผ่าน')}
         renderLeft={() => {
           return (
             <Icon
@@ -41,51 +52,49 @@ export default function ChangePassword({navigation}) {
         <KeyboardAvoidingView
           behavior={Platform.OS === 'android' ? 'height' : 'padding'}
           keyboardVerticalOffset={offsetKeyboard}
-          style={{flex: 1, justifyContent: 'center'}}>
+          style={{ flex: 1, justifyContent: 'center' }}>
+          <View style={styles.wrapper}>
+            <Swiper
+              dotStyle={{
+                backgroundColor: BaseColor.dividerColor,
+              }}
+              activeDotColor={colors.primary}
+              paginationStyle={styles.contentPage}
+              removeClippedSubviews={false}
+            >
+              <View style={styles.slide}>
+                <Image source={image} style={styles.img} />
+              </View>
+            </Swiper>
+          </View>
           <ScrollView
             contentContainerStyle={{
               flex: 1,
               justifyContent: 'center',
               padding: 20,
+              marginTop: -300
             }}>
-            <View style={styles.contentTitle}>
-              <Text headline semibold>
-                {t('password')}
-              </Text>
-            </View>
+
             <TextInput
-              onChangeText={text => setPassword(text)}
-              secureTextEntry={true}
-              placeholder="Password"
-              value={password}
+              onChangeText={text => setEmail(text)}
+              placeholder="อีเมลที่เคยลงทะเบียนไว้"
+              value={email}
             />
-            <View style={styles.contentTitle}>
-              <Text headline semibold>
-                {t('re_password')}
-              </Text>
-            </View>
-            <TextInput
-              onChangeText={text => setRepassword(text)}
-              secureTextEntry={true}
-              placeholder={t('password_confirm')}
-              value={repassword}
-            />
-            <View style={{paddingVertical: 15}}>
+            <View style={{ paddingVertical: 15 }}>
               <Button
                 loading={loading}
                 full
                 onPress={() => {
                   setLoading(true);
-                  setTimeout(() => {
-                    navigation.goBack();
-                  }, 500);
+                  onResetPasswordPress()
+                  navigation.goBack();
                 }}>
-                {t('confirm')}
+                {t('เปลี่ยนรหัสผ่าน')}
               </Button>
             </View>
           </ScrollView>
         </KeyboardAvoidingView>
       </SafeAreaView>
-    </View>
+    </View >
   );
 }

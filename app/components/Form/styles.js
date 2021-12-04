@@ -13,7 +13,6 @@ export default StyleSheet.create({
   viewFooter: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-
   },
   inputFooter: {
     width: '29%',
@@ -37,87 +36,108 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  submitTextTitle:{
-    fontSize:20,
+  submitTextTitle: {
+    fontSize: 16,
+    fontWeight: 'bold'
   },
-  submitViewContent:{
+  submitTextShow: {
+    fontSize: 30,
+    fontWeight: 'bold'
+  },
+  submitViewContent: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
-  submitTextContent:{
-    fontSize:15,
-  },
-  imageBackground: {
-    height: 140,
-    width: '100%',
-    position: 'absolute',
+  submitTextContent: {
+    fontSize: 15,
   },
   searchForm: {
     padding: 10,
-    borderRadius: 10,
     borderWidth: 0.5,
     width: '100%',
     shadowColor: 'black',
-    shadowOffset: {width: 1.5, height: 1.5},
+    shadowOffset: { width: 1.5, height: 1.5 },
     shadowOpacity: 0.3,
     shadowRadius: 1,
     elevation: 1,
   },
-  contentServiceIcon: {
-    marginTop: 10,
+
+  // contentServiceIcon: {
+  //   marginTop: 10,
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-around',
+  // },
+  // contentCartPromotion: {
+  //   marginTop: 10,
+  //   flexDirection: 'row',
+  //   justifyContent: 'flex-start',
+  // },
+  // btnPromotion: {
+  //   height: 25,
+  //   borderRadius: 3,
+  //   paddingHorizontal: 10,
+  //   paddingVertical: 5,
+  // },
+  // contentHiking: {
+  //   marginTop: 20,
+  //   marginLeft: 20,
+  //   marginBottom: 10,
+  // },
+  // promotionBanner: {
+  //   height: Utils.scaleWithPixel(100),
+  //   width: '100%',
+  //   marginTop: 10,
+  // },
+  // line: {
+  //   height: 1,
+  //   marginTop: 10,
+  //   marginBottom: 15,
+  // },
+  // iconContent: {
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   width: 36,
+  //   height: 36,
+  //   borderRadius: 18,
+  // },
+  // itemService: {
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  //   flex: 1,
+  //   paddingTop: 10,
+  // },
+  // promotionItem: {
+  //   width: Utils.scaleWithPixel(200),
+  //   height: Utils.scaleWithPixel(250),
+  // },
+  // tourItem: {
+  //   width: Utils.scaleWithPixel(135),
+  //   height: Utils.scaleWithPixel(160),
+  // },
+  // titleView: {
+  //   paddingHorizontal: 20,
+  //   paddingTop: 20,
+  //   paddingBottom: 10,
+  // },
+  contain: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    paddingVertical: 10,
   },
-  contentCartPromotion: {
-    marginTop: 10,
+  contentLeft: {
+    flex: 8,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-  },
-  btnPromotion: {
-    height: 25,
-    borderRadius: 3,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-  },
-  contentHiking: {
-    marginTop: 20,
-    marginLeft: 20,
-    marginBottom: 10,
-  },
-  promotionBanner: {
-    height: Utils.scaleWithPixel(100),
-    width: '100%',
-    marginTop: 10,
-  },
-  line: {
-    height: 1,
-    marginTop: 10,
-    marginBottom: 15,
-  },
-  iconContent: {
-    justifyContent: 'center',
     alignItems: 'center',
-    width: 36,
-    height: 36,
-    borderRadius: 18,
   },
-  itemService: {
-    alignItems: 'center',
+  thumb: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    marginRight: 5,
+  },
+  contentRight: {
+    flex: 2,
     justifyContent: 'center',
-    flex: 1,
-    paddingTop: 10,
-  },
-  promotionItem: {
-    width: Utils.scaleWithPixel(200),
-    height: Utils.scaleWithPixel(250),
-  },
-  tourItem: {
-    width: Utils.scaleWithPixel(135),
-    height: Utils.scaleWithPixel(160),
-  },
-  titleView: {
-    paddingHorizontal: 20,
-    paddingTop: 20,
-    paddingBottom: 10,
+    alignItems: 'flex-end',
   },
 });

@@ -67,7 +67,7 @@ export default function Profile({ navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <Header
-        title={t('profile')}
+        title={t('บัญชีของฉัน')}
         renderRight={() => {
           return <Icon name="bell" size={24} color={colors.primary} />;
         }}
@@ -97,7 +97,7 @@ export default function Profile({ navigation }) {
               onPress={() => {
                 navigation.navigate('ProfileEdit');
               }}>
-              <Text body1>{t('edit_profile')}</Text>
+              <Text body1>{t('แก้ไขโปรไฟล์')}</Text>
               <Icon
                 name="angle-right"
                 size={18}
@@ -114,7 +114,21 @@ export default function Profile({ navigation }) {
               onPress={() => {
                 navigation.navigate('ChangePassword');
               }}>
-              <Text body1>{t('change_password')}</Text>
+              <Text body1>{t('เปลี่ยนรหัสผ่าน')}</Text>
+              <Icon
+                name="angle-right"
+                size={18}
+                color={colors.primary}
+                style={{ marginLeft: 5 }}
+                enableRTL={true}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.profileItem}
+              onPress={() => {
+                navigation.navigate('Setting');
+              }}>
+              <Text body1>{t('การตั้งค่า')}</Text>
               <Icon
                 name="angle-right"
                 size={18}
@@ -164,26 +178,13 @@ export default function Profile({ navigation }) {
                 enableRTL={true}
               />
             </TouchableOpacity> */}
-            <TouchableOpacity
-              style={styles.profileItem}
-              onPress={() => {
-                navigation.navigate('Setting');
-              }}>
-              <Text body1>{t('setting')}</Text>
-              <Icon
-                name="angle-right"
-                size={18}
-                color={colors.primary}
-                style={{ marginLeft: 5 }}
-                enableRTL={true}
-              />
-            </TouchableOpacity>
+
           </View>
 
         </ScrollView>
         <View style={{ paddingHorizontal: 20, paddingVertical: 15 }}>
           <Button full loading={loading} onPress={() => onLogOut()}>
-            {t('sign_out')}
+            {t('ออกจากระบบ')}
           </Button>
         </View>
       </SafeAreaView>

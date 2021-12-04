@@ -30,11 +30,9 @@ export default function Booking({ navigation }) {
   const [declines, setDecline] = useState([]);
   const [chanceEquipments, setChanceEquipments] = useState([]);
   const [totalCosts, setTotalCosts] = useState([]);
-  const [totalConstsPerRais, setTotalConstsPerRai] = useState([]);
   const [totalIncomes, setTotalIncomes] = useState([]);
-  const [incomes, setIncomes] = useState([]);
   const [totalProfits, setTotalProfits] = useState([]);
-  const [profits, setProfit] = useState([]);
+
 
   const getSteps = () => {
     return [
@@ -64,17 +62,9 @@ export default function Booking({ navigation }) {
         return (
           <Submit
             stateEvent={stateEvent}
-            earnings={earnings}
-            materials={materials}
-            investments={investments}
-            declines={declines}
-            chanceEquipments={chanceEquipments}
             totalCosts={totalCosts}
-            totalConstsPerRais={totalConstsPerRais}
             totalIncomes={totalIncomes}
-            incomes={incomes}
             totalProfits={totalProfits}
-            profits={profits}
           />
         )
       default:
@@ -171,21 +161,13 @@ export default function Booking({ navigation }) {
       // ต้นทุนรวม ของเกษตรกร
       let totalCost = (earning + material + investment + intLandrent + decline + chanceEquipment)
       setTotalCosts(totalCost.toFixed(2));
-      // ต้นทุนรวม ต่อไร่
-      let totalConstsPerRai = (totalCost / intFarmland);
-      setTotalConstsPerRai(totalConstsPerRai.toFixed(2));
       // รายได้ทั้งหมด
       let totoleIncome = (intPrice * intProduct / 1000)
       setTotalIncomes(totoleIncome.toFixed(2));
-      // รายได้ต่อไร่
-      let income = (totoleIncome / intFarmland)
-      setIncomes(income.toFixed(2));
       //กำไรทั้งหมด
       let totalProfit = (totalCost - totoleIncome);
       setTotalProfits(totalProfit.toFixed(2));
-      //กำไรต่อไร่
-      let profit = (totalProfit / intFarmland);
-      setProfit(profit.toFixed(2));
+
       setCurrentStep(currentStep + 1)
     }
 
