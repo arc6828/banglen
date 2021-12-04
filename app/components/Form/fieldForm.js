@@ -1,8 +1,17 @@
 import React from 'react';
-import { SafeAreaView, View, TextInput, Text } from "react-native";
+import { View } from "react-native";
+import {
+  Header,
+  SafeAreaView,
+  Icon,
+  TextInput,
+  Text,
+  Button,
+  ProfileDetail,
+} from '@components';
 import styles from './styles';
 
-export default function Form(props) {
+export default function FieldForm(props) {
   const { stateEvent, setStateEvent } = props
 
   const Separator = () => (
@@ -130,7 +139,7 @@ export default function Form(props) {
           value={stateEvent.price}
         />
       </View>
-      
+
     </SafeAreaView>
   )
 }

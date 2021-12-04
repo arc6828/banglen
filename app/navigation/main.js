@@ -245,7 +245,7 @@ function BottomTabNavigator() {
         name="Home"
         component={Home}
         options={{
-          title: t("home"),
+          title: t("หน้าหลัก"),
           tabBarIcon: ({ color }) => {
             return <Icon color={color} name="home" size={20} solid />;
           },
@@ -255,7 +255,7 @@ function BottomTabNavigator() {
         name="Booking"
         component={Booking}
         options={{
-          title: t("Land"),
+          title: t("ต้นทุน"),
           tabBarIcon: ({ color }) => {
             return <Icon color={color} name="globe-asia" size={20} solid />;
           },
@@ -265,7 +265,7 @@ function BottomTabNavigator() {
         name="Notification"
         component={Notification}
         options={{
-          title: t("Notification"),
+          title: t("แจ้งเตือน"),
           tabBarIcon: ({ color }) => {
             return <Icon solid color={color} name="bell" size={20} />;
           },
@@ -275,7 +275,7 @@ function BottomTabNavigator() {
         name="Post"
         component={Post}
         options={{
-          title: t("news"),
+          title: t("ข่าวสาร"),
           tabBarIcon: ({ color }) => {
             return <Icon color={color} name="copy" size={20} solid />;
           },
@@ -285,7 +285,7 @@ function BottomTabNavigator() {
         name="Profile"
         component={user ? Profile : Walkthrough}
         options={{
-          title: t("account"),
+          title: t("บัญชีของฉัน"),
           tabBarIcon: ({ color }) => {
             return <Icon solid color={color} name="user-circle" size={20} />;
           },

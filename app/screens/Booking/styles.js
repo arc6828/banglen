@@ -11,14 +11,14 @@ export default StyleSheet.create({
   borderStep: {
     height: 2,
     backgroundColor: '#ee5e30',
-    width: 140,
+    width: 200,
     position: 'absolute',
     top: 13,
     zIndex: 10
   },
   stepViewTitle: {
     flexDirection: 'row',
-    width: '100%',
+    justifyContent: 'space-between',
     position: 'absolute',
     zIndex: 20
   },
@@ -33,6 +33,11 @@ export default StyleSheet.create({
     borderRadius: 15,
     marginBottom: 10
   },
+  stepViewButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+
   buttonStepLeft: {
     marginTop: 20,
     bottom: 10,
@@ -49,14 +54,7 @@ export default StyleSheet.create({
     height: 35,
     backgroundColor: '#ee5e30',
   },
-  buttonNext: {
-    top: 10,
-    right: 10,
-    width: 80,
-    height: 35,
-    backgroundColor: '#ee5e30',
-    marginBottom: 10
-  },
+
   scrollView: {
     marginHorizontal: 20,
   },

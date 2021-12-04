@@ -15,7 +15,7 @@ export default function PostDetail({ route, navigation }) {
     <View style={{ flex: 1 }}>
       <Header
         title=""
-        style={{ backgroundColor: BaseColor.orangeColor, marginTop: -15 }}
+        style={{ backgroundColor: BaseColor.orangeColor }}
         renderLeft={() => {
           return (
             <Icon

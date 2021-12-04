@@ -21,8 +21,6 @@ import { AuthContext } from '../../../hooks/AuthContext';
 export default function Profile({ navigation }) {
   const [user] = useContext(AuthContext)
   const [userProfile, setUserProfile] = useState([]);
-  console.log("=>", userProfile)
-
 
 
   const { colors } = useTheme();
@@ -125,7 +123,7 @@ export default function Profile({ navigation }) {
                 enableRTL={true}
               />
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={[
                 styles.profileItem,
                 { borderBottomColor: colors.border, borderBottomWidth: 1 },
@@ -165,7 +163,7 @@ export default function Profile({ navigation }) {
                 style={{ marginLeft: 5 }}
                 enableRTL={true}
               />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity
               style={styles.profileItem}
               onPress={() => {

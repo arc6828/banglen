@@ -17,7 +17,7 @@ import { AuthContext } from '../../../hooks/AuthContext';
 import { fb } from '../../../db_config';
 
 export default function ProfileEdit({ navigation }) {
-  const [user] = useContext(AuthContext);
+  const [user,setUser] = useContext(AuthContext);
   const [userProfile, setUserProfile] = useState([]);
 
   const { colors } = useTheme();
@@ -26,12 +26,7 @@ export default function ProfileEdit({ navigation }) {
     ios: 0,
     android: 20,
   });
-  const initialTutorialState = {
-    uid: "",
-    title: "",
-    description: "",
-    published: false,
-  };
+
   const [uid, setId] = useState("");
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
@@ -45,6 +40,12 @@ export default function ProfileEdit({ navigation }) {
       .get().then((querySnapshot) => {
         const users = querySnapshot.docs.map(doc => doc.data());
         setUserProfile(users[0]);
+        
+        setId(users[0].uid)
+        setName(users[0].name)
+        setLastname(users[0].lastname)
+        setEmail(users[0].email)
+        setAddress(users[0].address)
       });
   }
 
@@ -74,6 +75,7 @@ export default function ProfileEdit({ navigation }) {
       userImg: null
     }
     setUserProfile(updateItem);
+    setUser(updateItem);
     writeTodosFirebase(updateItem);
   };
 
@@ -126,7 +128,7 @@ export default function ProfileEdit({ navigation }) {
             <TextInput
               onChangeText={text => setId(text)}
               placeholder={t('input_id')}
-              value={userProfile.uid}
+              value={uid}
             />
             <View style={styles.contentTitle}>
               <Text headline semibold>
@@ -181,7 +183,7 @@ export default function ProfileEdit({ navigation }) {
                 setLoading(true);
                 setTimeout(() => {
                   navigation.goBack(onUpdate({
-                    uid: userProfile.uid,
+                    uid: uid,
                     name: name,
                     lastname: lastname,
                     email: email,
