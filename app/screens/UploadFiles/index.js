@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, TouchableOpacity, Image, Button, Modal } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
-
-export default function UploadFiles({ navigation }) {
+import { fb } from '../../../db_config';
+import { AuthContext } from '../../../hooks/AuthContext';
+export default function UploadFiles({ route, navigation }) {
+  const [user, setUser] = useContext(AuthContext);
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
@@ -62,6 +64,32 @@ export default function UploadFiles({ navigation }) {
       })
       .catch((error) => { console.error("Error : ", error); });
   };
+  const onCreate = () => {
+    let new_data = {
+      uid: user.uid,
+      name: route.params.userProfile.name,
+      email: route.params.userProfile.email,
+      address: route.params.userProfile.address,
+      updateAt: new Date(),
+      userImg: url,
+    };
+    writeUserFirebase(new_data);
+    setUser(new_data)
+  };
+
+  const writeUserFirebase = async (updateItem) => {
+    fb.firestore().collection("users")
+      .doc(updateItem.uid)
+      .set(updateItem)
+      .then(function () {
+        console.log("Firestore successfully written!");
+        navigation.navigate('ProfileEdit');
+
+      })
+      .catch(function (error) {
+        console.error("Error writing document: ", error);
+      });
+  }
 
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -111,7 +139,7 @@ export default function UploadFiles({ navigation }) {
         <Ionicons name="md-images" size={50} color="#848484" />
         <Text>Select Image</Text>
       </TouchableOpacity>
-      
+
       <View style={{ alignItems: 'center' }}>
         <Text>{image ? image.filename : ""}</Text>
         {(() => {
@@ -123,7 +151,7 @@ export default function UploadFiles({ navigation }) {
         })()}
       </View>
       <View style={{ marginHorizontal: 10, marginTop: 100 }}>
-        <Button title="Save" />
+        <Button title="Save" onPress={onCreate} />
       </View>
 
     </View>

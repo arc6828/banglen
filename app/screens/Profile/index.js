@@ -22,7 +22,6 @@ export default function Profile({ navigation }) {
   const [user] = useContext(AuthContext)
   const [userProfile, setUserProfile] = useState([]);
 
-
   const { colors } = useTheme();
   const { t } = useTranslation();
 
@@ -82,7 +81,7 @@ export default function Profile({ navigation }) {
           <View style={styles.contain}>
             <ProfileDetail
               key={userProfile.uid}
-              image={userData.image}
+              image={userProfile.userImg}
               textFirst={userProfile.name}
               point={userData.point}
               textSecond={userProfile.address}

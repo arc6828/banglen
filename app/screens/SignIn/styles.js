@@ -16,6 +16,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
     flex: 1,
+    marginTop:-150
   },
    wrapper: {
     width: '100%',

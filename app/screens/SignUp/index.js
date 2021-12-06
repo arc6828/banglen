@@ -1,5 +1,5 @@
-import React, { useState,useContext } from 'react';
-import { View, KeyboardAvoidingView, Platform } from 'react-native';
+import React, { useState } from 'react';
+import { View, KeyboardAvoidingView, Platform, TouchableOpacity, Text } from 'react-native';
 import { BaseStyle, useTheme } from '@config';
 import { Header, SafeAreaView, Icon, Button, TextInput } from '@components';
 import styles from './styles';
@@ -46,7 +46,7 @@ export default function SignUp({ navigation }) {
       })
       .catch(error => { console.log("Register Error", error); })
   }
-  
+
   const onSignUp = () => {
     if (name == '' || email == '' || password == '') {
       setSuccess({
@@ -97,7 +97,7 @@ export default function SignUp({ navigation }) {
               success={success.name}
               value={name}
             />
-            
+
             <TextInput
               style={{ marginTop: 10 }}
               onChangeText={text => setAddress(text)}
@@ -121,6 +121,7 @@ export default function SignUp({ navigation }) {
               success={success.password}
               value={password}
             />
+           
             <Button
               full
               style={{ marginTop: 20 }}

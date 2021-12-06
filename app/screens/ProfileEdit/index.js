@@ -11,13 +11,12 @@ import {
   TextInput,
 } from '@components';
 import styles from './styles';
-import { UserData } from '@data';
 import { useTranslation } from 'react-i18next';
 import { AuthContext } from '../../../hooks/AuthContext';
 import { fb } from '../../../db_config';
 
 export default function ProfileEdit({ navigation }) {
-  const [user,setUser] = useContext(AuthContext);
+  const [user, setUser] = useContext(AuthContext);
   const [userProfile, setUserProfile] = useState([]);
 
   const { colors } = useTheme();
@@ -29,10 +28,9 @@ export default function ProfileEdit({ navigation }) {
 
   const [uid, setId] = useState("");
   const [name, setName] = useState("");
-  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
-  const [image] = useState(UserData[0].image);
+  const [imageProfile, setImageProfile] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const readUsersFirebase = async () => {
@@ -40,16 +38,15 @@ export default function ProfileEdit({ navigation }) {
       .get().then((querySnapshot) => {
         const users = querySnapshot.docs.map(doc => doc.data());
         setUserProfile(users[0]);
-        
         setId(users[0].uid)
         setName(users[0].name)
-        setLastname(users[0].lastname)
+        setImageProfile(users[0].userImg)
         setEmail(users[0].email)
         setAddress(users[0].address)
       });
   }
 
-  const writeTodosFirebase = async (updateItem) => {
+  const writeUserFirebase = async (updateItem) => {
     fb.firestore().collection("users")
       .doc(updateItem.uid)
       .set(updateItem)
@@ -64,19 +61,18 @@ export default function ProfileEdit({ navigation }) {
   const onUpdate = (new_userProfile) => {
     let t = [userProfile];
     let index = t.findIndex((item => item.uid == new_userProfile.uid));
-    
+
     const updateItem = {
       uid: t[index].uid,
       name: new_userProfile.name,
-      lastname: new_userProfile.lastname,
       email: new_userProfile.email,
       address: new_userProfile.address,
       updateAt: new Date(),
-      userImg: null
+      userImg: new_userProfile.userImg
     }
     setUserProfile(updateItem);
     setUser(updateItem);
-    writeTodosFirebase(updateItem);
+    writeUserFirebase(updateItem);
   };
 
   useEffect(() => {
@@ -92,7 +88,7 @@ export default function ProfileEdit({ navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <Header
-        title={t('edit_profile')}
+        title={t('แก้ไขบัญชี')}
         renderLeft={() => {
           return (
             <Icon
@@ -118,7 +114,7 @@ export default function ProfileEdit({ navigation }) {
           style={{ flex: 1 }}>
           <ScrollView contentContainerStyle={styles.contain}>
             <View>
-              <Image source={image} style={styles.thumb} />
+              <Image source={{ uri: imageProfile }} style={styles.thumb} />
             </View>
             <View style={styles.contentTitle}>
               <Text headline semibold>
@@ -129,6 +125,9 @@ export default function ProfileEdit({ navigation }) {
               onChangeText={text => setId(text)}
               placeholder={t('input_id')}
               value={uid}
+              underlineColorAndroid='transparent'
+              editable={false}
+              selectTextOnFocus={false}
             />
             <View style={styles.contentTitle}>
               <Text headline semibold>
@@ -149,6 +148,9 @@ export default function ProfileEdit({ navigation }) {
               onChangeText={text => setEmail(text)}
               placeholder={t('input_email')}
               value={email}
+              underlineColorAndroid='transparent'
+              editable={false}
+              selectTextOnFocus={false}
             />
             <View style={styles.contentTitle}>
               <Text headline semibold>
@@ -160,7 +162,7 @@ export default function ProfileEdit({ navigation }) {
               placeholder={t('input_address')}
               value={address}
             />
-            <TouchableOpacity onPress={() => navigation.navigate('UploadFile')} >
+            <TouchableOpacity onPress={() => navigation.navigate('UploadFile', { uid, userProfile })} >
               <Text style={{ padding: 10 }}>Upload File</Text>
             </TouchableOpacity>
           </ScrollView>
@@ -175,9 +177,9 @@ export default function ProfileEdit({ navigation }) {
                   navigation.goBack(onUpdate({
                     uid: uid,
                     name: name,
-                    lastname: lastname,
                     email: email,
-                    address: address
+                    address: address,
+                    // userImg: userImg,
                   }));
                 }, 500);
               }}>
@@ -191,15 +193,3 @@ export default function ProfileEdit({ navigation }) {
     </View>
   );
 }
-// onPress={() => {
-//   setLoading(true);
-//   setTimeout(() => {
-//     navigation.navigate('Profile', {
-//       uid: item.uid,
-//       name: item.name,
-//       lastname: item.lastname,
-//       email: item.email,
-//       address: item.address
-//     });
-//   }, 500);
-// }}>

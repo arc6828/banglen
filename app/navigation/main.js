@@ -204,7 +204,7 @@ export default function Main() {
         <MainStack.Screen name="Walkthrough" component={Walkthrough} />
         <MainStack.Screen name="SignUp" component={SignUp} />
         <MainStack.Screen name="SignIn" component={SignIn} />
-
+        <MainStack.Screen name="UploadFile" component={UploadFiles} />
         <MainStack.Screen name="PostDetail" component={PostDetail} />
 
       </MainStack.Navigator>
