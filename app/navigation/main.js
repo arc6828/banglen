@@ -83,6 +83,7 @@ import Post from "@screens/Post";
 import Profile from "@screens/Profile";
 import UploadFiles from '../screens/UploadFiles'
 import { AuthContext, AuthContextProvider } from '../../hooks/AuthContext';
+import CostSubmit from '../screens/CostSubmit';
 const MainStack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
 export default function Main() {
@@ -188,6 +189,8 @@ export default function Main() {
         <MainStack.Screen name="Setting" component={Setting} />
         <MainStack.Screen name="ThemeSetting" component={ThemeSetting} />
         <MainStack.Screen name="NotFound" component={NotFound} />
+        <MainStack.Screen name="CostSubmit" component={CostSubmit} />
+
       </MainStack.Navigator>
 
     );
@@ -206,6 +209,8 @@ export default function Main() {
         <MainStack.Screen name="SignIn" component={SignIn} />
         <MainStack.Screen name="UploadFile" component={UploadFiles} />
         <MainStack.Screen name="PostDetail" component={PostDetail} />
+        <MainStack.Screen name="BookingDetail" component={BookingDetail} />
+        <MainStack.Screen name="CostSubmit" component={CostSubmit} />
 
       </MainStack.Navigator>
     )

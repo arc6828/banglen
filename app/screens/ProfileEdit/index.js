@@ -30,7 +30,7 @@ export default function ProfileEdit({ navigation }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
-  const [imageProfile, setImageProfile] = useState(null);
+  const [userImg, setUserImg] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const readUsersFirebase = async () => {
@@ -40,7 +40,7 @@ export default function ProfileEdit({ navigation }) {
         setUserProfile(users[0]);
         setId(users[0].uid)
         setName(users[0].name)
-        setImageProfile(users[0].userImg)
+        setUserImg(users[0].userImg)
         setEmail(users[0].email)
         setAddress(users[0].address)
       });
@@ -114,7 +114,7 @@ export default function ProfileEdit({ navigation }) {
           style={{ flex: 1 }}>
           <ScrollView contentContainerStyle={styles.contain}>
             <View>
-              <Image source={{ uri: imageProfile }} style={styles.thumb} />
+              <Image source={{ uri: userImg }} style={styles.thumb} />
             </View>
             <View style={styles.contentTitle}>
               <Text headline semibold>
@@ -122,7 +122,7 @@ export default function ProfileEdit({ navigation }) {
               </Text>
             </View>
             <TextInput
-              onChangeText={text => setId(text)}
+              // onChangeText={text => setId(text)}
               placeholder={t('input_id')}
               value={uid}
               underlineColorAndroid='transparent'
@@ -145,7 +145,7 @@ export default function ProfileEdit({ navigation }) {
               </Text>
             </View>
             <TextInput
-              onChangeText={text => setEmail(text)}
+              // onChangeText={text => setEmail(text)}
               placeholder={t('input_email')}
               value={email}
               underlineColorAndroid='transparent'
@@ -179,7 +179,7 @@ export default function ProfileEdit({ navigation }) {
                     name: name,
                     email: email,
                     address: address,
-                    // userImg: userImg,
+                    userImg: userImg,
                   }));
                 }, 500);
               }}>

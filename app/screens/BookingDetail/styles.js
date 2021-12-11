@@ -2,20 +2,32 @@ import {StyleSheet} from 'react-native';
 import {BaseColor} from '@config';
 
 export default StyleSheet.create({
-  tabbar: {
-    height: 40,
+  viewTitle: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
-  tab: {
-    flex: 1,
+  viewContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
-  indicator: {
-    height: 1,
+  viewFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
-  label: {
-    fontWeight: '400',
+  input: {
+    width: '40%',
+    margin: 12,
+    padding: 10,
   },
-  containProfileItem: {
-    paddingLeft: 20,
-    paddingRight: 20,
+  inputFooter: {
+    width: '29%',
+    margin: 12,
+    padding: 10,
+  },
+  separator: {
+    marginVertical: 8,
+    margin: 12,
+    borderBottomColor: '#737373',
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });
