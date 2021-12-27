@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import * as Utils from '@utils';
 
 export default StyleSheet.create({
@@ -13,7 +13,7 @@ export default StyleSheet.create({
     borderWidth: 0.5,
     width: '100%',
     shadowColor: 'black',
-    shadowOffset: {width: 1.5, height: 1.5},
+    shadowOffset: { width: 1.5, height: 1.5 },
     shadowOpacity: 0.3,
     shadowRadius: 1,
     elevation: 1,
@@ -26,23 +26,13 @@ export default StyleSheet.create({
   contentCartPromotion: {
     marginTop: 10,
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
   },
   btnPromotion: {
     height: 25,
     borderRadius: 3,
     paddingHorizontal: 10,
     paddingVertical: 5,
-  },
-  contentHiking: {
-    marginTop: 20,
-    marginLeft: 20,
-    marginBottom: 10,
-  },
-  promotionBanner: {
-    height: Utils.scaleWithPixel(100),
-    width: '100%',
-    marginTop: 10,
   },
   line: {
     height: 1,
@@ -63,16 +53,35 @@ export default StyleSheet.create({
     paddingTop: 10,
   },
   promotionItem: {
+    borderWidth: 1,
+    alignItems: 'center',
     width: Utils.scaleWithPixel(200),
     height: Utils.scaleWithPixel(250),
   },
-  tourItem: {
-    width: Utils.scaleWithPixel(135),
-    height: Utils.scaleWithPixel(160),
+  lineChart: {
+    width: Utils.scaleWithPixel(150),
+    height: Utils.scaleWithPixel(50),
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  watherCard: {
+    width: Utils.scaleWithPixel(600),
+    height: Utils.scaleWithPixel(85),
+    margin: 5,
+    borderWidth: 1,
+    // alignItems: 'center',
+    justifyContent: 'space-between',
   },
   titleView: {
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 10,
+  },
+  thumb: {
+    width: 90,
+    height: 90,
+    borderRadius: 20,
+    margin: 5
   },
 });

@@ -48,7 +48,7 @@ export default function Booking({ navigation }) {
                     numReviews={item.numReviews}
                     services={item.services}
                     style={{ marginLeft: 15, marginBottom: 15 }}
-                    // onPress={() => navigation.navigate('CostSubmit')}
+                    onPress={() => navigation.navigate('EventDetail')}
                   />
                 )}
               />
