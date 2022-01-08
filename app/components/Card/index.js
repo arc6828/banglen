@@ -11,14 +11,15 @@ export default function Card(props) {
     style,
     children,
     styleContent,
+    clouds,
+    dew_point,
+    dt,
+
     name,
     station,
     water,
     time,
     status,
-    day7,
-    month,
-    night,
     onPress
   } = props;
 
@@ -28,9 +29,9 @@ export default function Card(props) {
       onPress={onPress}
       activeOpacity={0.9}
     >
-      <Text>{day7}</Text>
-      <Text>{month}</Text>
-      <Text>{night}</Text>
+      <Text>{clouds}</Text>
+      <Text>{dew_point}</Text>
+      <Text>{dt}</Text>
 
       <Text>{name}</Text>
       <Text>{station}</Text>

@@ -17,6 +17,7 @@ import { LineChart } from "react-native-chart-kit";
 import { BaseStyle, Images, useTheme } from '@config';
 import * as Utils from '@utils';
 import styles from './styles';
+import axios from 'axios';
 import { UserData } from '@data';
 import { useTranslation } from 'react-i18next';
 
@@ -66,6 +67,8 @@ export default function Home({ navigation }) {
     },
   ]);
   const [image] = useState(UserData[0].image);
+  const [weathernow, setWeatherNow] = useState([]);
+
 
   const [cardLine, setCardLine] = useState([
     {
@@ -111,36 +114,9 @@ export default function Home({ navigation }) {
 
   ]);
 
-  const [wether] = useState([
-    {
-      id: 1,
-      day7: 'Monday',
-      month: 'Dec',
-      night: '24 C'
-    },
-    {
-      id: 2,
-      day7: 'Monday',
-      month: 'Dec',
-      night: '24 C'
-    },
-    {
-      id: 3,
-      day7: 'Monday',
-      month: 'Dec',
-      night: '24 C'
-    },
-    {
-      id: 4,
-      day7: 'Monday',
-      month: 'Dec',
-      night: '24 C'
-    },
-  ]);
-
   const [heightHeader, setHeightHeader] = useState(Utils.heightHeader());
   const deltaY = new Animated.Value(0);
-  
+
   const [dataset, setDataSet] = useState([
     {
       data: [20, 45, 28, 80, 99, 43],
@@ -223,7 +199,6 @@ export default function Home({ navigation }) {
     setColours(newColors);
 
   }
-
   useEffect(function () {
     setCardLine([
       {
@@ -270,6 +245,73 @@ export default function Home({ navigation }) {
     ])
     changeBackgroundColor(cardLine[0]);
   }, []);
+
+
+  const loadWeathernow = async () => {
+    try {
+      let promise = await fetch('https://www.rtfloodbma.com/api/banglen/weather-now');
+      let data = await promise.json();
+      setWeatherNow(data);
+    } catch (error) {
+      console.log("ERROR : ", error);
+    }
+  }
+
+  useEffect(() => {
+    loadWeathernow();
+  }, []);
+
+  let previousId = 0;
+
+
+  const renderItemWeatherNow = ({ item }) => {
+    const temps = {
+      id: previousId + 1,
+      dt: item.dt,
+      temp: item.temp,
+      feels_like: item.feels_like,
+      weather: item.weather[0],
+      clouds: item.clouds,
+    }
+    console.log("🚀 ~ file: index.js ~ line 275 ~ renderItemWeatherNow ~ temps", temps)
+    if (!temps.length) {
+      return (
+        <View style={styles.contentCartPromotion}>
+          <Card style={[styles.promotionItem, { marginLeft: 15, width: 250 }]}>
+            <View style={{ marginTop: 10, marginBottom: 10 }}>
+              <Text title2 semibold style={{ fontSize: 16, marginLeft: 15 }}>
+                {temps.clouds}
+              </Text>
+              <Image source={image} style={styles.thumb} />
+              <Text title2 semibold style={{ fontSize: 16, marginLeft: 5, }}>
+                {temps.temp} - {temps.temp}
+              </Text>
+              <Text title2 semibold style={{ fontSize: 16, marginLeft: 5, }}>
+                {temps.weather.description} - {temps.weather.main}
+              </Text>
+            </View>
+          </Card>
+        </View>
+      )
+    } else {
+      <View style={styles.contentCartPromotion}>
+        <Card style={[styles.promotionItem, { marginLeft: 15 }]}>
+          <View style={{ marginTop: 10, marginBottom: 10 }}>
+            <Text title2 semibold style={{ fontSize: 16, marginLeft: 15 }}>
+              {item.clouds}
+            </Text>
+            <Image source={image} style={styles.thumb} />
+            <Text title2 semibold style={{ fontSize: 16, marginLeft: 5, }}>
+              {temps.temp} - {temps.temp}
+            </Text>
+            <Text title2 semibold style={{ fontSize: 16, marginLeft: 5, }}>
+              {temps.weather.description} - {temps.weather.main}
+            </Text>
+          </View>
+        </Card>
+      </View>
+    }
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -336,48 +378,16 @@ export default function Home({ navigation }) {
                 <Text title3 semibold style={styles.titleView}>
                   {t('อากาศวันนี้')}
                 </Text>
-                <FlatList
-                  contentContainerStyle={{ paddingLeft: 5, paddingRight: 20 }}
-                  horizontal={true}
-                  showsHorizontalScrollIndicator={false}
-                  data={wether}
-                  keyExtractor={(item, index) => item.id}
-                  renderItem={({ item, index }) => {
-                    if (item.id === 1) {
-                      return (
-                        <View style={styles.contentCartPromotion}>
-                          <Card style={[styles.promotionItem, { marginLeft: 15, width: 250 }]}>
-                            <View style={{ marginTop: 10, marginBottom: 10 }}>
-                              <Text title2 semibold style={{ fontSize: 16, marginLeft: 15 }}>
-                                {item.day7}
-                              </Text>
-                              <Image source={image} style={styles.thumb} />
-                              <Text title2 semibold style={{ fontSize: 16, marginLeft: 5, }}>
-                                {item.month} - {item.night}
-                              </Text>
-                            </View>
-                          </Card>
-                        </View>
-                      )
-                    } else {
-                      return (
-                        <View style={styles.contentCartPromotion}>
-                          <Card style={[styles.promotionItem, { marginLeft: 15 }]}>
-                            <View style={{ marginTop: 10, marginBottom: 10 }}>
-                              <Text title2 semibold style={{ fontSize: 16, marginLeft: 15 }}>
-                                {item.day7}
-                              </Text>
-                              <Image source={image} style={styles.thumb} />
-                              <Text title2 semibold style={{ fontSize: 16, marginLeft: 5, }}>
-                                {item.month} - {item.night}
-                              </Text>
-                            </View>
-                          </Card>
-                        </View>
-                      )
-                    }
-                  }}
-                />
+                {weathernow.hourly && (
+                  <FlatList
+                    contentContainerStyle={{ paddingLeft: 5, paddingRight: 20 }}
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                    data={weathernow.hourly}
+                    renderItem={renderItemWeatherNow}
+                    keyExtractor={(item) => item.id}
+                  />
+                )}
               </View>
               <View>
                 <Text title3 semibold style={styles.titleView}>
