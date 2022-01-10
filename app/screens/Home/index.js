@@ -1,322 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import {
-  View,
-  Animated,
-  TouchableOpacity,
-  FlatList,
-  Dimensions
-} from 'react-native';
-import {
-  Text,
-  Icon,
-  Card,
-  Image,
-  SafeAreaView,
-} from '@components';
+import { View, Animated, TouchableOpacity, FlatList, Dimensions } from 'react-native';
+import { Text, Icon, Card, Image, SafeAreaView, } from '@components';
 import { LineChart } from "react-native-chart-kit";
 import { BaseStyle, Images, useTheme } from '@config';
 import * as Utils from '@utils';
 import styles from './styles';
-import axios from 'axios';
-import { UserData } from '@data';
+// import axios from 'axios';
+// import { UserData } from '@data';
 import { useTranslation } from 'react-i18next';
+import HomeMenu from '../../components/Banglen/HomeMenu';
+import WeatherNow from '../../components/Banglen/WeatherNow';
+import Cover from '../../components/Banglen/Cover';
+import Price from '../../components/Banglen/Price';
+import WaterLevel from '../../components/Banglen/WaterLevel';
 
 export default function Home({ navigation }) {
-  const { t } = useTranslation();
-  const { colors } = useTheme();
-  const [icons] = useState([
-    {
-      icon: 'calendar-alt',
-      name: 'อากาศ',
-      route: 'Hotel',
-    },
-    {
-      icon: 'map-marker-alt',
-      name: 'น้ำ',
-      route: 'Tour',
-    },
-    {
-      icon: 'car-alt',
-      name: 'ดิน',
-      route: 'OverViewCar',
-    },
-    {
-      icon: 'plane',
-      name: 'พืช',
-      route: 'FlightSearch',
-    },
-    {
-      icon: 'ship',
-      name: 'สังคม',
-      route: 'CruiseSearch',
-    },
-    {
-      icon: 'bus',
-      name: 'เศรษฐกิจ',
-      route: 'BusSearch',
-    },
-    {
-      icon: 'star',
-      name: 'ราคา',
-      route: 'DashboardEvent',
-    },
-    {
-      icon: 'ellipsis-h',
-      name: 'อื่นๆ',
-      route: 'More',
-    },
-  ]);
-  const [image] = useState(UserData[0].image);
-  const [weathernow, setWeatherNow] = useState([]);
-
-
-  const [cardLine, setCardLine] = useState([
-    {
-      id: 1,
-      keydataSet: [10, 20, 30, 40, 50, 60],
-      name: 'ข้าว',
-      station: 'สถานนี A จังหวัด ปทุมธานี',
-      time: '18-12-2021 12.10 น',
-      water: '109.78%',
-      status: 'น้ำเต็มตลิ่ง',
-      active: true,
-    },
-    {
-      id: 2,
-      keydataSet: [70, 80, 90, 100, 110, 120],
-      name: 'ข้าวเหนียว',
-      station: 'สถานนี A จังหวัด ปทุมธานี',
-      time: '18-12-2021 12.10 น',
-      water: '109.78%',
-      status: 'น้ำเต็มตลิ่ง',
-      active: false,
-    },
-    {
-      id: 3,
-      keydataSet: [130, 140, 150, 160, 170, 180],
-      name: 'ข้าวจ้าว',
-      station: 'สถานนี A จังหวัด ปทุมธานี',
-      time: '18-12-2021 12.10 น',
-      water: '109.78%',
-      status: 'น้ำเต็มตลิ่ง',
-      active: false,
-    },
-    {
-      id: 4,
-      keydataSet: [190, 200, 230, 240, 250, 260],
-      name: 'ข้าวสาลี',
-      station: 'สถานนี A จังหวัด ปทุมธานี',
-      time: '18-12-2021 12.10 น',
-      water: '109.78%',
-      status: 'น้ำเต็มตลิ่ง',
-      active: false,
-    },
-
-  ]);
-
+  //STANDARD VARIABLES
+  // const { t } = useTranslation();
+  // const { colors } = useTheme();
   const [heightHeader, setHeightHeader] = useState(Utils.heightHeader());
   const deltaY = new Animated.Value(0);
-
-  const [dataset, setDataSet] = useState([
-    {
-      data: [20, 45, 28, 80, 99, 43],
-      strokeWidth: 1,
-    },
-  ]);
-
-  const renderIconService = () => {
-    return (
-      <FlatList
-        data={icons}
-        numColumns={4}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => {
-          return (
-            <TouchableOpacity
-              style={styles.itemService}
-              activeOpacity={0.9}
-              onPress={() => {
-                navigation.navigate(item.route);
-              }}>
-              <View
-                style={[styles.iconContent, { backgroundColor: colors.card }]}>
-                <Icon name={item.icon} size={18} color={colors.primary} solid />
-              </View>
-              <Text footnote grayColor numberOfLines={1}>
-                {t(item.name)}
-              </Text>
-            </TouchableOpacity>
-          );
-        }}
-      />
-    );
-  };
-
-  const MyLineChart = () => {
-    return (
-      <View style={{ flex: 1 }}>
-        <LineChart
-          data={{
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-            datasets: dataset
-          }}
-          width={Dimensions.get('window').width}
-          height={220}
-          chartConfig={{
-            backgroundColor: 'white',
-            backgroundGradientFrom: 'white',
-            backgroundGradientTo: 'white',
-            decimalPlaces: 2,
-            color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-          }}
-          style={{
-            margin: 10,
-
-          }}
-        />
-      </View>
-    );
-  };
-
   const heightImageBanner = Utils.scaleWithPixel(140);
   const marginTopBanner = heightImageBanner - heightHeader;
-
-  const [colours, setColours] = useState([]);
-
-
-  const changeBackgroundColor = (keydataSet) => {
-    setDataSet([{ data: keydataSet.keydataSet, strokeWidth: 1, }])
-
-    let newColors = [];
-    for (let item of cardLine) {
-      if (item.id == keydataSet.id) {
-        newColors.push("red");
-      } else {
-        newColors.push("lightgray");
-      }
-    }
-
-    setColours(newColors);
-
-  }
-  useEffect(function () {
-    setCardLine([
-      {
-        id: 1,
-        keydataSet: [10, 20, 30, 40, 50, 60],
-        name: 'ข้าว',
-        station: 'สถานนี A จังหวัด ปทุมธานี',
-        time: '18-12-2021 12.10 น',
-        water: '109.78%',
-        status: 'น้ำเต็มตลิ่ง',
-        active: true,
-      },
-      {
-        id: 2,
-        keydataSet: [70, 80, 90, 100, 110, 120],
-        name: 'ข้าวเหนียว',
-        station: 'สถานนี A จังหวัด ปทุมธานี',
-        time: '18-12-2021 12.10 น',
-        water: '109.78%',
-        status: 'น้ำเต็มตลิ่ง',
-        active: false,
-      },
-      {
-        id: 3,
-        keydataSet: [130, 140, 150, 160, 170, 180],
-        name: 'ข้าวจ้าว',
-        station: 'สถานนี A จังหวัด ปทุมธานี',
-        time: '18-12-2021 12.10 น',
-        water: '109.78%',
-        status: 'น้ำเต็มตลิ่ง',
-        active: false,
-      },
-      {
-        id: 4,
-        keydataSet: [190, 200, 230, 240, 250, 260],
-        name: 'ข้าวสาลี',
-        station: 'สถานนี A จังหวัด ปทุมธานี',
-        time: '18-12-2021 12.10 น',
-        water: '109.78%',
-        status: 'น้ำเต็มตลิ่ง',
-        active: false,
-      },
-
-    ])
-    changeBackgroundColor(cardLine[0]);
-  }, []);
-
-
-  const loadWeathernow = async () => {
-    try {
-      let promise = await fetch('https://www.rtfloodbma.com/api/banglen/weather-now');
-      let data = await promise.json();
-      setWeatherNow(data);
-    } catch (error) {
-      console.log("ERROR : ", error);
-    }
-  }
-
-  useEffect(() => {
-    loadWeathernow();
-  }, []);
-
-  let previousId = 0;
-
-
-  const renderItemWeatherNow = ({ item }) => {
-    const temps = {
-      id: previousId + 1,
-      dt: item.dt,
-      temp: item.temp,
-      feels_like: item.feels_like,
-      weather: item.weather[0],
-      clouds: item.clouds,
-    }
-    console.log("🚀 ~ file: index.js ~ line 275 ~ renderItemWeatherNow ~ temps", temps)
-    if (!temps.length) {
-      return (
-        <View style={styles.contentCartPromotion}>
-          <Card style={[styles.promotionItem, { marginLeft: 15, width: 250 }]}>
-            <View style={{ marginTop: 10, marginBottom: 10 }}>
-              <Text title2 semibold style={{ fontSize: 16, marginLeft: 15 }}>
-                {temps.clouds}
-              </Text>
-              <Image source={image} style={styles.thumb} />
-              <Text title2 semibold style={{ fontSize: 16, marginLeft: 5, }}>
-                {temps.temp} - {temps.temp}
-              </Text>
-              <Text title2 semibold style={{ fontSize: 16, marginLeft: 5, }}>
-                {temps.weather.description} - {temps.weather.main}
-              </Text>
-            </View>
-          </Card>
-        </View>
-      )
-    } else {
-      <View style={styles.contentCartPromotion}>
-        <Card style={[styles.promotionItem, { marginLeft: 15 }]}>
-          <View style={{ marginTop: 10, marginBottom: 10 }}>
-            <Text title2 semibold style={{ fontSize: 16, marginLeft: 15 }}>
-              {item.clouds}
-            </Text>
-            <Image source={image} style={styles.thumb} />
-            <Text title2 semibold style={{ fontSize: 16, marginLeft: 5, }}>
-              {temps.temp} - {temps.temp}
-            </Text>
-            <Text title2 semibold style={{ fontSize: 16, marginLeft: 5, }}>
-              {temps.weather.description} - {temps.weather.main}
-            </Text>
-          </View>
-        </Card>
-      </View>
-    }
-  };
-
+  
   return (
     <View style={{ flex: 1 }}>
       <Animated.Image
-        source={Images.trip3}
+        source={Images.trip1}
         style={[
           styles.imageBackground,
           {
@@ -342,112 +52,12 @@ export default function Home({ navigation }) {
           ])}
           onContentSizeChange={() => setHeightHeader(Utils.heightHeader())}
           scrollEventThrottle={8}
-          ListHeaderComponent={
-            <View style={{ paddingHorizontal: 20 }}>
-              <View
-                style={[
-                  styles.searchForm,
-                  {
-                    marginTop: marginTopBanner,
-                    backgroundColor: colors.background,
-                    borderColor: colors.border,
-                    shadowColor: colors.border,
-                  },
-                ]}>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('Search')}
-                  activeOpacity={0.9}>
-                  <View
-                    style={[
-                      BaseStyle.textInput,
-                      { backgroundColor: colors.card },
-                    ]}>
-                    <Text body1 grayColor>
-                      {t('what_are_you_looking_for')}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-                {renderIconService()}
-              </View>
-
-            </View>
-          }
+          ListHeaderComponent={<HomeMenu marginTopBanner={marginTopBanner} />}
           ListFooterComponent={
             <View>
-              <View>
-                <Text title3 semibold style={styles.titleView}>
-                  {t('อากาศวันนี้')}
-                </Text>
-                {weathernow.hourly && (
-                  <FlatList
-                    contentContainerStyle={{ paddingLeft: 5, paddingRight: 20 }}
-                    horizontal={true}
-                    showsHorizontalScrollIndicator={false}
-                    data={weathernow.hourly}
-                    renderItem={renderItemWeatherNow}
-                    keyExtractor={(item) => item.id}
-                  />
-                )}
-              </View>
-              <View>
-                <Text title3 semibold style={styles.titleView}>
-                  {t('ราคา')}
-                </Text>
-                <FlatList
-                  contentContainerStyle={{ paddingLeft: 5, paddingRight: 20 }}
-                  horizontal={true}
-                  showsHorizontalScrollIndicator={false}
-                  data={cardLine}
-                  keyExtractor={(item, index) => item.id}
-                  renderItem={({ item, index }) => (
-                    <Card style={[styles.lineChart, { marginLeft: 15, backgroundColor: colours[index] }]}
-                      onPress={() => changeBackgroundColor(item)}
-                    >
-                      <Text title2 semibold style={{ fontSize: 16 }}>
-                        {item.name}
-                      </Text>
-                    </Card>
-                  )}
-                />
-                <MyLineChart />
-              </View>
-              <View>
-                <Text title3 semibold style={styles.titleView}>
-                  {t('ระดับน้ำ')}
-                </Text>
-                <FlatList
-                  contentContainerStyle={{ paddingLeft: 5, paddingRight: 20 }}
-                  data={cardLine}
-                  keyExtractor={(item, index) => item.id}
-                  renderItem={({ item, index }) => (
-                    <Card style={[styles.watherCard, { marginLeft: 15 }]} onPress={() => navigation.navigate('TourDetail')}>
-                      <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={{ marginHorizontal: 10 }}>
-                          <Text body1 semibold style={{ fontSize: 15 }}>
-                            {item.water}
-                          </Text>
-                          <Text body1 semibold style={{ fontSize: 12 }}>
-                            ของความจุ
-                          </Text>
-                        </View>
-                        <View style={{ marginHorizontal: 40, }}>
-                          <Text body1 semibold style={{ fontSize: 15 }}>
-                            {item.station}
-                          </Text>
-                          <Text body1 semibold style={{ fontSize: 12 }}>
-                            {item.time}
-                          </Text>
-                        </View>
-                        <View style={{ marginHorizontal: 10, alignSelf: 'center' }}>
-                          <Text body1 semibold style={{ fontSize: 15 }}>
-                            {item.status}
-                          </Text>
-                        </View>
-                      </View>
-                    </Card>
-                  )}
-                />
-              </View>
+              <WeatherNow />              
+              <Price />
+              <WaterLevel />
             </View>
           }
         />
