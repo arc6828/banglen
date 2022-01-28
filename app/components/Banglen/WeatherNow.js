@@ -91,7 +91,7 @@ export default function WeatherNow() {
         showsHorizontalScrollIndicator={false}
         data={weatherNow}
         renderItem={renderItemWeatherNow}
-        keyExtractor={(item) => item.dt}
+        keyExtractor={(item) => item.dt.toString()}
       />
     </View>
   );

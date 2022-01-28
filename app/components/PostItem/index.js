@@ -12,7 +12,9 @@ export default function PostItem(props) {
     <View style={style}>
       {children}
       <TouchableOpacity onPress={onPress} activeOpacity={0.9}>
-        <Image style={styles.imagePost} source={{ uri: image }} />
+        <View style={{ flexDirection: 'row' }}>
+          <Image style={{ flex: 1, resizeMode: "cover", aspectRatio: 16 / 9 }} source={{ uri: image }} />
+        </View>
         <Icon
           name="bookmark"
           solid
@@ -21,7 +23,7 @@ export default function PostItem(props) {
           style={{ position: 'absolute', top: 10, right: 10 }}
         />
       </TouchableOpacity>
-      <View style={[styles.content, { borderBottomColor: colors.border }]}>
+      <View style={[styles.content, { borderBottomColor: colors.border, paddingBottom : 20 }]}>
         <Text headline semibold style={{ marginBottom: 6 }}>
           {title}
         </Text>

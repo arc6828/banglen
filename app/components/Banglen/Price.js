@@ -59,7 +59,7 @@ export default function Price() {
         try {
             let promise = await fetch(url);
             let p = await promise.json();
-            console.log(p);
+            // console.log(p);
             setPrice(p);
             changeBackgroundColor(product_id);
         } catch (error) {
@@ -83,7 +83,7 @@ export default function Price() {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 data={products}
-                keyExtractor={(item, index) => item.id}
+                keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item, index }) => (
                     <TouchableOpacity
                         style={{ marginLeft: 15, backgroundColor: colours[index], borderWidth: 1, borderRadius: 20, padding: 8 }}

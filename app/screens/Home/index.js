@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Animated, TouchableOpacity, FlatList, Dimensions } from 'react-native';
 import { Text, Icon, Card, Image, SafeAreaView, } from '@components';
-import { LineChart } from "react-native-chart-kit";
 import { BaseStyle, Images, useTheme } from '@config';
 import * as Utils from '@utils';
 import styles from './styles';
@@ -10,7 +9,6 @@ import styles from './styles';
 import { useTranslation } from 'react-i18next';
 import HomeMenu from '../../components/Banglen/HomeMenu';
 import WeatherNow from '../../components/Banglen/WeatherNow';
-import Cover from '../../components/Banglen/Cover';
 import Price from '../../components/Banglen/Price';
 import WaterLevel from '../../components/Banglen/WaterLevel';
 
@@ -19,9 +17,15 @@ export default function Home({ navigation }) {
   // const { t } = useTranslation();
   // const { colors } = useTheme();
   const [heightHeader, setHeightHeader] = useState(Utils.heightHeader());
-  const deltaY = new Animated.Value(0);
+  const deltaY = new Animated.Value(0,{});
   const heightImageBanner = Utils.scaleWithPixel(140);
   const marginTopBanner = heightImageBanner - heightHeader;
+
+  useEffect(function(){
+    console.log("MOUNT : Welcome Home!!!");
+
+    return ()=>{ console.log("UNMOUNT"); }
+  },[]);
   
   return (
     <View style={{ flex: 1 }}>
@@ -49,7 +53,7 @@ export default function Home({ navigation }) {
                 contentOffset: { y: deltaY },
               },
             },
-          ])}
+          ],{ useNativeDriver : false })}
           onContentSizeChange={() => setHeightHeader(Utils.heightHeader())}
           scrollEventThrottle={8}
           ListHeaderComponent={<HomeMenu marginTopBanner={marginTopBanner} />}

@@ -169,7 +169,7 @@ export default function WaterLevel() {
             <FlatList
                 contentContainerStyle={{ paddingLeft: 5, paddingRight: 20 }}
                 data={cardLine}
-                keyExtractor={(item, index) => item.id}
+                keyExtractor={(item, index) => item.id.toString()}
                 renderItem={({ item, index }) => (
                     // <Card style={[styles.watherCard, { marginLeft: 15 }]} onPress={() => navigation.navigate('TourDetail')}>
                     <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', borderRadius: 10, borderWidth: 1, borderColor: 'gray', padding: 20, marginHorizontal: 20, marginVertical: 10 }}>

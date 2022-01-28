@@ -4,17 +4,16 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import Navigator from './navigation';
 import { AuthContextProvider } from '../hooks/AuthContext';
-console.disableYellowBox = true;
+// console.disableYellowBox = true;
 
 export default function App() {
   return (
     <Provider store={store}>
-      <AuthContextProvider>
+      {/* <AuthContextProvider> */}
         <PersistGate loading={null} persistor={persistor}>
           <Navigator />
-
         </PersistGate>
-      </AuthContextProvider>
+      {/* </AuthContextProvider> */}
     </Provider>
   );
 }

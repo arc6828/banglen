@@ -1,5 +1,16 @@
 {
-  "android": {
-    "package": "com.rtfloodbma.banglen"
+  "expo": {
+    "name": "Banglen",
+    "icon": "./assets/images/logo-green.png",
+    "version": "0.0.2",
+    "slug": "banglen",
+    "ios": {
+      "bundleIdentifier": "com.rtfloodbma.banglen",
+      "buildNumber": "0.0.2"
+    },
+    "android": {
+      "package": "com.rtfloodbma.banglen",
+      "versionCode": 2
+    }
   }
 }
