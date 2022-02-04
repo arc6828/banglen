@@ -172,7 +172,7 @@ export default function WaterLevel() {
                 keyExtractor={(item, index) => item.id.toString()}
                 renderItem={({ item, index }) => (
                     // <Card style={[styles.watherCard, { marginLeft: 15 }]} onPress={() => navigation.navigate('TourDetail')}>
-                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', borderRadius: 10, borderWidth: 1, borderColor: 'gray', padding: 20, marginHorizontal: 20, marginVertical: 10 }}>
+                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', borderRadius: 10, borderWidth: 1, borderColor: 'gray', paddingVertical: 20, marginHorizontal: 20, marginVertical: 10 }}>
                         <View style={{ marginHorizontal: 10 }}>
                             <Text body1 semibold style={{ fontSize: 15 }}>
                                 {item.water}

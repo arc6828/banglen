@@ -84,10 +84,15 @@ import Profile from "@screens/Profile";
 import UploadFiles from '../screens/UploadFiles'
 import { AuthContext, AuthContextProvider } from '../../hooks/AuthContext';
 import CostSubmit from '../screens/CostSubmit';
+import Weather from '../../screens/Weather';
+
+
 import BottomTabNavigator from './BottomTabNavigator';
+import Price from '../../screens/Price';
+import PriceDetail from '../../screens/PriceDetail';
 const MainStack = createStackNavigator();
 export default function Main() {
-  const [user, setUser] = useContext(AuthContext);
+  // const [user, setUser] = useContext(AuthContext);
 
   useEffect(() => {
     // const subscriber = fb.auth().onAuthStateChanged((current_user) => {
@@ -117,6 +122,11 @@ export default function Main() {
       <MainStack.Screen name="PostDetail" component={PostDetail} />
       <MainStack.Screen name="BookingDetail" component={BookingDetail} />
       <MainStack.Screen name="CostSubmit" component={CostSubmit} />
+
+      {/* my screens */}
+      <MainStack.Screen name="Weather" component={Weather} />
+      <MainStack.Screen name="Price" component={Price} />
+      <MainStack.Screen name="PriceDetail" component={PriceDetail} />
 
     </MainStack.Navigator>
   )

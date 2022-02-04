@@ -17,6 +17,7 @@ export default function Home({ navigation }) {
   // const { t } = useTranslation();
   // const { colors } = useTheme();
   const [heightHeader, setHeightHeader] = useState(Utils.heightHeader());
+  const [refreshing, setRefreshing] = useState(false);
   const deltaY = new Animated.Value(0,{});
   const heightImageBanner = Utils.scaleWithPixel(140);
   const marginTopBanner = heightImageBanner - heightHeader;
@@ -64,6 +65,12 @@ export default function Home({ navigation }) {
               <WaterLevel />
             </View>
           }
+          refreshing={false}
+          onRefresh={()=>{
+            // navigation.navigate("Main");
+            setRefreshing(true);
+            setRefreshing(false);
+          }}
         />
       </SafeAreaView>
     </View>

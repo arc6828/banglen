@@ -18,13 +18,13 @@ export default function HomeMenu(props) {
     //OTHER
     const navigation = useNavigation();
     const icons = [
-        { icon: 'thermometer-half', name: 'อากาศ', route: 'Hotel' },
+        { icon: 'thermometer-half', name: 'อากาศ', route: 'Weather' },
         { icon: 'tint', name: 'น้ำ', route: 'Tour' },
         { icon: 'globe-asia', name: 'ดิน', route: 'OverViewCar' },
         { icon: 'leaf', name: 'พืช', route: 'FlightSearch' },
         { icon: 'users', name: 'สังคม', route: 'CruiseSearch' },
         { icon: 'bitcoin', name: 'เศรษฐกิจ', route: 'BusSearch' },
-        { icon: 'chart-line', name: 'ราคา', route: 'DashboardEvent' },
+        { icon: 'chart-line', name: 'ราคา', route: 'Price' },
         { icon: 'ellipsis-h', name: 'อื่นๆ', route: 'More' }
     ];
 

@@ -4,17 +4,22 @@ import { BaseStyle, useTheme } from '@config';
 import { Header, SafeAreaView, PostItem, ProfileAuthor } from '@components';
 import { useTranslation } from 'react-i18next';
 import RssJson from '../../../backend/json/86m388h17.json';
+import Medium from '../../../services/Medium';
 
 export default function Post({ navigation }) {
   const { colors } = useTheme();
   const { t } = useTranslation();
 
-  const [refreshing] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const [posts, setPosts] = useState([]);
 
-  useEffect(function () {
-    
-    // setPosts();
+  const loadPost = async ()=>{    
+    let p = await Medium.getPosts();
+    setPosts(p);
+  };
+
+  useEffect(()=> {
+    loadPost();
   }, []);
   return (
     <View style={{ flex: 1 }}>
@@ -22,7 +27,11 @@ export default function Post({ navigation }) {
       <SafeAreaView style={BaseStyle.safeAreaView} edges={['right', 'left', 'bottom']}>
         <FlatList
           refreshing={refreshing}
-          onRefresh={() => { }}
+          onRefresh={() => { 
+            setRefreshing(true);
+            loadPost();
+            setRefreshing(false);
+          }}
           data={posts}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item, index }) => (

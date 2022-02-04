@@ -5,14 +5,15 @@ import { LineChart } from "react-native-chart-kit";
 import { BaseStyle, Images, useTheme } from '@config';
 import * as Utils from '@utils';
 // import styles from './styles';
-import styles from '../../screens/Home/styles';
+import styles from '../../app/screens/Home/styles';
 // import axios from 'axios';
 // import { UserData } from '@data';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
+import Time from '../../helpers/Time';
 
 
-export default function WeatherNow() {
+export default function WeatherWeek() {
   const navigation = useNavigation();
   //STANDARD VARIABLES
   const { t } = useTranslation();
@@ -43,7 +44,7 @@ export default function WeatherNow() {
               </View>
               <View style={{ alignItems: 'center' }}>
                 <View style={{ borderWidth: 1, borderRadius: 13, borderColor: 'gray', padding: 3 }}>
-                  <Text style={{ fontSize: 16 }}> {(new Date(item.dt * 1000)).toString().split(" ")[0]} </Text>
+                  <Text style={{ fontSize: 16 }}> { Time.justDay(item.dt) } </Text>
                 </View>
                 {/* <Text style={{ fontSize: 16 }}> { (new Date(item.dt)).toString() } </Text> */}
 
@@ -61,7 +62,7 @@ export default function WeatherNow() {
           <View style={{ width: 130, height: 180, borderWidth: 1, borderRadius: 10, borderColor: 'gray', padding: 10, justifyContent: 'center' }}>
             <View style={{ alignItems: 'center' }} >
               <View style={{ borderWidth: 1, borderRadius: 13, borderColor: 'gray', padding: 3 }}>
-                <Text style={{ fontSize: 16 }}> {(new Date(item.dt * 1000)).toString().split(" ")[0]} </Text>
+                <Text style={{ fontSize: 16 }}> { Time.justDay(item.dt) } </Text>
               </View>
               {/* <Text style={{ fontSize: 16 }}> { (new Date(item.dt)).toString() } </Text> */}
               <Image

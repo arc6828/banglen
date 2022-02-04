@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AuthActions } from "@actions";
 import { View, TouchableOpacity, ScrollView } from "react-native";
-import { SafeAreaView, Text, Button, Image } from "@components";
+import { SafeAreaView, Text, Button, Image  } from "@components";
 import styles from "./styles";
 import Swiper from "react-native-swiper";
 import { BaseColor, BaseStyle, Images, useTheme } from "@config";
 import * as Utils from "@utils";
 import { useTranslation } from "react-i18next";
-
+import { Icon } from "@components";
 
 export default function Walkthrough({ navigation }) {
   const [loading, setLoading] = useState(false);
@@ -64,9 +64,10 @@ export default function Walkthrough({ navigation }) {
             full
             style={{ marginTop: 20 }}
             loading={loading}
-            onPress={() => navigation.navigate("SignIn")}
+            icon={<Icon color={"white"} name="envelope" size={20} solid />}
+            // onPress={() => navigation.navigate("SignIn")}
           >
-            {t("sign_in")}
+            {t("  เข้าสู่ระบบด้วย Email")}
           </Button>
           <Button
             full
@@ -74,11 +75,12 @@ export default function Walkthrough({ navigation }) {
               backgroundColor: BaseColor.navyRed,
               marginTop: 20,
             }}
-            onPress={() => {
-              authentication();
-            }}
-          >
-            {t("Login with Google")}
+            icon={<Icon color={"white"} name="google" size={20} solid />}
+            // onPress={() => {
+            //   authentication();
+            // }}
+          >            
+            {t("  เข้าสู่ระบบด้วยบัญชี Google")}
           </Button>
 
           <View style={styles.contentActionBottom}>
