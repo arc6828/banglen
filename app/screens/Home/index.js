@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Animated, TouchableOpacity, FlatList, Dimensions } from 'react-native';
+import { View, Animated, TouchableOpacity, FlatList, Dimensions, LogBox } from 'react-native';
 import { Text, Icon, Card, Image, SafeAreaView, } from '@components';
 import { BaseStyle, Images, useTheme } from '@config';
 import * as Utils from '@utils';
@@ -22,8 +22,10 @@ export default function Home({ navigation }) {
   const heightImageBanner = Utils.scaleWithPixel(140);
   const marginTopBanner = heightImageBanner - heightHeader;
 
+  // useEffect(() => {  }, []);
   useEffect(function(){
     console.log("MOUNT : Welcome Home!!!");
+    LogBox.ignoreLogs(['Require cycle','Setting a timer']);
 
     return ()=>{ console.log("UNMOUNT"); }
   },[]);
@@ -31,7 +33,7 @@ export default function Home({ navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <Animated.Image
-        source={Images.trip1}
+        source={Images.background4}
         style={[
           styles.imageBackground,
           {

@@ -18,14 +18,14 @@ export default function HomeMenu(props) {
     //OTHER
     const navigation = useNavigation();
     const icons = [
+        { icon: 'map-marker', name: 'บางเลน', route: 'About' },
         { icon: 'thermometer-half', name: 'อากาศ', route: 'Weather' },
-        { icon: 'tint', name: 'น้ำ', route: 'Tour' },
-        { icon: 'globe-asia', name: 'ดิน', route: 'OverViewCar' },
-        { icon: 'leaf', name: 'พืช', route: 'FlightSearch' },
-        { icon: 'users', name: 'สังคม', route: 'CruiseSearch' },
-        { icon: 'bitcoin', name: 'เศรษฐกิจ', route: 'BusSearch' },
-        { icon: 'chart-line', name: 'ราคา', route: 'Price' },
-        { icon: 'ellipsis-h', name: 'อื่นๆ', route: 'More' }
+        { icon: 'tint', name: 'น้ำ', route: 'Water' },
+        { icon: 'globe-asia', name: 'ดิน', route: 'SoilTopTab' },
+        { icon: 'leaf', name: 'พืช', route: 'Plant' },
+        { icon: 'users', name: 'สังคม', route: 'Social' },
+        { icon: 'bitcoin', name: 'เศรษฐกิจ', route: 'Economic' },
+        { icon: 'ellipsis-h', name: 'อื่นๆ', route: 'Others' }
     ];
 
     return (
@@ -41,7 +41,7 @@ export default function HomeMenu(props) {
                     },
                 ]}>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('Search')}
+                    // onPress={() => navigation.navigate('Search')}
                     activeOpacity={0.9}>
                     <View style={[BaseStyle.textInput, { backgroundColor: colors.card }]}>
                         <Text body1 grayColor> {t('what_are_you_looking_for')} </Text>

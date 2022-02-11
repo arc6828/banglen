@@ -12,10 +12,14 @@ const justFullDate = (seconds=(new Date()).valueOf()/1000)=>{
     return dayjs.unix(seconds).format("dddd D MMMM")+ " " + (543 + Number(dayjs.unix(seconds).format("YYYY")));
 };
 
+const justShortDate = (seconds=(new Date()).valueOf()/1000)=>{
+    return dayjs.unix(seconds).format("DD MMM")+ " " + (-2500 + 543 + Number(dayjs.unix(seconds).format("YYYY")));
+};
+
 
 const justDay = (seconds=(new Date()).valueOf()/1000)=>{
     return dayjs.unix(seconds).format("dddd");
 };
 
 
-export default { justTime, justFullDate, justDay };
+export default { justTime, justFullDate, justDay, justShortDate };

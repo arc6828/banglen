@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { StatusBar, Platform } from "react-native";
+import { StatusBar, Platform, LogBox } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { AppearanceProvider, useColorScheme } from "react-native-appearance";
@@ -33,6 +33,7 @@ export default function Navigator() {
   const isDarkMode = useColorScheme() === "dark";
 
   useEffect(() => {
+    LogBox.ignoreLogs(['Require cycle','Setting a timer']);
     i18n.use(initReactI18next).init({
       resources: BaseSetting.resourcesLanguage,
       lng: BaseSetting.defaultLanguage,

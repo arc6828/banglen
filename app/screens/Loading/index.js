@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ActivityIndicator, View } from "react-native";
+import { ActivityIndicator, LogBox, View } from "react-native";
 import * as Font from "expo-font";
 import { Images, BaseColor, useTheme } from "@config";
 import { Image, Text } from "@components";
@@ -57,6 +57,7 @@ export default function Loading({ navigation }) {
     }, 500);
   };
   useEffect(() => {
+    LogBox.ignoreLogs(['Require cycle','Setting a timer']);
     onProcess();
   }, []);
 

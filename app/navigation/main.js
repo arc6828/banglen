@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { YellowBox } from 'react-native';
+import { Text, YellowBox } from 'react-native';
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { fb } from '../../db_config';
@@ -88,10 +88,24 @@ import Weather from '../../screens/Weather';
 
 
 import BottomTabNavigator from './BottomTabNavigator';
+import About from '../../screens/About';
 import Price from '../../screens/Price';
 import PriceDetail from '../../screens/PriceDetail';
+import Water from '../../screens/Water';
+// import Soil from '../../screens/Soil';
+import Plant from '../../screens/Plant';
+import Social from '../../screens/Social';
+import Economic from '../../screens/Economic';
+import Others from '../../screens/Others';
+import SoilTopTab from './SoilTopTab';
+import { useNavigation } from '@react-navigation/native';
+import { Header } from '../components';
 const MainStack = createStackNavigator();
 export default function Main() {
+
+  //BASIC
+  const navigation = useNavigation();
+  const { colors } = useTheme();
   // const [user, setUser] = useContext(AuthContext);
 
   useEffect(() => {
@@ -103,13 +117,16 @@ export default function Main() {
     //   }
     // });
     // return subscriber;
-  },[]);
+  }, []);
 
 
   return (
     <MainStack.Navigator
       screenOptions={{
         headerShown: false,
+        headerTitleAlign: 'center',
+        headerTintColor: colors.primary,
+        headerTitleStyle: { color: 'black' }
       }}>
       <MainStack.Screen
         name="BottomTabNavigator"
@@ -124,9 +141,32 @@ export default function Main() {
       <MainStack.Screen name="CostSubmit" component={CostSubmit} />
 
       {/* my screens */}
+      <MainStack.Screen name="About" component={About} />
       <MainStack.Screen name="Weather" component={Weather} />
-      <MainStack.Screen name="Price" component={Price} />
-      <MainStack.Screen name="PriceDetail" component={PriceDetail} />
+      <MainStack.Screen name="Water" component={Water} />
+      {/* <MainStack.Screen name="Soil" component={Soil} /> */}
+      <MainStack.Screen
+        name="SoilTopTab"
+        component={SoilTopTab}
+        options={{
+          headerShown: true,
+          title: "ข้อมูลด้านดิน",
+          // headerTitleAlign: 'center',
+          // headerTitle: (props) => (
+          //   <Header
+          //       title="ข้อมูลด้านดิน Ay"
+          //       renderLeft={() => (<Icon name="arrow-left" size={20} color={colors.primary} enableRTL={true} />)}
+          //       onPressLeft={() => { navigation.goBack(); }}
+          //       {...props}
+          //   />
+          // ) 
+        }} />
+      <MainStack.Screen name="Plant" component={Plant} />
+      <MainStack.Screen name="Social" component={Social} />
+      <MainStack.Screen name="Economic" component={Economic} />
+      {/* <MainStack.Screen name="Price" component={Price} />
+      <MainStack.Screen name="PriceDetail" component={PriceDetail} /> */}
+      <MainStack.Screen name="Others" component={Others} />
 
     </MainStack.Navigator>
   )

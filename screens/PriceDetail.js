@@ -8,6 +8,7 @@ import WeatherWeek from "../components/weather/WeatherWeek";
 import Market from "../components/price/Market";
 import Product from "../services/Product";
 import LineInformation from "../components/line/LineInformation";
+import PriceChart from "../components/price/PriceChart";
 
 export default function PriceDetail(props) {
     const navigation = useNavigation();
@@ -32,19 +33,14 @@ export default function PriceDetail(props) {
                 renderLeft={() => (<Icon name="arrow-left" size={20} color={colors.primary} enableRTL={true} />)}
                 onPressLeft={() => { navigation.goBack(); }}
             />
-            <View style={[colors.primary, { padding: 10 }]}>
+            <View style={[colors.primary, { padding: 20 }]}>
                 <Text style={{ color : colors.primary }}>ข้อมูลทั่วไปของผลิตภัณฑ์</Text>
                 <LineInformation data={product} />
                 
                 <Text style={{ color : colors.primary, marginTop : 20 }}>ราคาในอดีต</Text>
-                <Text>{JSON.stringify(product)}</Text>
+                <PriceChart data={product}/>
+                {/* <Text>{JSON.stringify(product)}</Text> */}
             </View>
-            
-
-
-
-
-
         </ScrollView>
     );
 }

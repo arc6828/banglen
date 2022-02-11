@@ -9,6 +9,7 @@ import {UserData} from './user';
 import {MessagesData} from './messages';
 import {NotificationData} from './notification';
 import {PostData} from './post';
+import {ProfileData} from './profile';
 import {PackageData} from './package';
 import {WorkProgressData} from './workprogress';
 import {HelpBlockData} from './helpblock';
@@ -42,4 +43,5 @@ export {
   CarData,
   FlightBrandData,
   EventListData,
+  ProfileData,
 };

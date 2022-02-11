@@ -1,6 +1,6 @@
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 //REDUX AND THEME
 import { useSelector } from "react-redux";
@@ -18,6 +18,8 @@ import Profile from "@screens/Profile";
 import Walkthrough from "@screens/Walkthrough";
 
 import { AuthContext, AuthContextProvider } from '../../hooks/AuthContext';
+import { LogBox } from "react-native";
+import PriceStack from "./PriceStack";
 
 const BottomTab = createBottomTabNavigator();
 export default function BottomTabNavigator() {
@@ -28,10 +30,13 @@ export default function BottomTabNavigator() {
   const font = useFont();
   // const auth = useSelector((state) => state.auth);
   // const login = auth.login.success;
-
+  useEffect(() => { LogBox.ignoreLogs(['Require cycle']); }, []);
   return (
+
+    
     <BottomTab.Navigator
       initialRouteName="Home"
+      // initialRouteName="Price"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.primary,
@@ -55,13 +60,23 @@ export default function BottomTabNavigator() {
           },
         }}
       />
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="Booking"
         component={Booking}
         options={{
           title: t("ต้นทุน"),
           tabBarIcon: ({ color }) => {
             return <Icon color={color} name="globe-asia" size={20} solid />;
+          },
+        }}
+      /> */}
+      <BottomTab.Screen
+        name="PriceStack"
+        component={PriceStack}
+        options={{
+          title: t("ราคา"),
+          tabBarIcon: ({ color }) => {
+            return <Icon color={color} name="chart-line" size={20} solid />;
           },
         }}
       />
