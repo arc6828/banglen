@@ -1,0 +1,380 @@
+[
+    {
+        "code": "A1",
+        "description": "พื้นที่นา",
+        "area_in_rai": "222634",
+        "year": "2550"
+    },
+    {
+        "code": "A2",
+        "description": "พืชไร่",
+        "area_in_rai": "161",
+        "year": "2550"
+    },
+    {
+        "code": "A3",
+        "description": "ไม้ยืนต้น",
+        "area_in_rai": "675",
+        "year": "2550"
+    },
+    {
+        "code": "A4",
+        "description": "ไม้ผล",
+        "area_in_rai": "11275",
+        "year": "2550"
+    },
+    {
+        "code": "A5",
+        "description": "พืชสวน",
+        "area_in_rai": "13452",
+        "year": "2550"
+    },
+    {
+        "code": "A7",
+        "description": "ทุ่งหญ้าเลี้ยงสัตว์และโรงเรือนสัตว์",
+        "area_in_rai": "4915",
+        "year": "2550"
+    },
+    {
+        "code": "A8",
+        "description": "พืชน้ำ",
+        "area_in_rai": "3486",
+        "year": "2550"
+    },
+    {
+        "code": "A9",
+        "description": "สถานที่เพาะเลี้ยงสัตว์น้ำ",
+        "area_in_rai": "51617",
+        "year": "2550"
+    },
+    {
+        "code": "M1",
+        "description": "ทุ่งหญ้าและไม้ละเมาะ",
+        "area_in_rai": "9062",
+        "year": "2550"
+    },
+    {
+        "code": "M2",
+        "description": "พื้นที่ลุ่ม",
+        "area_in_rai": "2749",
+        "year": "2550"
+    },
+    {
+        "code": "M3",
+        "description": "เหมืองแร่ บ่อขุด",
+        "area_in_rai": "1902",
+        "year": "2550"
+    },
+    {
+        "code": "M4",
+        "description": "พื้นที่ เบ็ดเตล็ดอื่นๆ",
+        "area_in_rai": "0",
+        "year": "2550"
+    },
+    {
+        "code": "M7",
+        "description": "ที่ทิ้งขยะ",
+        "area_in_rai": "0",
+        "year": "2550"
+    },
+    {
+        "code": "U1",
+        "description": "ตัวเมืองและย่านการค้า",
+        "area_in_rai": "156",
+        "year": "2550"
+    },
+    {
+        "code": "U2",
+        "description": "หมู่บ้าน",
+        "area_in_rai": "23653",
+        "year": "2550"
+    },
+    {
+        "code": "U4",
+        "description": "สถานีคมนาคม",
+        "area_in_rai": "1396",
+        "year": "2550"
+    },
+    {
+        "code": "U5",
+        "description": "พื้นที่อุตสาหกรรม",
+        "area_in_rai": "2213",
+        "year": "2550"
+    },
+    {
+        "code": "U6",
+        "description": "สิ่งปลูกสร้างอื่นๆ",
+        "area_in_rai": "0",
+        "year": "2550"
+    },
+    {
+        "code": "U7",
+        "description": "สนามกอล์ฟ",
+        "area_in_rai": "1008",
+        "year": "2550"
+    },
+    {
+        "code": "W1",
+        "description": "แหล่งน้ำธรรมชาติ",
+        "area_in_rai": "5939",
+        "year": "2550"
+    },
+    {
+        "code": "W2",
+        "description": "แหล่งน้ำที่สร้างขึ้น",
+        "area_in_rai": "10939",
+        "year": "2550"
+    },
+    {
+        "code": "A1",
+        "description": "พื้นที่นา",
+        "area_in_rai": "231033",
+        "year": "2554"
+    },
+    {
+        "code": "A2",
+        "description": "พืชไร่",
+        "area_in_rai": "131",
+        "year": "2554"
+    },
+    {
+        "code": "A3",
+        "description": "ไม้ยืนต้น",
+        "area_in_rai": "1969",
+        "year": "2554"
+    },
+    {
+        "code": "A4",
+        "description": "ไม้ผล",
+        "area_in_rai": "5500",
+        "year": "2554"
+    },
+    {
+        "code": "A5",
+        "description": "พืชสวน",
+        "area_in_rai": "16892",
+        "year": "2554"
+    },
+    {
+        "code": "A7",
+        "description": "ทุ่งหญ้าเลี้ยงสัตว์และโรงเรือนสัตว์",
+        "area_in_rai": "2956",
+        "year": "2554"
+    },
+    {
+        "code": "A8",
+        "description": "พืชน้ำ",
+        "area_in_rai": "2268",
+        "year": "2554"
+    },
+    {
+        "code": "A9",
+        "description": "สถานที่เพาะเลี้ยงสัตว์น้ำ",
+        "area_in_rai": "48825",
+        "year": "2554"
+    },
+    {
+        "code": "M1",
+        "description": "ทุ่งหญ้าและไม้ละเมาะ",
+        "area_in_rai": "7587",
+        "year": "2554"
+    },
+    {
+        "code": "M2",
+        "description": "พื้นที่ลุ่ม",
+        "area_in_rai": "2162",
+        "year": "2554"
+    },
+    {
+        "code": "M3",
+        "description": "เหมืองแร่ บ่อขุด",
+        "area_in_rai": "2339",
+        "year": "2554"
+    },
+    {
+        "code": "M4",
+        "description": "พื้นที่ เบ็ดเตล็ดอื่นๆ",
+        "area_in_rai": "206",
+        "year": "2554"
+    },
+    {
+        "code": "M7",
+        "description": "ที่ทิ้งขยะ",
+        "area_in_rai": "22749",
+        "year": "2554"
+    },
+    {
+        "code": "U1",
+        "description": "ตัวเมืองและย่านการค้า",
+        "area_in_rai": "1430",
+        "year": "2554"
+    },
+    {
+        "code": "U2",
+        "description": "หมู่บ้าน",
+        "area_in_rai": "1775",
+        "year": "2554"
+    },
+    {
+        "code": "U4",
+        "description": "สถานีคมนาคม",
+        "area_in_rai": "22749",
+        "year": "2554"
+    },
+    {
+        "code": "U5",
+        "description": "พื้นที่อุตสาหกรรม",
+        "area_in_rai": "1430",
+        "year": "2554"
+    },
+    {
+        "code": "U6",
+        "description": "สิ่งปลูกสร้างอื่นๆ",
+        "area_in_rai": "0",
+        "year": "2554"
+    },
+    {
+        "code": "U7",
+        "description": "สนามกอล์ฟ",
+        "area_in_rai": "1030",
+        "year": "2554"
+    },
+    {
+        "code": "W1",
+        "description": "แหล่งน้ำธรรมชาติ",
+        "area_in_rai": "7141",
+        "year": "2554"
+    },
+    {
+        "code": "W2",
+        "description": "แหล่งน้ำที่สร้างขึ้น",
+        "area_in_rai": "9055",
+        "year": "2554"
+    },
+    {
+        "code": "A1",
+        "description": "พื้นที่นา",
+        "area_in_rai": "189853",
+        "year": "2562"
+    },
+    {
+        "code": "A2",
+        "description": "พืชไร่",
+        "area_in_rai": "459",
+        "year": "2562"
+    },
+    {
+        "code": "A3",
+        "description": "ไม้ยืนต้น",
+        "area_in_rai": "1355",
+        "year": "2562"
+    },
+    {
+        "code": "A4",
+        "description": "ไม้ผล",
+        "area_in_rai": "4797",
+        "year": "2562"
+    },
+    {
+        "code": "A5",
+        "description": "พืชสวน",
+        "area_in_rai": "29335",
+        "year": "2562"
+    },
+    {
+        "code": "A7",
+        "description": "ทุ่งหญ้าเลี้ยงสัตว์และโรงเรือนสัตว์",
+        "area_in_rai": "5184",
+        "year": "2562"
+    },
+    {
+        "code": "A8",
+        "description": "พืชน้ำ",
+        "area_in_rai": "7969",
+        "year": "2562"
+    },
+    {
+        "code": "A9",
+        "description": "สถานที่เพาะเลี้ยงสัตว์น้ำ",
+        "area_in_rai": "59507",
+        "year": "2562"
+    },
+    {
+        "code": "M1",
+        "description": "ทุ่งหญ้าและไม้ละเมาะ",
+        "area_in_rai": "4103",
+        "year": "2562"
+    },
+    {
+        "code": "M2",
+        "description": "พื้นที่ลุ่ม",
+        "area_in_rai": "2370",
+        "year": "2562"
+    },
+    {
+        "code": "M3",
+        "description": "เหมืองแร่ บ่อขุด",
+        "area_in_rai": "3667",
+        "year": "2562"
+    },
+    {
+        "code": "M4",
+        "description": "พื้นที่ เบ็ดเตล็ดอื่นๆ",
+        "area_in_rai": "1984",
+        "year": "2562"
+    },
+    {
+        "code": "M7",
+        "description": "ที่ทิ้งขยะ",
+        "area_in_rai": "18",
+        "year": "2562"
+    },
+    {
+        "code": "U1",
+        "description": "ตัวเมืองและย่านการค้า",
+        "area_in_rai": "0",
+        "year": "2562"
+    },
+    {
+        "code": "U2",
+        "description": "หมู่บ้าน",
+        "area_in_rai": "24071",
+        "year": "2562"
+    },
+    {
+        "code": "U4",
+        "description": "สถานีคมนาคม",
+        "area_in_rai": "1591",
+        "year": "2562"
+    },
+    {
+        "code": "U5",
+        "description": "พื้นที่อุตสาหกรรม",
+        "area_in_rai": "11358",
+        "year": "2562"
+    },
+    {
+        "code": "U6",
+        "description": "สิ่งปลูกสร้างอื่นๆ",
+        "area_in_rai": "307",
+        "year": "2562"
+    },
+    {
+        "code": "U7",
+        "description": "สนามกอล์ฟ",
+        "area_in_rai": "1758",
+        "year": "2562"
+    },
+    {
+        "code": "W1",
+        "description": "แหล่งน้ำธรรมชาติ",
+        "area_in_rai": "6876",
+        "year": "2562"
+    },
+    {
+        "code": "W2",
+        "description": "แหล่งน้ำที่สร้างขึ้น",
+        "area_in_rai": "9388",
+        "year": "2562"
+    }
+]
