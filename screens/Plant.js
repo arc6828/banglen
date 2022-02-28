@@ -3,6 +3,7 @@ import { ScrollView, Text, View } from "react-native";
 import { Header, Icon } from "../app/components";
 import { BaseStyle, Images, useTheme } from '@config';
 import { useNavigation } from "@react-navigation/native";
+import RiceList from "../components/plant/RiceList";
 
 
 export default function Plant() {
@@ -18,5 +19,6 @@ export default function Plant() {
                 renderLeft={() => (<Icon name="arrow-left" size={20} color={colors.primary} enableRTL={true} />)}
                 onPressLeft={() => { navigation.goBack(); }}
             />
+            <RiceList />
         </View>);
 }

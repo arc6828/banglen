@@ -18,11 +18,11 @@ export default function AboutUs({ navigation }) {
 
     return (
         <View style={{ flex: 1 }}>
-            <Header
+            {/* <Header
                 title={t('about_us')}
                 renderLeft={() => (<Icon name="arrow-left" size={20} color={colors.primary} enableRTL={true} />)}
                 onPressLeft={() => { navigation.goBack(); }}
-            />
+            /> */}
             <SafeAreaView
                 style={BaseStyle.safeAreaView}
                 edges={['right', 'left', 'bottom']}>

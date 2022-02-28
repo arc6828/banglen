@@ -16,6 +16,7 @@ import Notification from "@screens/Notification";
 import Post from "@screens/Post";
 import Profile from "@screens/Profile";
 import Walkthrough from "@screens/Walkthrough";
+import About from '../../screens/About';
 
 import { AuthContext, AuthContextProvider } from '../../hooks/AuthContext';
 import { LogBox } from "react-native";
@@ -101,11 +102,11 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Profile"
+        name="About"
         // component={user ? Profile : Walkthrough}
-        component={Walkthrough}
+        component={About}
         options={{
-          title: t("บัญชีของฉัน"),
+          title: t("บางเลน"),
           tabBarIcon: ({ color }) => {
             return <Icon solid color={color} name="user-circle" size={20} />;
           },

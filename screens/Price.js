@@ -19,8 +19,8 @@ export default function Price() {
             {/* <Header title="สภาพอากาศ" /> */}
             <Header
                 title="ราคาสินค้า"
-                renderLeft={() => (<Icon name="arrow-left" size={20} color={colors.primary} enableRTL={true} />)}
-                onPressLeft={() => { navigation.goBack(); }}
+                // renderLeft={() => (<Icon name="arrow-left" size={20} color={colors.primary} enableRTL={true} />)}
+                // onPressLeft={() => { navigation.goBack(); }}
             />
 
             <Market />

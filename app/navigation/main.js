@@ -96,10 +96,12 @@ import Water from '../../screens/Water';
 import Plant from '../../screens/Plant';
 import Social from '../../screens/Social';
 import Economic from '../../screens/Economic';
+import CostCalculator from '../../screens/CostCalculator';
 import Others from '../../screens/Others';
 import SoilTopTab from './SoilTopTab';
 import { useNavigation } from '@react-navigation/native';
 import { Header } from '../components';
+import PlantDetail from '../../screens/PlantDetail';
 const MainStack = createStackNavigator();
 export default function Main() {
 
@@ -141,7 +143,7 @@ export default function Main() {
       <MainStack.Screen name="CostSubmit" component={CostSubmit} />
 
       {/* my screens */}
-      <MainStack.Screen name="About" component={About} />
+      {/* <MainStack.Screen name="About" component={About} /> */}
       <MainStack.Screen name="Weather" component={Weather} />
       <MainStack.Screen name="Water" component={Water} />
       {/* <MainStack.Screen name="Soil" component={Soil} /> */}
@@ -161,11 +163,15 @@ export default function Main() {
           //   />
           // ) 
         }} />
+
       <MainStack.Screen name="Plant" component={Plant} />
+      <MainStack.Screen name="PlantDetail" component={PlantDetail} />
       <MainStack.Screen name="Social" component={Social} />
       <MainStack.Screen name="Economic" component={Economic} />
       {/* <MainStack.Screen name="Price" component={Price} />
       <MainStack.Screen name="PriceDetail" component={PriceDetail} /> */}
+      
+      <MainStack.Screen name="CostCalculator" component={CostCalculator} options={{  headerShown: true, title: "คำนวณต้นทุนการปลูก", }}  />
       <MainStack.Screen name="Others" component={Others} />
 
     </MainStack.Navigator>

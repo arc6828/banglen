@@ -18,13 +18,13 @@ export default function HomeMenu(props) {
     //OTHER
     const navigation = useNavigation();
     const icons = [
-        { icon: 'map-marker', name: 'บางเลน', route: 'About' },
         { icon: 'thermometer-half', name: 'อากาศ', route: 'Weather' },
         { icon: 'tint', name: 'น้ำ', route: 'Water' },
         { icon: 'globe-asia', name: 'ดิน', route: 'SoilTopTab' },
         { icon: 'leaf', name: 'พืช', route: 'Plant' },
         { icon: 'users', name: 'สังคม', route: 'Social' },
         { icon: 'bitcoin', name: 'เศรษฐกิจ', route: 'Economic' },
+        { icon: 'calculator', name: 'คำนวณต้นทุน', route: 'CostCalculator' },
         { icon: 'ellipsis-h', name: 'อื่นๆ', route: 'Others' }
     ];
 

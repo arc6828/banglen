@@ -17,19 +17,19 @@ export default function Notification({navigation}) {
     <View style={{flex: 1}}>
       <Header
         title={t('notification')}
-        renderLeft={() => {
-          return (
-            <Icon
-              name="arrow-left"
-              size={20}
-              color={colors.primary}
-              enableRTL={true}
-            />
-          );
-        }}
-        onPressLeft={() => {
-          navigation.goBack();
-        }}
+        // renderLeft={() => {
+        //   return (
+        //     <Icon
+        //       name="arrow-left"
+        //       size={20}
+        //       color={colors.primary}
+        //       enableRTL={true}
+        //     />
+        //   );
+        // }}
+        // onPressLeft={() => {
+        //   navigation.goBack();
+        // }}
       />
       <SafeAreaView
         style={BaseStyle.safeAreaView}
