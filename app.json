@@ -2,15 +2,15 @@
   "expo": {
     "name": "Banglen",
     "icon": "./assets/images/logo-green.png",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "slug": "banglen",
     "ios": {
       "bundleIdentifier": "com.rtfloodbma.banglen",
-      "buildNumber": "0.0.4"
+      "buildNumber": "0.0.5"
     },
     "android": {
       "package": "com.rtfloodbma.banglen",
-      "versionCode": 4
+      "versionCode": 5
     }
   }
 }
