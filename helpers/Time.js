@@ -21,5 +21,9 @@ const justDay = (seconds=(new Date()).valueOf()/1000)=>{
     return dayjs.unix(seconds).format("dddd");
 };
 
+const justMonth = (seconds=(new Date()).valueOf()/1000)=>{
+    return dayjs.unix(seconds).format("M");
+};
 
-export default { justTime, justFullDate, justDay, justShortDate };
+
+export default { justTime, justFullDate, justDay, justShortDate, justMonth };

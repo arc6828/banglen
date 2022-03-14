@@ -11,9 +11,9 @@ export default function LandUseImage() {
     return (
         <View>
             <View style={{ flexDirection: "row", marginVertical: 10, justifyContent: "center" }}>
-                {images.map((item) => {
+                {images.map((item,index) => {
                     return (
-                        <TouchableOpacity onPress={()=>{ setModalVisible(true) }}>
+                        <TouchableOpacity onPress={()=>{ setModalVisible(true) }} key={index.toString()}>
                             <Image source={item} style={{ width: 100, height: 100, marginHorizontal: 20 }} />
                         </TouchableOpacity>
                     );

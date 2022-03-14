@@ -53,7 +53,7 @@ export default function RiceList() {
                         </View>
                     </TouchableOpacity>
                 )}
-                keyExtractor={(item) => (item.product_id)}
+                keyExtractor={(item) => (item.variety)}
             />
 
         </View>

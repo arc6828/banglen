@@ -5,6 +5,7 @@ import { BaseStyle, Images, useTheme } from '@config';
 import WeatherNow from "../components/weather/WeatherNow";
 import { useNavigation } from "@react-navigation/native";
 import WeatherWeek from "../components/weather/WeatherWeek";
+import History from "../components/weather/History";
 
 export default function Weather() {
     const navigation = useNavigation();
@@ -13,7 +14,7 @@ export default function Weather() {
     return (
         <ScrollView>
             {/* <Header title="สภาพอากาศ" /> */}
-            <Header
+            {/* <Header
                 title="สภาพอากาศ"
                 renderLeft={() => {
                     return (
@@ -28,12 +29,13 @@ export default function Weather() {
                 onPressLeft={() => {
                     navigation.goBack();
                 }}
-            />
+            /> */}
 
             <WeatherNow />
 
             <WeatherWeek />
-            <Text>ย้อนหลัง 1 ปี</Text>
+
+            <History />
 
         </ScrollView>
     );

@@ -21,6 +21,7 @@ import About from '../../screens/About';
 import { AuthContext, AuthContextProvider } from '../../hooks/AuthContext';
 import { LogBox } from "react-native";
 import PriceStack from "./PriceStack";
+import Blog from "../../screens/Blog";
 
 const BottomTab = createBottomTabNavigator();
 export default function BottomTabNavigator() {
@@ -92,8 +93,8 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Post"
-        component={Post}
+        name="Blog"
+        component={Blog}
         options={{
           title: t("ข่าวสาร"),
           tabBarIcon: ({ color }) => {

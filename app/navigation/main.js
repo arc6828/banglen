@@ -102,6 +102,7 @@ import SoilTopTab from './SoilTopTab';
 import { useNavigation } from '@react-navigation/native';
 import { Header } from '../components';
 import PlantDetail from '../../screens/PlantDetail';
+import Plan from '../../screens/calculator/Plan';
 const MainStack = createStackNavigator();
 export default function Main() {
 
@@ -144,8 +145,8 @@ export default function Main() {
 
       {/* my screens */}
       {/* <MainStack.Screen name="About" component={About} /> */}
-      <MainStack.Screen name="Weather" component={Weather} />
-      <MainStack.Screen name="Water" component={Water} />
+      <MainStack.Screen name="Weather" component={Weather} options={{ headerShown : true, title: "สภาพอากาศ" }} />
+      <MainStack.Screen name="Water" component={Water} options={{ headerShown : true, title: "ข้อมูลด้านน้ำ" }} />
       {/* <MainStack.Screen name="Soil" component={Soil} /> */}
       <MainStack.Screen
         name="SoilTopTab"
@@ -171,7 +172,7 @@ export default function Main() {
       {/* <MainStack.Screen name="Price" component={Price} />
       <MainStack.Screen name="PriceDetail" component={PriceDetail} /> */}
       
-      <MainStack.Screen name="CostCalculator" component={CostCalculator} options={{  headerShown: true, title: "คำนวณต้นทุนการปลูก", }}  />
+      <MainStack.Screen name="Plan" component={Plan} options={{  headerShown: true, title: "คำนวณต้นทุนการปลูก", }}  />
       <MainStack.Screen name="Others" component={Others} />
 
     </MainStack.Navigator>

@@ -42,6 +42,10 @@ PostItem.propTypes = {
   ]),
   title: PropTypes.string,
   description: PropTypes.string,
+  // description: PropTypes.oneOfType([
+  //   PropTypes.string,
+  //   PropTypes.func,
+  // ]),
   onPress: PropTypes.func,
 };
 
