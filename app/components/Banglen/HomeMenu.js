@@ -24,7 +24,7 @@ export default function HomeMenu(props) {
         { icon: 'leaf', name: 'พืช', route: 'Plant' },
         { icon: 'users', name: 'สังคม', route: 'Social' },
         { icon: 'bitcoin', name: 'เศรษฐกิจ', route: 'Economic' },
-        { icon: 'calculator', name: 'คำนวณต้นทุน', route: 'Plan' },
+        { icon: 'calculator', name: 'คำนวณต้นทุน', route: 'CalculatorStack' },
         { icon: 'ellipsis-h', name: 'อื่นๆ', route: 'Others' }
     ];
 

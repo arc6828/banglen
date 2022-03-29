@@ -103,6 +103,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Header } from '../components';
 import PlantDetail from '../../screens/PlantDetail';
 import Plan from '../../screens/calculator/Plan';
+import CalculatorStack from './CalculatorStack';
 const MainStack = createStackNavigator();
 export default function Main() {
 
@@ -172,7 +173,9 @@ export default function Main() {
       {/* <MainStack.Screen name="Price" component={Price} />
       <MainStack.Screen name="PriceDetail" component={PriceDetail} /> */}
       
-      <MainStack.Screen name="Plan" component={Plan} options={{  headerShown: true, title: "คำนวณต้นทุนการปลูก", }}  />
+      {/* <MainStack.Screen name="Plan" component={Plan} options={{  headerShown: true, title: "คำนวณต้นทุนการปลูก", }}  /> */}
+
+      <MainStack.Screen name="CalculatorStack" component={CalculatorStack} />
       <MainStack.Screen name="Others" component={Others} />
 
     </MainStack.Navigator>

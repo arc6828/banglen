@@ -1,48 +1,37 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Text, View } from "react-native";
 import { Divider, List, Avatar, Card, IconButton } from 'react-native-paper';
 
-export default function Income() {
+export default function OutcomeCard(props) {
     const [expanded, setExpanded] = React.useState(true);
-    const cost = [
-        { "title": "ข้าว A", value: 300, unit: "บาท" },
-        { "title": "ข้าว B", value: 300, unit: "บาท" },
-        { "title": "ข้าว C", value: 300, unit: "บาท" },        
-    ];
-    
-    let a = cost.reduce((total , item)=>{
-        console.log(total, item);
-        return (total+item.value)
-    }, 0);
-    console.log(a);
+    const { data, token } = props;
+    const navigation = useNavigation();
 
     const handlePress = () => setExpanded(!expanded);
     return (
         <View style={{ margin: 20, borderRadius: 10, backgroundColor: "#eeeeee" }}>
             <List.Section style={{ padding: 20 }}>
-                <List.Accordion
-                    title="รายได้"
-                // left={props => <List.Icon {...props} icon="folder" />}
-
-                >
+                <List.Accordion title="ค่าใช้จ่าย" >
                     {
-                        cost.map((item) => (
-                            <List.Item 
-                                key={item.title}
+                        data.map((item,index) => (
+                            <List.Item
+                                onPress={() => {
+                                    navigation.navigate("OutcomeForm", { data: item, token: token });
+                                }}
+                                key={index.toString()}
                                 title={item.title}
+                                description={item.detail ? item.detail : ""}
                                 right={props => (
                                     <View style={{ flexDirection: "row" }}>
                                         <Text style={{ fontSize: 20 }}>{item.value} </Text>
                                         <Text style={{ fontSize: 20, marginHorizontal: 5 }}>{item.unit}</Text>
                                         <List.Icon {...props} icon="chevron-right" />
-
                                     </View>
                                 )}
                             />
                         ))
-
                     }
-
                 </List.Accordion>
 
 
@@ -51,10 +40,10 @@ export default function Income() {
             <Divider />
             <View style={{ padding: 20 }}>
                 <Card.Title
-                    title={ cost.reduce((total , item)=>(total+item.value), 0) + " บาท"}
+                    title={data.reduce((total, item) => (total + item.value), 0) + " บาท"}
                     subtitle="รวมค่าใช้จ่าย"
-                    left={(props) => <Avatar.Icon {...props} icon="cash" />}
-                    right={(props) => <IconButton {...props} size={50} color="tomato" icon="plus-circle-outline" onPress={() => { }} />}
+                    left={(props) => <Avatar.Icon {...props} icon="arrow-left-box" />}
+                    right={(props) => <IconButton {...props} size={50} color="tomato" icon="plus-circle-outline" onPress={() => { navigation.navigate("Outcome", { token: token }); }} />}
                 />
             </View>
         </View>
