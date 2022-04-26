@@ -5,8 +5,9 @@
     "version": "0.0.8",
     "slug": "banglen",
     "ios": {
-      "bundleIdentifier": "com.rtfloodbma.banglen",
-      "buildNumber": "0.0.8"
+      "supportsTablet" : true,
+      "bundleIdentifier": "com.rtfloodbma.banglen.eas",
+      "buildNumber": "8"
     },
     "android": {
       "package": "com.rtfloodbma.banglen",

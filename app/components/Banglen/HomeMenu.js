@@ -21,9 +21,9 @@ export default function HomeMenu(props) {
         { icon: 'thermometer-half', name: 'อากาศ', route: 'Weather' },
         { icon: 'tint', name: 'น้ำ', route: 'Water' },
         { icon: 'globe-asia', name: 'ดิน', route: 'SoilTopTab' },
-        { icon: 'leaf', name: 'พืช', route: 'Plant' },
-        { icon: 'users', name: 'สังคม', route: 'Social' },
-        { icon: 'bitcoin', name: 'เศรษฐกิจ', route: 'Economic' },
+        { icon: 'leaf', name: 'พันธุ์ข้าว', route: 'Plant' },
+        { icon: 'map-marker', name: 'จำหน่ายพันธุ์', route: 'Supplier' },
+        { icon: 'bitcoin', name: 'รับซื้อข้าว', route: 'Mill' },
         { icon: 'calculator', name: 'คำนวณต้นทุน', route: 'CalculatorStack' },
         { icon: 'ellipsis-h', name: 'อื่นๆ', route: 'Others' }
     ];
@@ -44,7 +44,7 @@ export default function HomeMenu(props) {
                     // onPress={() => navigation.navigate('Search')}
                     activeOpacity={0.9}>
                     <View style={[BaseStyle.textInput, { backgroundColor: colors.card }]}>
-                        <Text body1 grayColor> {t('what_are_you_looking_for')} </Text>
+                        <Text body1 grayColor> {t('สิ่งที่คุณกำลังมองหา ...')} </Text>
                     </View>
                 </TouchableOpacity>
                 <FlatList

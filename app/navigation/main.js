@@ -104,6 +104,8 @@ import { Header } from '../components';
 import PlantDetail from '../../screens/PlantDetail';
 import Plan from '../../screens/calculator/Plan';
 import CalculatorStack from './CalculatorStack';
+import Mill from '../../screens/Mill';
+import Supplier from '../../screens/Supplier';
 const MainStack = createStackNavigator();
 export default function Main() {
 
@@ -170,6 +172,9 @@ export default function Main() {
       <MainStack.Screen name="PlantDetail" component={PlantDetail} />
       <MainStack.Screen name="Social" component={Social} />
       <MainStack.Screen name="Economic" component={Economic} />
+      <MainStack.Screen name="Mill" component={Mill} />
+      <MainStack.Screen name="Supplier" component={Supplier} />
+      
       {/* <MainStack.Screen name="Price" component={Price} />
       <MainStack.Screen name="PriceDetail" component={PriceDetail} /> */}
       

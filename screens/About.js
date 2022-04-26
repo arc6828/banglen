@@ -27,18 +27,18 @@ export default function AboutUs({ navigation }) {
 
     
     const members = [
-        {image : "" , name : "ผศ.ดร.สิตางศุ์ พิลัยหล้า", role : "หัวหน้าโครงการ", gender : "F"},
-        {image : "" , name : "ศ.ดร. สุวัฒนา จิตตลดากร", role : "ที่ปรึกษา", gender : "M"},
-        {image : "" , name : "ประเชิญ คนเทศ", role : "ที่ปรึกษา", gender : "M"},
-        {image : "" , name : "หทัยรัตน์ อุไรรงค์", role : "ผู้ร่วมวิจัยด้านเกษตร", gender : "F"},
-        {image : "" , name : "รศ.ดร.กาญจนา ศรีพฤทธิ์เกียรติ", role : "ผู้ร่วมวิจัยด้านเศรษฐศาสตร", gender : "F"},
-        {image : "" , name : "ผศ.อัญชลี รัตนะ", role : "ผู้ร่วมวิจัยด้านสังคม", gender : "F"},
-        {image : "" , name : "ผศ.ดร.ดนุสรณ์ กาญจนวงศ์", role : "ผู้ร่วมวิจัยด้านสังคม", gender : "M"},
-        {image : "" , name : "ภุชพันธุ์ ศิริทรัพย์", role : "ผู้ร่วมวิจัยด้านเทคนิคอุตุนิยมวิทยา", gender : "M"},
-        {image : "" , name : "จิรายุ พึ่งฉิ่ง", role : "ผู้ร่วมวิจัยด้านระบบภูมิสารสนเทศภมิศาสตร์", gender : "M"},
-        {image : "" , name : "เดชพล จิตรวัฒน์กุลศิริ", role : "ผู้ร่วมวิจัยด้านการแบบจำลองทางชลศาสตร์", gender : "M"},
-        {image : "" , name : "ชวลิต โควีระวงศ์", role : "ผู้ร่วมวิจัยด้านแอพพลิเคชัน", gender : "M"},
-        {image : "" , name : "กมลชนก คุณยศยิ่ง", role : "ประสานงาน", gender : "F"},
+        {image : require("../assets/images/profiles/square/sitang.jpg") , name : "ผศ.ดร.สิตางศุ์ พิลัยหล้า", role : "หัวหน้าโครงการ", gender : "F"},
+        {image : require("../assets/images/profiles/square/suwathana.jpg") , name : "ศ.ดร. สุวัฒนา จิตตลดากร", role : "ที่ปรึกษา", gender : "M"},
+        {image : require("../assets/images/profiles/square/prachern.jpg") , name : "ประเชิญ คนเทศ", role : "ที่ปรึกษา", gender : "M"},
+        {image : require("../assets/images/profiles/square/hatairat.jpg") , name : "หทัยรัตน์ อุไรรงค์", role : "ผู้ร่วมวิจัยด้านเกษตร", gender : "F"},
+        {image : require("../assets/images/profiles/square/kanchana.jpg") , name : "รศ.ดร.กาญจนา ศรีพฤทธิ์เกียรติ", role : "ผู้ร่วมวิจัยด้านเศรษฐศาสตร", gender : "F"},
+        {image : require("../assets/images/profiles/square/anchalee.jpg") , name : "ผศ.อัญชลี รัตนะ", role : "ผู้ร่วมวิจัยด้านสังคม", gender : "F"},
+        {image : require("../assets/images/profiles/square/danusorn.jpg") , name : "ผศ.ดร.ดนุสรณ์ กาญจนวงศ์", role : "ผู้ร่วมวิจัยด้านสังคม", gender : "M"},
+        {image : require("../assets/images/profiles/square/pushapun.jpg") , name : "ภุชพันธุ์ ศิริทรัพย์", role : "ผู้ร่วมวิจัยด้านเทคนิคอุตุนิยมวิทยา", gender : "M"},
+        // {image : require("../assets/images/profiles/square/jirayu.jpg") , name : "จิรายุ พึ่งฉิ่ง", role : "ผู้ร่วมวิจัยด้านระบบภูมิสารสนเทศภมิศาสตร์", gender : "M"},
+        // {image : require("../assets/images/profiles/square/detchpol.jpg") , name : "เดชพล จิตรวัฒน์กุลศิริ", role : "ผู้ร่วมวิจัยด้านการแบบจำลองทางชลศาสตร์", gender : "M"},
+        // {image : require("../assets/images/profiles/square/chavalit.jpg") , name : "ชวลิต โควีระวงศ์", role : "ผู้ร่วมวิจัยด้านแอพพลิเคชัน", gender : "M"},
+        // {image : require("../assets/images/profiles/square/kamolchanok.jpg") , name : "กมลชนก คุณยศยิ่ง", role : "ประสานงาน", gender : "F"},
     ];
 
     const services = [
@@ -46,7 +46,7 @@ export default function AboutUs({ navigation }) {
         { "icon": "shopping", "title": "ข้อมูลด้านการตลาด", "description": "ปัจจัยการตลาด ได้แก่ ข้อมูลราคาผลิตภัณฑ์ตามท้องตลาด ข้อมูลราคารับซื้อ" },
         { "icon": "book", "title": "บทวิเคราะห์และคลังความรู้", "description": "บทวิเคราะห์กลยุทธ์ต่างๆ และบทความที่เกี่ยวกับบางเลน" },
         { "icon": "hammer-screwdriver", "title": "เครื่องมือวิเคราะห์ต้นทุน", "description": "วางแผนก่อนการผลิต เพื่อเสาะหาผลิตภัณฑ์ที่ทำให้ได้กำไรสูงสุด และหลีกเลี่ยงการขาดทุน" },
-        { "icon": "calendar", "title": "เครื่องมือติดตามการเพาะปลูก", "description": "จดบันทึก และแจ้งเตือนระหว่างการเพาะปลูก" },
+        // { "icon": "calendar", "title": "เครื่องมือติดตามการเพาะปลูก", "description": "จดบันทึก และแจ้งเตือนระหว่างการเพาะปลูก" },
         { "icon": "bell", "title": "การแจ้งเตือนภัย", "description": "แจ้งเตือนภัยธรรมชาติ ทั้งจากระบบนิเวศ สภาพอากาศ และการจัดการแหล่งน้ำ" },
     ];
     // console.log(ProfileData);
@@ -107,6 +107,7 @@ export default function AboutUs({ navigation }) {
                         </Text>
                     </View>
                     <Text headline semibold style={styles.title}>ทีมงานของเรา</Text>
+                    {/* <Image source={ require("../assets/images/profiles/square/sitang.jpg") } style={styles.card} /> */}
                     <FlatList
                         contentContainerStyle={{ paddingLeft: 5, paddingRight: 20 }}
                         horizontal={true}
@@ -118,7 +119,8 @@ export default function AboutUs({ navigation }) {
                         showsHorizontalScrollIndicator={false}
                         renderItem={({ item, index }) => (
                             <Card
-                                image={item.gender=="M" ? male_profiles[Math.floor(Math.random() * 3)] : female_profiles[Math.floor(Math.random() * 5)] }
+                                // image={item.gender=="M" ? male_profiles[Math.floor(Math.random() * 3)] : female_profiles[Math.floor(Math.random() * 5)] }
+                                image={ item.image }
                                 onPress={() => navigation.navigate(item.screen)}
                                 style={{
                                     // flex: 1,

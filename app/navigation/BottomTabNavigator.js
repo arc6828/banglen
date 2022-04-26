@@ -12,7 +12,7 @@ import { Icon } from "@components";
 import Home from "@screens/Home";
 import Booking from "@screens/Booking";
 import Messenger from "@screens/Messenger";
-import Notification from "@screens/Notification";
+import Notification from "../../screens/Notification";
 import Post from "@screens/Post";
 import Profile from "@screens/Profile";
 import Walkthrough from "@screens/Walkthrough";

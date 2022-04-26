@@ -8,159 +8,29 @@ import styles from '../../screens/Home/styles';
 // import axios from 'axios';
 // import { UserData } from '@data';
 import { useTranslation } from 'react-i18next';
+import Dam from '../../../services/Dam';
 
 export default function WaterLevel() {
     //STANDARD VARIABLES
     const { t } = useTranslation();
-    
-    //LOCAL VARIABLES
-    const [dataset, setDataSet] = useState([
-        {
-            data: [20, 45, 28, 80, 99, 43],
-            strokeWidth: 1,
-        },
-    ]);
 
-    // const [image] = useState(UserData[0].image);
-    
-
-    const MyLineChart = () => {
-        return (
-            <View style={{ flex: 1 }}>
-                <LineChart
-                    data={{
-                        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-                        datasets: dataset
-                    }}
-                    width={Dimensions.get('window').width}
-                    height={220}
-                    chartConfig={{
-                        backgroundColor: 'white',
-                        backgroundGradientFrom: 'white',
-                        backgroundGradientTo: 'white',
-                        decimalPlaces: 2,
-                        color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-                    }}
-                    style={{
-                        margin: 10,
-
-                    }}
-                />
-            </View>
-        );
+    const [dams, setDams] = useState([]);
+    const color_status = {
+        "ต่ำมาก": "red",
+        "ต่ำ": "orange",
+        "ปานกลาง": "green",
+        "สูง": "orange",
+        "สูงมาก": "red",
+        "ล้น": "darkred"
     };
 
+    const loadDams = async () => {
+        let data = await Dam.getItems();
+        setDams(data);
+    };
 
+    useEffect(() => { loadDams(); }, []);
 
-    const [colours, setColours] = useState([]);
-
-
-    const [cardLine, setCardLine] = useState([
-        {
-            id: 1,
-            keydataSet: [10, 20, 30, 40, 50, 60],
-            name: 'ข้าว',
-            station: 'สถานนี A จังหวัด ปทุมธานี',
-            time: '18-12-2021 12.10 น',
-            water: '109.78%',
-            status: 'น้ำเต็มตลิ่ง',
-            active: true,
-        },
-        {
-            id: 2,
-            keydataSet: [70, 80, 90, 100, 110, 120],
-            name: 'ข้าวเหนียว',
-            station: 'สถานนี A จังหวัด ปทุมธานี',
-            time: '18-12-2021 12.10 น',
-            water: '109.78%',
-            status: 'น้ำเต็มตลิ่ง',
-            active: false,
-        },
-        {
-            id: 3,
-            keydataSet: [130, 140, 150, 160, 170, 180],
-            name: 'ข้าวจ้าว',
-            station: 'สถานนี A จังหวัด ปทุมธานี',
-            time: '18-12-2021 12.10 น',
-            water: '109.78%',
-            status: 'น้ำเต็มตลิ่ง',
-            active: false,
-        },
-        {
-            id: 4,
-            keydataSet: [190, 200, 230, 240, 250, 260],
-            name: 'ข้าวสาลี',
-            station: 'สถานนี A จังหวัด ปทุมธานี',
-            time: '18-12-2021 12.10 น',
-            water: '109.78%',
-            status: 'น้ำเต็มตลิ่ง',
-            active: false,
-        },
-
-    ]);
-
-
-    const changeBackgroundColor = (keydataSet) => {
-        setDataSet([{ data: keydataSet.keydataSet, strokeWidth: 1, }])
-
-        let newColors = [];
-        for (let item of cardLine) {
-            if (item.id == keydataSet.id) {
-                newColors.push("red");
-            } else {
-                newColors.push("lightgray");
-            }
-        }
-
-        setColours(newColors);
-
-    }
-    useEffect(function () {
-        setCardLine([
-            {
-                id: 1,
-                keydataSet: [10, 20, 30, 40, 50, 60],
-                name: 'ข้าว',
-                station: 'สถานนี A จังหวัด ปทุมธานี',
-                time: '18-12-2021 12.10 น',
-                water: '109.78%',
-                status: 'น้ำเต็มตลิ่ง',
-                active: true,
-            },
-            {
-                id: 2,
-                keydataSet: [70, 80, 90, 100, 110, 120],
-                name: 'ข้าวเหนียว',
-                station: 'สถานนี A จังหวัด ปทุมธานี',
-                time: '18-12-2021 12.10 น',
-                water: '109.78%',
-                status: 'น้ำเต็มตลิ่ง',
-                active: false,
-            },
-            {
-                id: 3,
-                keydataSet: [130, 140, 150, 160, 170, 180],
-                name: 'ข้าวจ้าว',
-                station: 'สถานนี A จังหวัด ปทุมธานี',
-                time: '18-12-2021 12.10 น',
-                water: '109.78%',
-                status: 'น้ำเต็มตลิ่ง',
-                active: false,
-            },
-            {
-                id: 4,
-                keydataSet: [190, 200, 230, 240, 250, 260],
-                name: 'ข้าวสาลี',
-                station: 'สถานนี A จังหวัด ปทุมธานี',
-                time: '18-12-2021 12.10 น',
-                water: '109.78%',
-                status: 'น้ำเต็มตลิ่ง',
-                active: false,
-            },
-
-        ])
-        changeBackgroundColor(cardLine[0]);
-    }, []);
     return (
         <View>
             <Text title3 semibold style={styles.titleView}>
@@ -168,29 +38,29 @@ export default function WaterLevel() {
             </Text>
             <FlatList
                 contentContainerStyle={{ paddingLeft: 5, paddingRight: 20 }}
-                data={cardLine}
+                data={dams}
                 keyExtractor={(item, index) => item.id.toString()}
                 renderItem={({ item, index }) => (
                     // <Card style={[styles.watherCard, { marginLeft: 15 }]} onPress={() => navigation.navigate('TourDetail')}>
-                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', borderRadius: 10, borderWidth: 1, borderColor: 'gray', paddingVertical: 20, marginHorizontal: 20, marginVertical: 10 }}>
-                        <View style={{ marginHorizontal: 10 }}>
-                            <Text body1 semibold style={{ fontSize: 15 }}>
-                                {item.water}
+                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', borderRadius: 10, borderWidth: 1, borderColor: 'gray', paddingVertical: 20, marginHorizontal: 20, marginVertical: 10 }}>
+                        <View style={{ flex: 1, alignItems: 'center' }}>
+                            <Text body1 semibold style={{ fontSize: 16 }}>
+                                {parseInt(item.dam_storage_percent)}%
                             </Text>
-                            <Text body1 semibold style={{ fontSize: 12 }}>
+                            <Text body1 semibold style={{ fontSize: 12, color: "gray" }}>
                                 ของความจุ
                             </Text>
                         </View>
-                        <View style={{ marginHorizontal: 10, }}>
-                            <Text body1 semibold style={{ fontSize: 15 }}>
-                                {item.station}
+                        <View style={{ flex: 2 }}>
+                            <Text body1 semibold style={{ fontSize: 16, color: "tomato" }}>
+                                เขื่อน{item.dam.dam_name.th}
                             </Text>
-                            <Text body1 semibold style={{ fontSize: 12 }}>
-                                {item.time}
+                            <Text body1 semibold style={{ fontSize: 12, color: "gray" }}>
+                                {item.dam_date}
                             </Text>
                         </View>
-                        <View style={{ marginHorizontal: 10, alignSelf: 'center' }}>
-                            <Text body1 semibold style={{ fontSize: 15 }}>
+                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                            <Text body1 semibold style={{ fontSize: 16 , color : color_status[item.status]}}>
                                 {item.status}
                             </Text>
                         </View>
