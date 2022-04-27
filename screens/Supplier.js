@@ -25,7 +25,12 @@ export default function Supplier() {
         setMarkers(items);
         console.log(items);
     };
-    useEffect(() => { loadMarkers(); }, []);
+    useEffect(() => { 
+        // let loc = await GPS.getLocation();
+        // if (loc) {
+            loadMarkers(); 
+        // }
+    }, []);
 
     return (
         <View style={{ flex : 1 }}>

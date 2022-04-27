@@ -5,6 +5,8 @@ import { BaseStyle, Images, useTheme } from '@config';
 import { useNavigation } from "@react-navigation/native";
 import MillService from "../services/MillService";
 import MyMapView from "../components/map/MyMapView";
+// import GPS from "../helpers/GPS";
+// import GPS from "../../helpers/GPS";
 
 
 export default function Mill() {
@@ -25,7 +27,14 @@ export default function Mill() {
         setMarkers(items);
         console.log(items);
     };
-    useEffect(() => { loadMarkers(); }, []);
+
+    useEffect(() => { 
+        // let loc = await GPS.getLocation();
+        // if (loc) {
+            loadMarkers(); 
+        // }
+        
+    }, []);
 
     return (
         <View style={{ flex: 1 }}>

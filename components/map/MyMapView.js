@@ -21,7 +21,7 @@ export default function MyMapView(props) {
                     latitudeDelta: 0.5,
                     longitudeDelta: 0.5,
                 }}
-                showsUserLocation={true}                
+                // showsUserLocation={true}                
             >
                 {/* <MapView.Marker
                     coordinate={{
