@@ -15,7 +15,9 @@ export default function PriceChart(props) {
     // console.log(data);
     useEffect(() => {
         if (props.data) {
-            transformData();
+            if(props.data.price_list){
+                transformData();
+            }
         }
     }, [props.data]);
 
@@ -63,6 +65,7 @@ export default function PriceChart(props) {
         //     stroke: "#ffa726"
         // }
     };
+
     return (
         <LineChart
             data={data}

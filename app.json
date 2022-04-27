@@ -2,16 +2,16 @@
   "expo": {
     "name": "Banglen",
     "icon": "./assets/images/logo-green.png",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "slug": "banglen",
     "ios": {
       "supportsTablet" : true,
       "bundleIdentifier": "com.rtfloodbma.banglen.eas",
-      "buildNumber": "8"
+      "buildNumber": "9"
     },
     "android": {
       "package": "com.rtfloodbma.banglen",
-      "versionCode": 8
+      "versionCode": 9
     }
   }
 }

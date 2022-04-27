@@ -7,14 +7,23 @@ import { View, TextInput, FlatList, Text, TouchableOpacity } from "react-native"
 import Product from "../../services/Product";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Market() {
+export default function Market(props) {
     const { colors } = useTheme();
     const navigation = useNavigation();
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const loadProducts = async () => {
         let items = await Product.getItems();
-        items = items.filter((item) => (item.product_name.length < 50));
+        items = items.filter((item) => {
+            let mode = true;
+            if(props.code == "before"){
+                mode = (item.product_name.includes("เปลือก"));
+            }else{
+                mode = !(item.product_name.includes("เปลือก"));
+            }
+            return (item.product_name.length < 50) && mode;
+        });
+        
         //SET STATE
         setProducts(items);
         setFilteredProducts(items);
@@ -27,7 +36,9 @@ export default function Market() {
         // console.log(filtered,text);
         setFilteredProducts(filtered);
     };
-    useEffect(() => { loadProducts(); }, []);
+    useEffect(() => { 
+        loadProducts(); 
+    }, []);
     return (
         <View style={{ padding: 10 }}>
             <View style={{ flexDirection: "row", backgroundColor: '#eeeeee', borderRadius: 5 }}>
