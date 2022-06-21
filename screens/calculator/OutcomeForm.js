@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useEffect, useRef, useState } from "react";
-import { ScrollView, View, FlatList, Text, KeyboardAvoidingView, TextInput, Alert, } from "react-native";
+import { ScrollView, View, FlatList, Text, KeyboardAvoidingView, TextInput, Alert, TouchableWithoutFeedback, Keyboard, Platform, } from "react-native";
 import { Avatar, Button, Card, Title, Paragraph, Divider, List, IconButton, Colors, ToggleButton, TextInput as PaperTextInput } from 'react-native-paper';
 import * as Paper from 'react-native-paper';
 import OutcomeStorage from "../../storages/OutcomeStorage";
@@ -76,35 +76,37 @@ export default function OutcomeForm(props) {
     };
 
     return (
-        <KeyboardAvoidingView style={{ backgroundColor: '#ffffff', padding: 10, flex: 1, justifyContent: "space-between" }}>
-            <View style={{ alignItems: "center" }}>
-                <Text style={{ fontSize: 20 }}>รายได้จาก{data.title}</Text>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ flexDirection: "row", padding: 10 }}>
-                    <ToggleButton.Row onValueChange={value => setDetail(value)} value={detail} style={{}}>
-                        {
-                            menu.map((item) => (
-                                <View key={item}>
-                                    <ToggleButton
-                                        style={{ width: 150, borderWidth: 0 }}
-                                        icon={() => (<Text>{item}</Text>)} value={item}
-                                    />
-                                </View>
-                            ))
-                        }
-                    </ToggleButton.Row>
-                </ScrollView>
-                <View style={{ flexDirection: "row", marginVertical: 10 }}>
-                    <Text style={{ fontSize: 30 }}>฿</Text>
-                    <TextInput
-                        style={{ fontSize: 30 }}
-                        keyboardType="numeric"
-                        onChangeText={(text) => { setValue(text) }}
-                        value={value.toString()}
-                        ref={inputRef}
-                    />
-                </View>
-                {/* <Text style={{ fontSize: 15, color: 'gray' }}>บาท</Text> */}
-                {/* <View style={{ flexDirection: "row", margin: 50 }}>
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1, backgroundColor: '#ffffff' }}>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View style={{ padding: 10, flex: 1, justifyContent: "space-around" }}>
+                    <View style={{ alignItems: "center" }}>
+                        <Text style={{ fontSize: 20 }}>รายได้จาก{data.title}</Text>
+                        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ flexDirection: "row", padding: 10 }}>
+                            <ToggleButton.Row onValueChange={value => setDetail(value)} value={detail} style={{}}>
+                                {
+                                    menu.map((item) => (
+                                        <View key={item}>
+                                            <ToggleButton
+                                                style={{ width: 150, borderWidth: 0 }}
+                                                icon={() => (<Text>{item}</Text>)} value={item}
+                                            />
+                                        </View>
+                                    ))
+                                }
+                            </ToggleButton.Row>
+                        </ScrollView>
+                        <View style={{ flexDirection: "row", marginVertical: 10 }}>
+                            <Text style={{ fontSize: 30 }}>฿</Text>
+                            <TextInput
+                                style={{ fontSize: 30 }}
+                                keyboardType="numeric"
+                                onChangeText={(text) => { setValue(text) }}
+                                value={value.toString()}
+                                ref={inputRef}
+                            />
+                        </View>
+                        {/* <Text style={{ fontSize: 15, color: 'gray' }}>บาท</Text> */}
+                        {/* <View style={{ flexDirection: "row", margin: 50 }}>
                     <PaperTextInput 
                     mode="flat"
                     style={{ flex : 1 }}
@@ -112,32 +114,33 @@ export default function OutcomeForm(props) {
 
                     />
                 </View> */}
-            </View>
-            <View style={{ padding: 10 }}>
-                <IconButton
-                    icon="delete-circle"
-                    color={Colors.gray500}
-                    size={30}
-                    onPress={() => {
-                        console.log('Pressed');
-                        onComfirmToDelete();
-                    }}
-                />
-                <View style={{ flexDirection: "row" }}>
-                    <Button
-                        style={{ flex: 1 }}
-                        icon="arrow-down-bold-circle"
-                        mode="contained"
-                        onPress={() => {
-                            console.log('Pressed');
-                            onSave();
-                        }}
-                    >
-                        บันทึก
-                    </Button>
+                    </View>
+                    <View style={{ padding: 10 }}>
+                        <IconButton
+                            icon="delete-circle"
+                            color={Colors.gray500}
+                            size={30}
+                            onPress={() => {
+                                console.log('Pressed');
+                                onComfirmToDelete();
+                            }}
+                        />
+                        <View style={{ flexDirection: "row" }}>
+                            <Button
+                                style={{ flex: 1 }}
+                                icon="arrow-down-bold-circle"
+                                mode="contained"
+                                onPress={() => {
+                                    console.log('Pressed');
+                                    onSave();
+                                }}
+                            >
+                                บันทึก
+                            </Button>
+                        </View>
+                    </View>
                 </View>
-            </View>
-
+            </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
     );
 }

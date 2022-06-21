@@ -2,16 +2,21 @@
   "expo": {
     "name": "Banglen",
     "icon": "./assets/images/logo-green.png",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "slug": "banglen",
     "ios": {
-      "supportsTablet" : true,
+      "supportsTablet": true,
       "bundleIdentifier": "com.rtfloodbma.banglen.eas",
-      "buildNumber": "9"
+      "buildNumber": "10"
     },
     "android": {
       "package": "com.rtfloodbma.banglen",
-      "versionCode": 9
+      "versionCode": 10,
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBO_Pvwz7hAHoubWfImLXEeyk1D-fku95s"
+        }
+      }
     }
   }
 }

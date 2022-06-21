@@ -11,6 +11,7 @@ import HomeMenu from '../../components/Banglen/HomeMenu';
 import WeatherNow from '../../components/Banglen/WeatherNow';
 import Price from '../../components/Banglen/Price';
 import WaterLevel from '../../components/Banglen/WaterLevel';
+import OfflineNotice from '../../../components/notification/OfflineNotice';
 
 export default function Home({ navigation }) {
   //STANDARD VARIABLES
@@ -18,9 +19,11 @@ export default function Home({ navigation }) {
   // const { colors } = useTheme();
   const [heightHeader, setHeightHeader] = useState(Utils.heightHeader());
   const [refreshing, setRefreshing] = useState(false);
+  const [count, setCount] = useState(0);
   const deltaY = new Animated.Value(0,{});
   const heightImageBanner = Utils.scaleWithPixel(140);
   const marginTopBanner = heightImageBanner - heightHeader;
+
 
   // useEffect(() => {  }, []);
   useEffect(function(){
@@ -32,6 +35,7 @@ export default function Home({ navigation }) {
   
   return (
     <View style={{ flex: 1 }}>
+      <OfflineNotice refreshing={refreshing} count={count} />
       <Animated.Image
         source={Images.background4}
         style={[
@@ -70,8 +74,10 @@ export default function Home({ navigation }) {
           refreshing={false}
           onRefresh={()=>{
             // navigation.navigate("Main");
-            setRefreshing(true);
-            setRefreshing(false);
+            // setRefreshing(true);
+            // setRefreshing(false);
+            console.log("Refresh");
+            setCount(count +1);
           }}
         />
       </SafeAreaView>

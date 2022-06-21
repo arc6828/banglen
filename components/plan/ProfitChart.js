@@ -22,7 +22,7 @@ export default function ProfitChart(props) {
             /> */}
             <View style={{ padding: 20, alignItems: "center" }}>
                 <Text style={{ fontSize: 16, color: "green" }}>กำไร/ขาดทุน สุทธิ</Text>
-                <Text style={{ fontSize: 32, color: "green" }}>+ {profit} บาท</Text>
+                <Text style={{ fontSize: 32, color: "green" }}>{profit} บาท</Text>
             </View>
             <View style={{ padding: 20 }}>
                 <SemiCircleProgress
